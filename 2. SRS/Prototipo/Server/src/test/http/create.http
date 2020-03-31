@@ -1,0 +1,8 @@
+POST http://localhost:8080/employees/
+Content-Type: application/json
+
+{
+    "name": "emp100",
+    "age": "20",
+    "salary": "2000"
+}
