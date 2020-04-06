@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div *ngIf="llegoUsuario == true" class="wrapper">
   <div class="side-bar">
     <div class="img-box">
       <img src="../../../assets/images/SmartCloset.png" alt="SC...">
@@ -8,7 +8,7 @@
         <a><i class="fas fa-wifi"></i></a>
       </div>
       <div class="user-name">
-        <p>{{user}}</p>
+        <p>{{user.nickname}}</p>
       </div>
     </div>
     <div class="options-box">
@@ -41,5 +41,38 @@
       </div>
     </div>
   </div>
+  <div class="content">
+    <div class="perfil-box">
+      <div class="logout">
+        <a (click)="logout()"><i class="fas fa-sign-out-alt"></i></a>
+      </div>
+      <div class="info">
+        <img src="../../../assets/images/User.png" alt="User">
+        <div class="title">
+          <h2>{{user.nombre}} {{user.apellido}}</h2>
+        </div>
+        <div class="info-box">
+          <div class="lbl">
+            <a><i class="fas fa-envelope"></i></a>
+            <label>{{user.correo}}</label>
+          </div>
+          <div class="lbl">
+            <a><i class="fas fa-user-tag"></i></a>
+            <label>{{user.nickname}}</label>
+          </div>
+          <div class="lbl">
+            <a><i class="fas fa-house-user"></i></a>
+            <label>{{user.ciudad}}</label>
+          </div>
+          <div class="lbl" class="final">
+            <a><i class="fas fa-mobile-alt"></i></a>
+            <label>{{user.celular}}</label>
+          </div>
+          <button [routerLink]="['/editar-perfil']">Editar Perfil</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 

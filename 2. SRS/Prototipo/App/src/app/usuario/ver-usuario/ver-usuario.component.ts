@@ -11,7 +11,8 @@ import { Usuario } from '../services/usuario';
 })
 export class VerUsuarioComponent implements OnInit {
 
-  user: Usuario = environment.user;
+  user: Usuario = undefined;
+  llegoUsuario = false;
 
   constructor(
     private router: Router,
@@ -20,6 +21,18 @@ export class VerUsuarioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this.userService.findById(+localStorage.getItem('User ID')).subscribe(
+      results => {
+        this.user = results;
+        this.inicializar();
+      }
+    );
+
+  }
+
+  inicializar() {
+    this.llegoUsuario = true;
   }
 
   irAPerfil() {
@@ -28,6 +41,11 @@ export class VerUsuarioComponent implements OnInit {
 
   verClima() {
     this.router.navigate(['/ver-clima']);
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/main-page']);
   }
 
 }

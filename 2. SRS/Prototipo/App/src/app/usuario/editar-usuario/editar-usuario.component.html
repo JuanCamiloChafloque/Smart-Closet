@@ -1,1 +1,105 @@
-<p>editar-usuario works!</p>
+<div *ngIf="llegoUsuario == true" class="wrapper">
+  <div class="side-bar">
+    <div class="img-box">
+      <img src="../../../assets/images/SmartCloset.png" alt="SC...">
+    </div>
+    <div class="user-box">
+      <div class="user-image">
+        <a><i class="fas fa-wifi"></i></a>
+      </div>
+      <div class="user-name">
+        <p>{{user.nickname}}</p>
+      </div>
+    </div>
+    <div class="options-box">
+      <div class="config-box">
+        <a (click)="irAPerfil()"><i class="fas fa-user"></i></a>
+      </div>
+      <div class="share-box">
+        <a><i class="fas fa-share"></i></a>
+      </div>
+      <div class="clima-box">
+        <a (click)="verClima()"><i class="fas fa-cloud"></i></a>
+      </div>
+    </div>
+    <div class="cont-box">
+      <div class="generate-box">
+        <a><i class="fas fa-tshirt"></i></a><br>
+        <a href="#">Generar atuendo</a>
+      </div>
+      <div class="closet-box">
+        <a><i class="fas fa-door-closed"></i></a>
+        <a href="#">Mi armario</a>
+      </div>
+      <div class="favorite-box">
+        <a><i class="fas fa-star"></i></a>
+        <a href="#">Favoritos</a>
+      </div>
+      <div class="history-box">
+        <a><i class="fas fa-book"></i></a>
+        <a href="#">Historial de atuendos</a>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="perfil-box">
+      <div class="info">
+        <img src="../../../assets/images/User.png" alt="User">
+        <div class="info-box">
+          <div class="form">
+            <div class="lbl-box">
+              <div class="lbl">
+                <label class="lbl-name">Nombre</label>
+              </div>
+              <div class="lbl">
+                <label class="lbl-user">Apellido</label>
+              </div>
+              <div class="lbl">
+                <label class="lbl-gender">Género</label>
+              </div>
+              <div class="lbl">
+                <label class="lbl-mail">Correo</label>
+              </div>
+              <div class="lbl">
+                <label class="lbl-nickname">Nickname</label>
+              </div>
+              <div class="lbl">
+                <label class="lbl-ciudad">Ciudad</label>
+              </div>
+              <div class="lbl">
+                <label class="lbl-celular">Telefono</label>
+              </div>
+              <div class="lbl">
+                <label class="lbl-password">Contraseña</label>
+              </div>
+              <div class="lbl">
+                <label class="lbl-confirm">Confirmar Contraseña</label>
+              </div>
+            </div>
+            <div class="input-box">
+              <input class="input-name" type="text" [(ngModel)]="user.nombre"><br>
+              <input class="input-apellido" type="text" [(ngModel)]="user.apellido"><br>
+              <select class="input-gender" [(ngModel)]="user.genero">
+                <option selected disabled>Escoja su género...</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Otro">Otro</option>
+              </select><br>
+              <input class="input-mail" type="text" [(ngModel)]="user.correo"><br>
+              <input class="input-nickname" type="text" [(ngModel)]="user.nickname"><br>
+              <input class="input-ciudad" type="text" [(ngModel)]="user.ciudad"><br>
+              <input class="input-celular" type="text" [(ngModel)]="user.celular"><br>
+              <input class="input-password" type="password" [(ngModel)]="user.password"><br>
+              <input class="input-confirm" type="password" placeholder="Digite contraseña" [(ngModel)]="confirmPass"><br>
+            </div>
+          </div>
+          <button (click)="edit()">Actualizar</button>
+          <button [routerLink]="['/perfil']">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

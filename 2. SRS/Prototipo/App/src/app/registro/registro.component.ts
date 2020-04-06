@@ -40,6 +40,8 @@ export class RegistroComponent implements OnInit {
       this.registroService.create(this.usuario).subscribe(
         result => {
           console.log(result);
+          localStorage.setItem('User ID', '' + this.usuario.id);
+          localStorage.setItem('User', this.usuario.nickname);
           this.router.navigate(['/perfil']);
         },
         error => {

@@ -44,7 +44,8 @@ export class LoginComponent implements OnInit {
       }
 
       if (this.login === true) {
-        environment.user = this.usuario;
+        localStorage.setItem('User ID', '' + this.usuario.id);
+        localStorage.setItem('User', this.usuario.nickname);
         this.router.navigate(['/perfil']);
       } else {
         this.message = 'Usuario o contraseña incorrecta';

@@ -1,3 +1,7 @@
+label, h1, h2, p {
+  font-family: cursive;
+}
+
 .wrapper {
   display: flex;
   position: relative;
@@ -18,6 +22,10 @@
 .side-bar img {
   width: 150px;
   height: 75px;
+}
+
+.wrapper a {
+  padding-right: 7px;
 }
 
 .user-box {
@@ -72,4 +80,82 @@
 a {
   color: black;
   text-decoration: none;
+  cursor: pointer;
+}
+
+.generate-box:hover, .closet-box:hover, .favorite-box:hover, .history-box:hover, .options-box:hover {
+  background-color: rgb(153, 7, 114);
+  font-size: 17px;
+}
+
+.wrapper .content {
+  margin-left: 235px;
+  width: 100%;
+  align-content: center;
+  height: 100vh;
+  background: url(../../../assets/images/Closet_user.jpg);
+  background-size: cover;
+}
+
+.perfil-box {
+  width: 450px;
+  border: 3px solid black;
+  border-radius: 10px;
+  background-color: #4DC4EB;
+  text-align: center;
+  position: absolute;
+  left: 60%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.95;
+}
+
+.logout {
+  text-align: right;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.info {
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+.perfil-box img {
+  width: 130px;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+label {
+  margin-left: 5px;
+}
+
+.lbl {
+  margin-bottom: 8px;
+}
+
+.content .perfil-box .img-box img {
+  width: 150px;
+}
+
+.final {
+  padding-bottom: 20px;
+  border-bottom: 0.5px solid black;
+}
+
+button {
+  font-size: 15px;
+  height: 45px;
+  width: 120px;
+  border-radius: 10px;
+  background-color: #C40A92;
+  color: white;
+  border: 2px solid black;
+  font-style: italic;
+  cursor: pointer;
+  margin-top: 15px;
+  outline: none;
 }
