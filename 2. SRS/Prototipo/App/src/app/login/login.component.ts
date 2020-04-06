@@ -10,7 +10,7 @@ import { Usuario } from '../usuario/services/usuario';
 })
 export class LoginComponent implements OnInit {
 
-  nickname = '';
+  user = '';
   password = '';
   message = '';
   login = false;
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   iniciarSesion( ) {
-    if (this.nickname === '' || this.password === '') {
+    if (this.user === '' || this.password === '') {
       this.message = 'Todos los campos son obligatorios';
     } else {
       this.logSesion.findAll().subscribe(
@@ -34,8 +34,10 @@ export class LoginComponent implements OnInit {
       );
 
       for (const actual of this.usuarios) {
-        if (actual.nickname === this.nickname && actual.password === this.password) {
-          this.login = true;
+        if (actual.nickname === this.user || actual.correo === this.user) {
+          if (actual.password === this.password) {
+            this.login = true;
+          }
         }
       }
 

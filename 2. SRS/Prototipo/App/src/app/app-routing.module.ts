@@ -6,9 +6,9 @@ import { RegistroComponent } from './registro/registro.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'main', component: PantallaInicioComponent },
+  { path: 'main-page', component: PantallaInicioComponent },
   { path: 'register', component: RegistroComponent },
-  { path: '', pathMatch: 'full', redirectTo: '/login' }
+  { path: '', pathMatch: 'full', redirectTo: '/main-page' }
 ];
 
 @NgModule({

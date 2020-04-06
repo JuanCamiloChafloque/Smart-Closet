@@ -1,4 +1,4 @@
-h2, label {
+h2, label, h1, option, select, input, button {
   font-family: cursive;
 }
 
@@ -25,9 +25,15 @@ h2, label {
   font-style: italic;
 }
 
+.title h1 {
+  font-size: 15px;
+  margin-left: 100px;
+  font-style: italic;
+}
+
 .form {
   width: 100%;
-  margin-top: 15px;
+  margin-top: 0;
   text-align: center;
 }
 
@@ -86,7 +92,8 @@ input {
 }
 
 select {
-  width: 190px;
+  width: 200px;
+  height: 30px;
   margin-left: 20px;
   border-radius: 5px;
   border: 2.3px solid #C40A92;
@@ -94,11 +101,6 @@ select {
   outline: none;
   padding-left: 5px;
 
-}
-
-.input-gender {
-  height: 30px;
-  width: 200px;
 }
 
 .btn-box {
@@ -110,7 +112,7 @@ select {
 button {
   margin-left: 210px;
   font-size: 25px;
-  height: 75px;
+  height: 60px;
   width: 200px;
   border-radius: 5px;
   background-color: #C40A92;
