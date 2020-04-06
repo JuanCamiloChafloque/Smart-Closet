@@ -1,8 +1,7 @@
 .background {
-  padding-top: 15px;
   width: 100%;
-  height: 562px;
-  background: url(https://blog.unpakt.com/wp-content/uploads/2014/06/28708560_l-Variety-of-clothes-hanging-on-rack-in-boutique-clothing.jpg);
+  height: 100vh;
+  background: url(../../assets/images/Clothes.jpg);
   background-size: cover;
 }
 
@@ -17,7 +16,10 @@ p {
 
 .wrapper {
   width: 600px;
-  margin-left: 320px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   border: 2px solid black;
   border-radius: 5px;
   background-color: #4DC4EB;
