@@ -31,7 +31,7 @@ export class LoginService {
   }
 
   findAll() {
-    const url = 'http://localhost:8080/listaUsuarios';
+    const url = 'http://localhost:8080/usuarios';
     return this.get<Usuario[]>(url);
   }
 }

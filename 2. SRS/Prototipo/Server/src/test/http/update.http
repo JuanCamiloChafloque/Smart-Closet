@@ -1,8 +1,0 @@
-PUT http://localhost:8080/employees/1
-Content-Type: application/json
-
-{
-    "name": "emp100b",
-    "age": "21",
-    "salary": "2001"
-}

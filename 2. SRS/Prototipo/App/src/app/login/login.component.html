@@ -1,33 +1,30 @@
-<div class="title-header">
-  <h1>Smart Closet</h1>
-</div>
-<div class="header">
-  <div class="title">
-      <h1>Iniciar Sesión</h1>
-  </div>
-  <div class="image">
+<div class="background">
+  <div class="wrapper">
+    <div class="title">
       <img src="../../assets/images/logo.png" alt="Logo...">
+      <h1>Iniciar Sesión</h1>
+    </div>
+    <div class="form">
+      <div class="form-input">
+          <label class="lbl-user">Usuario</label>
+          <input class="input-user" type="text" placeholder="nickname / e-mail" [(ngModel)]="user"><br>
+      </div>
+      <div class="form-input">
+          <label class="lbl-password">Contraseña</label>
+          <input class="input-password" type="password" placeholder="password" [(ngModel)]="password"><br>
+      </div>
+    </div>
+    <div class="btn-box">
+      <button (click)="iniciarSesion()">Iniciar Sesión</button><br>
+      <div class="a-box">
+          <a>¿Olvidaste tu contraseña?</a><br>
+      </div>
+      <div class="a-box">
+          <a [routerLink]="['/register']">¿No tienes cuenta? Regístrate</a>
+      </div>
+    </div>
+    <div class="msg-box">
+      {{message}}
+    </div>
   </div>
-</div>
-<div class="form">
-  <div class="form-input">
-      <label class="lbl-user">Usuario</label>
-      <input class="input-user" type="text" placeholder="nickname / e-mail" [(ngModel)]="user"><br>
-  </div>
-  <div class="form-input">
-      <label class="lbl-password">Contraseña</label>
-      <input class="input-password" type="password" placeholder="password" [(ngModel)]="password"><br>
-  </div>
-</div>
-<div class="btn-box">
-  <button (click)="iniciarSesion()">Iniciar Sesión</button><br>
-  <div class="a-box">
-      <a>¿Olvidaste tu contraseña?</a><br>
-  </div>
-  <div class="a-box">
-      <a [routerLink]="['/register']">¿No tienes cuenta? Regístrate</a>
-  </div>
-</div>
-<div class="msg-box">
-  {{message}}
 </div>
