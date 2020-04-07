@@ -6,6 +6,8 @@ import { RegistroComponent } from './registro/registro.component';
 import { VerUsuarioComponent } from './usuario/ver-usuario/ver-usuario.component';
 import { EditarUsuarioComponent } from './usuario/editar-usuario/editar-usuario.component';
 import { ClimaComponent } from './clima/clima.component';
+import { FavoritosComponent } from './favoritos/favoritos.component';
+import { ArmarioComponent } from './armario/armario.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: 'perfil', component: VerUsuarioComponent },
   { path: 'editar-perfil', component: EditarUsuarioComponent },
   { path: 'ver-clima', component: ClimaComponent },
+  { path: 'favoritos', component: FavoritosComponent },
+  { path: 'mi-armario', component: ArmarioComponent },
   { path: '', pathMatch: 'full', redirectTo: '/main-page' }
 ];
 

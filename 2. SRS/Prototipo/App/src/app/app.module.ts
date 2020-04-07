@@ -16,6 +16,10 @@ import { UsuarioService } from './usuario/services/usuario.service';
 import { ClimaService } from './clima/services/clima.service';
 import { VerUsuarioComponent } from './usuario/ver-usuario/ver-usuario.component';
 import { EditarUsuarioComponent } from './usuario/editar-usuario/editar-usuario.component';
+import { ArmarioComponent } from './armario/armario.component';
+import { FavoritosComponent } from './favoritos/favoritos.component';
+import { FavoritoService } from './favoritos/services/favorito.service';
+import { ArmarioService } from './armario/services/armario.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,9 @@ import { EditarUsuarioComponent } from './usuario/editar-usuario/editar-usuario.
     PantallaInicioComponent,
     ClimaComponent,
     VerUsuarioComponent,
-    EditarUsuarioComponent
+    EditarUsuarioComponent,
+    ArmarioComponent,
+    FavoritosComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,9 @@ import { EditarUsuarioComponent } from './usuario/editar-usuario/editar-usuario.
     LoginService,
     RegistroService,
     UsuarioService,
-    ClimaService
+    ClimaService,
+    FavoritoService,
+    ArmarioService
   ],
   bootstrap: [AppComponent]
 })
