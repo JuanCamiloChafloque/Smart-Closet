@@ -44,7 +44,6 @@ export class LoginComponent implements OnInit {
       }
 
       if (this.login === true) {
-        localStorage.setItem('User ID', '' + this.usuario.id);
         localStorage.setItem('User', this.usuario.nickname);
         this.router.navigate(['/perfil']);
       } else {

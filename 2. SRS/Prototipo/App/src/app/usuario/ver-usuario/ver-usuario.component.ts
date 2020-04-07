@@ -22,7 +22,7 @@ export class VerUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.userService.findById(+localStorage.getItem('User ID')).subscribe(
+    this.userService.findByNickname(localStorage.getItem('User')).subscribe(
       results => {
         this.user = results;
         this.inicializar();

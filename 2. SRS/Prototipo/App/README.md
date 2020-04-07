@@ -2,8 +2,6 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
 
-Para poder utilizar y visualizar la interfaz de Ver-Clima sin errores es necesario descargar el siguiente paquete que esta relacionado con el API del clima y el API de google maps. Ejecutar el siguiente comando dentro de la carpeta del proyecto: `npm i --save @agm/core`
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

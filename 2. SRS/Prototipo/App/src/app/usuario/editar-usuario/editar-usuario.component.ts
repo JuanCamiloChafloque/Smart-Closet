@@ -47,6 +47,7 @@ export class EditarUsuarioComponent implements OnInit {
     if (this.user.password === this.confirmPass) {
       this.userService.update(this.user).subscribe(
         result => {
+          localStorage.setItem('User', this.user.nickname);
           this.router.navigate(['/perfil']);
           console.log(result);
         },
