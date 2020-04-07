@@ -49,7 +49,6 @@ export class EditarUsuarioComponent implements OnInit {
         result => {
           this.router.navigate(['/perfil']);
           console.log(result);
-
         },
         error => {
           console.log(error);

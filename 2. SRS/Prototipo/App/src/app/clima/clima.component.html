@@ -1,1 +1,95 @@
-<p>clima works!</p>
+<div *ngIf="user" class="wrapper">
+  <div class="side-bar">
+    <div class="img-box">
+      <img src="../../../assets/images/SmartCloset.png" alt="SC...">
+    </div>
+    <div class="user-box">
+      <div class="user-image">
+        <a><i class="fas fa-wifi"></i></a>
+      </div>
+      <div class="user-name">
+        <p>{{user.nickname}}</p>
+      </div>
+    </div>
+    <div class="options-box">
+      <div class="config-box">
+        <a [routerLink]="['/perfil']"><i class="fas fa-user"></i></a>
+      </div>
+      <div class="share-box">
+        <a><i class="fas fa-share"></i></a>
+      </div>
+      <div class="clima-box">
+        <a [routerLink]="['/ver-clima']"><i class="fas fa-cloud"></i></a>
+      </div>
+    </div>
+    <div class="cont-box">
+      <div class="generate-box">
+        <a><i class="fas fa-tshirt"></i></a><br>
+        <a href="#">Generar atuendo</a>
+      </div>
+      <div class="closet-box">
+        <a><i class="fas fa-door-closed"></i></a>
+        <a href="#">Mi armario</a>
+      </div>
+      <div class="favorite-box">
+        <a><i class="fas fa-star"></i></a>
+        <a href="#">Favoritos</a>
+      </div>
+      <div class="history-box">
+        <a><i class="fas fa-book"></i></a>
+        <a href="#">Historial de atuendos</a>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="infoclima-box">
+      <div class="title-clima">
+        <a><i class="fas fa-cloud-sun"></i></a>
+        <h2>{{clima.name}}, {{clima.sys.country}}</h2>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Ingrese una ciudad..." [(ngModel)]="ciudad">
+        <button (click)="getClimaByName()">Buscar</button>
+      </div>
+      <div class="tbl-box">
+        <table class="content-table">
+          <tbody>
+            <tr>
+              <td>Temperatura</td><td>{{clima.main.temp}} °C</td>
+            </tr>
+            <tr>
+              <td>Temperatura Mínima</td><td>{{clima.main.temp_min}} °C</td>
+            </tr>
+            <tr>
+              <td>Temperatura Máxima</td><td>{{clima.main.temp_max}} °C</td>
+            </tr>
+            <tr>
+              <td>Vientos</td><td>{{clima.wind.speed}} m/s</td>
+            </tr>
+            <tr>
+              <td>Humedad</td><td>{{clima.main.humidity}}%</td>
+            </tr>
+            <tr>
+              <td>Amanecer</td><td>{{clima.sys.sunrise * 1000 | date:"H:mm"}}</td>
+            </tr>
+            <tr>
+              <td>Puesta de sol</td><td>{{clima.sys.sunset * 1000 | date:"H:mm"}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="map-clima">
+        <agm-map [latitude]="lat" [longitude]="lon" (mapClick)="getCoords($event)">
+          <agm-marker [latitude]="lat" [longitude]="lon"></agm-marker>
+        </agm-map>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
