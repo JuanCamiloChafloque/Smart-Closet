@@ -35,14 +35,6 @@ export class VerUsuarioComponent implements OnInit {
     this.llegoUsuario = true;
   }
 
-  irAPerfil() {
-    this.router.navigate(['/perfil']);
-  }
-
-  verClima() {
-    this.router.navigate(['/ver-clima']);
-  }
-
   logout() {
     localStorage.clear();
     this.router.navigate(['/main-page']);

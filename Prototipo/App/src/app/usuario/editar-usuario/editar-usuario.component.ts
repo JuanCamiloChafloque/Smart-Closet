@@ -35,14 +35,6 @@ export class EditarUsuarioComponent implements OnInit {
     this.llegoUsuario = true;
   }
 
-  irAPerfil() {
-    this.router.navigate(['/perfil']);
-  }
-
-  verClima() {
-    this.router.navigate(['/ver-clima']);
-  }
-
   edit() {
     if (this.user.password === this.confirmPass) {
       this.userService.update(this.user).subscribe(

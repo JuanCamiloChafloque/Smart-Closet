@@ -1,0 +1,75 @@
+<div *ngIf="llegoUsuario == true" class="wrapper">
+  <div class="side-bar">
+    <div class="img-box">
+      <img src="../../assets/images/SmartCloset.png" alt="SC...">
+    </div>
+    <div class="user-box">
+      <div class="user-image">
+        <a><i class="fas fa-wifi"></i></a>
+      </div>
+      <div class="user-name">
+        <p>{{user.nickname}}</p>
+      </div>
+    </div>
+    <div class="options-box">
+      <div class="config-box">
+        <a [routerLink]="['/perfil']"><i class="fas fa-user"></i></a>
+      </div>
+      <div class="share-box">
+        <a><i class="fas fa-share"></i></a>
+      </div>
+      <div class="clima-box">
+        <a [routerLink]="['/ver-clima']"><i class="fas fa-cloud"></i></a>
+      </div>
+    </div>
+    <div class="cont-box">
+      <div class="generate-box">
+        <a><i class="fas fa-tshirt"></i></a><br>
+        <a href="#">Generar atuendo</a>
+      </div>
+      <div class="closet-box">
+        <a [routerLink]="['/mi-armario']"><i class="fas fa-door-closed"></i></a>
+        <a [routerLink]="['/mi-armario']">Mi armario</a>
+      </div>
+      <div class="favorite-box">
+        <a><i class="fas fa-star"></i></a>
+        <a href="#">Favoritos</a>
+      </div>
+      <div class="history-box">
+        <a><i class="fas fa-book"></i></a>
+        <a href="#">Historial de atuendos</a>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="armario-box">
+        <div class="title-armario">
+          <img src="../../assets/images/Closet.png" alt="Closet">
+            <h1>Mi Armario</h1>
+        </div>
+        <div class="panel-sup">
+          <div class="superiores">
+            <img src="../../assets/images/superiores.png"><br>
+            <button class="btn-prenda">Superiores</button>
+          </div>
+          <div class="zapatos">
+            <img src="../../assets/images/zapatos.png"><br>
+            <button class="btn-prenda">Zapatos</button>
+          </div>
+        </div>
+        <div class="panel-inf">
+          <div class="inferiores">
+            <img src="../../assets/images/inferiores.png"><br>
+            <button class="btn-prenda">Inferiores</button>
+          </div>
+          <div class="accesorios">
+            <img src="../../assets/images/accesorios.png"><br>
+            <button class="btn-prenda">Accesorios</button>
+          </div>
+        </div>
+        <div class="boton-agregar">
+            <button class="btn-agregar">Agregar Prenda</button>
+        </div>
+    </div>
+  </div>
+</div>

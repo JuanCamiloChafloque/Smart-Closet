@@ -13,13 +13,13 @@
     </div>
     <div class="options-box">
       <div class="config-box">
-        <a (click)="irAPerfil()"><i class="fas fa-user"></i></a>
+        <a [routerLink]="['/perfil']"><i class="fas fa-user"></i></a>
       </div>
       <div class="share-box">
         <a><i class="fas fa-share"></i></a>
       </div>
       <div class="clima-box">
-        <a (click)="verClima()"><i class="fas fa-cloud"></i></a>
+        <a [routerLink]="['/ver-clima']"><i class="fas fa-cloud"></i></a>
       </div>
     </div>
     <div class="cont-box">
@@ -28,8 +28,8 @@
         <a href="#">Generar atuendo</a>
       </div>
       <div class="closet-box">
-        <a><i class="fas fa-door-closed"></i></a>
-        <a href="#">Mi armario</a>
+        <a [routerLink]="['/mi-armario']"><i class="fas fa-door-closed"></i></a>
+        <a [routerLink]="['/mi-armario']">Mi armario</a>
       </div>
       <div class="favorite-box">
         <a><i class="fas fa-star"></i></a>
