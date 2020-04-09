@@ -47,14 +47,109 @@
       <img src="../../../assets/images/logo.png" alt="Logo.png">
     </div>
     <div class="add-box">
-      <input type="text" [(ngModel)]="query">
-      <button (click)="searchImages()">Search</button>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="seccion">Sección:</label>
+        </div>
+        <div class="col-75">
+          <select id="seccion">
+            <option value="superior">Superior</option>
+            <option value="inferior">Inferior</option>
+            <option value="zapatos">Zapatos</option>
+            <option value="accesorios">Accesorios</option>
+          </select><br>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="tipo">Tipo de prenda:</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="tipo" name="tipo" placeholder="camisa, camiseta, blusa, etc..." required><br>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="formalidad">Nivel de formalidad:</label>
+        </div>
+        <div class="col-75">
+          <label class="radio-formalidad">
+            <input type="radio" name="fradio" checked>1
+          </label>
+          <label class="radio-formalidad">
+            <input type="radio" name="fradio">2
+          </label>
+          <label class="radio-formalidad">
+            <input type="radio" name="fradio">3
+          </label>
+          <label class="radio-formalidad">
+            <input type="radio" name="fradio">4
+          </label>
+          <label class="radio-formalidad">
+            <input type="radio" name="fradio">5
+          </label><br>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="abrigo">Nivel de abrigo:</label>
+        </div>
+        <div class="col-75">
+          <label class="radio-abrigo">
+            <input type="radio" name="aradio" checked>1
+          </label>
+          <label class="radio-abrigo">
+            <input type="radio" name="aradio">2
+          </label>
+          <label class="radio-abrigo">
+            <input type="radio" name="aradio">3
+          </label>
+          <label class="radio-abrigo">
+            <input type="radio" name="aradio">4
+          </label>
+          <label class="radio-abrigo">
+            <input type="radio" name="aradio">5
+          </label><br>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="fav-color">Color:</label>
+        </div>
+        <div class="col-75">
+          <input type="color" id="favcolor" name="favcolor" value="#ff0000"><br>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label>Nombre de la prenda:</label>
+        </div>
+        <div class="col-75">
+          <input type="text" [(ngModel)]="query" placeholder="camisa blanca, blusa roja, etc..." required>
+          <button (click)="searchImages()">Search</button>
+        </div>
+      </div>
+
+      <div class="boton-subir">
+        <button>Subir foto</button>
+      </div>
 
     </div>
+
     <div class="api-box">
       <div *ngFor="let image of images" class="img-api">
         <img src="{{image.link}}" alt="Link...">
       </div>
+    </div>
+
+    <div class="boton-agregar">
+      <button>Agregar Prenda</button>
     </div>
   </div>
 </div>

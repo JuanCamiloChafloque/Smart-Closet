@@ -110,19 +110,23 @@ a {
 
 .add-box {
   width: 970px;
-  height: 100px;
+  height: 275px;
   position: absolute;
   left: 59%;
   top: 30%;
   transform: translate(-50%, -50%);
-  border: 1px solid black;
+  border: 2px solid #C40A92;
+  border-radius: 10px;
+  justify-content: space-evenly;
+  padding: 15px 10px 15px 10px;
+  text-align: center;
 }
 
 .api-box{
   width: 970px;
   position: absolute;
   left: 59%;
-  top: 70%;
+  top: 52%;
   transform: translate(-50%, -50%);
   border: 2px solid #C40A92;
   border-radius: 10px;
@@ -134,4 +138,36 @@ a {
 .img-api img {
   width: 100px;
   height: 100px;
+}
+
+input[type=text], select{
+  background-color: aqua;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  font-family: cursive;
+}
+
+input[type=color]{
+  padding: 2px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: cursive;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+.boton-subir{
+  padding-top: 20px;
 }
