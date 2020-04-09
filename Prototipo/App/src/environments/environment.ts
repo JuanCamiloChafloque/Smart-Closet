@@ -4,6 +4,10 @@
 
 export const environment = {
   production: false,
+  imageSearch: {
+    apiKey: 'AIzaSyBwFjC1-gb01-IKZ9VKnW8LyohC9QuYD3w',
+    idEngine: '014803765338445518564:jtnetvkgq22'
+  }
 };
 
 /*
