@@ -20,6 +20,15 @@ import { ArmarioComponent } from './armario/armario.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
 import { FavoritoService } from './favoritos/services/favorito.service';
 import { ArmarioService } from './armario/services/armario.service';
+import { SuperiorComponent } from './prenda/superior/superior.component';
+import { InferiorComponent } from './prenda/inferior/inferior.component';
+import { ZapatosComponent } from './prenda/zapatos/zapatos.component';
+import { AccesoriosComponent } from './prenda/accesorios/accesorios.component';
+import { PrendaService } from './prenda/services/prenda.service';
+import { AgregarPrendaComponent } from './prenda/agregar-prenda/agregar-prenda.component';
+import { HistorialComponent } from './historial/historial.component';
+import { GenerarAtuendoComponent } from './generar-atuendo/generar-atuendo.component';
+import { CompartirComponent } from './compartir/compartir.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +40,15 @@ import { ArmarioService } from './armario/services/armario.service';
     VerUsuarioComponent,
     EditarUsuarioComponent,
     ArmarioComponent,
-    FavoritosComponent
+    FavoritosComponent,
+    SuperiorComponent,
+    InferiorComponent,
+    ZapatosComponent,
+    AccesoriosComponent,
+    AgregarPrendaComponent,
+    HistorialComponent,
+    GenerarAtuendoComponent,
+    CompartirComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +65,8 @@ import { ArmarioService } from './armario/services/armario.service';
     UsuarioService,
     ClimaService,
     FavoritoService,
-    ArmarioService
+    ArmarioService,
+    PrendaService
   ],
   bootstrap: [AppComponent]
 })
