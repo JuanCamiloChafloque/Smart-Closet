@@ -44,6 +44,8 @@ export class AgregarPrendaComponent implements OnInit {
     console.log(data.items);
     this.images = data.items;
     this.llegoImagenes = true;
+    this.selected = false;
+    this.message = '';
   }
 
   selectImage(link) {
