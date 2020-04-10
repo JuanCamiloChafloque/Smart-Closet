@@ -47,109 +47,76 @@
       <img src="../../../assets/images/logo.png" alt="Logo.png">
     </div>
     <div class="add-box">
-
-      <div class="row">
-        <div class="col-25">
-          <label for="seccion">Sección:</label>
+      <div class="form">
+        <div class="lbl-box">
+          <div class="lbl">
+            <label class="lbl-seccion">Sección</label>
+          </div>
+          <div class="lbl">
+            <label class="lbl-prenda">Tipo de prenda</label>
+          </div>
+          <div class="lbl">
+            <label class="lbl-formalidad">Nivel de formalidad</label>
+          </div>
+          <div class="lbl">
+            <label class="lbl-abrigo">Nivel de abrigo</label>
+          </div>
+          <div class="lbl">
+            <label class="lbl-color">Color</label>
+          </div>
+          <div class="lbl">
+            <label class="lbl-descripcion">Descripción de búsqueda</label>
+          </div>
         </div>
-        <div class="col-75">
-          <select id="seccion">
-            <option value="superior">Superior</option>
-            <option value="inferior">Inferior</option>
-            <option value="zapatos">Zapatos</option>
-            <option value="accesorios">Accesorios</option>
+        <div class="input-box">
+          <select class="input-seccion">
+            <option selected disabled>Tipo de prenda...</option>
+            <option value="Superior">Superior</option>
+            <option value="Inferior">Inferior</option>
+            <option value="Accesorio">Accesorio</option>
+            <option value="Zapato">Zapato</option>
           </select><br>
+          <input class="input-tipo" placeholder="Camisa, Camiseta, Blusa..." type="text"><br>
+          <select class="input-formalidad">
+            <option selected disabled>Nivel de formalidad...</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select><br>
+          <select class="input-abrigo">
+            <option selected disabled>Nivel de abrigo...</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select><br>
+          <input class="input-color" type="color" value="#ff0000"><br>
+          <input class="input-busqueda" [(ngModel)]="query" placeholder="Camisa blanca, Blusa roja..." type="text"> <br>
+          <button class="btn-buscar" (click)="searchImages()">Buscar</button>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-25">
-          <label for="tipo">Tipo de prenda:</label>
-        </div>
-        <div class="col-75">
-          <input type="text" id="tipo" name="tipo" placeholder="camisa, camiseta, blusa, etc..." required><br>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-25">
-          <label for="formalidad">Nivel de formalidad:</label>
-        </div>
-        <div class="col-75">
-          <label class="radio-formalidad">
-            <input type="radio" name="fradio" checked>1
-          </label>
-          <label class="radio-formalidad">
-            <input type="radio" name="fradio">2
-          </label>
-          <label class="radio-formalidad">
-            <input type="radio" name="fradio">3
-          </label>
-          <label class="radio-formalidad">
-            <input type="radio" name="fradio">4
-          </label>
-          <label class="radio-formalidad">
-            <input type="radio" name="fradio">5
-          </label><br>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-25">
-          <label for="abrigo">Nivel de abrigo:</label>
-        </div>
-        <div class="col-75">
-          <label class="radio-abrigo">
-            <input type="radio" name="aradio" checked>1
-          </label>
-          <label class="radio-abrigo">
-            <input type="radio" name="aradio">2
-          </label>
-          <label class="radio-abrigo">
-            <input type="radio" name="aradio">3
-          </label>
-          <label class="radio-abrigo">
-            <input type="radio" name="aradio">4
-          </label>
-          <label class="radio-abrigo">
-            <input type="radio" name="aradio">5
-          </label><br>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-25">
-          <label for="fav-color">Color:</label>
-        </div>
-        <div class="col-75">
-          <input type="color" id="favcolor" name="favcolor" value="#ff0000"><br>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-25">
-          <label>Nombre de la prenda:</label>
-        </div>
-        <div class="col-75">
-          <input type="text" [(ngModel)]="query" placeholder="camisa blanca, blusa roja, etc..." required>
-          <button (click)="searchImages()">Search</button>
-        </div>
-      </div>
-
-      <div class="boton-subir">
-        <button>Subir foto</button>
-      </div>
-
-    </div>
-
-    <div class="api-box">
-      <div *ngFor="let image of images" class="img-api">
-        <img src="{{image.link}}" alt="Link...">
+      <div class="subir-box">
+        <h2>¿No encontraste lo que buscabas? Sube tu propia foto</h2>
+        <button class="btn-subir">Subir foto</button><br>
+        <img src="">
       </div>
     </div>
-
-    <div class="boton-agregar">
-      <button>Agregar Prenda</button>
+    <div *ngIf="llegoImagenes == true" class="api-box">
+      <h2>Selecciona una imagen</h2>
+      <div class="images">
+        <div *ngFor="let image of images" class="img-api">
+          <a (click)="selectImage(image.link)"><img src="{{image.link}}"></a>
+        </div>
+      </div>
+      <div *ngIf="selected == true" class="agregar-box">
+        <button class="btn-agregar">Crear prenda</button>
+      </div>
+      <div class="msg-box">
+        {{message}}
+      </div>
     </div>
   </div>
 </div>

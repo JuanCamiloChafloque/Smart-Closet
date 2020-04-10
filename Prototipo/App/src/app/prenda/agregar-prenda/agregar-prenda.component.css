@@ -1,4 +1,4 @@
-label, h1, h2, p, button {
+label, h1, h2, p, button, input, select {
   font-family: cursive;
 }
 
@@ -96,78 +96,179 @@ a {
 }
 
 .title-box {
+  margin-top: 10px;
   width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .title-box img {
-  width: 70px;
-  height: 70px;
+  margin-left: 20px;
+  width: 60px;
+  height: 60px;
 }
 
 .add-box {
+  padding-top: 30px;
   width: 970px;
-  height: 275px;
+  text-align: center;
   position: absolute;
   left: 59%;
-  top: 30%;
+  top: 40%;
   transform: translate(-50%, -50%);
-  border: 2px solid #C40A92;
-  border-radius: 10px;
+  display: inline-flex;
   justify-content: space-evenly;
-  padding: 15px 10px 15px 10px;
-  text-align: center;
 }
 
 .api-box{
   width: 970px;
   position: absolute;
   left: 59%;
-  top: 52%;
+  top: 85%;
   transform: translate(-50%, -50%);
-  border: 2px solid #C40A92;
-  border-radius: 10px;
+  padding: 15px 15px 15px 15px;
+  margin-bottom: 20px;
+}
+
+.api-box a {
+  width: 90px;
+  height: 90px;
+}
+
+.api-box h2 {
+  width: 100%;
+  text-align: center;
+  font-family: cursive;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.msg-box {
+  font-style: italic;
+  font-size: 10px;
+  width: 100%;
+  text-align: center;
+  font-family: cursive;
+  font-weight: bold;
+}
+
+.images {
   justify-content: space-evenly;
   display: flex;
-  padding: 15px 10px 15px 10px;
 }
 
 .img-api img {
+  width: 90px;
+  height: 90px;
+}
+
+.form {
+  display: inline-flex;
+  padding-right: 50px;
+  border-right: 2px solid #C40A92;
+}
+
+.lbl-box {
+  text-align: right;
+}
+
+.lbl {
+  margin-bottom: 4.5px;
+}
+
+.form label {
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+input {
+  margin-bottom: 5px;
+  margin-left: 10px;
+  height: 25px;
+  width: 175px;
+  border-radius: 5px;
+  border: 2.3px solid #C40A92;
+  overflow: hidden;
+  outline: none;
+  padding-left: 5px;
+}
+
+input[type="color"] {
+  padding-left: 0;
+}
+
+select {
+  width: 175px;
+  height: 25px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: 2.3px solid #C40A92;
+  overflow: hidden;
+  outline: none;
+  padding-left: 5px;
+}
+
+.btn-box {
+  text-align: center;
+  margin-top: 35px;
+  margin-bottom: 25px;
+}
+
+.btn-buscar {
+  margin-left: 7px;
+  font-size: 15px;
+  height: 30px;
   width: 100px;
-  height: 100px;
+  border-radius: 10px;
+  background-color: #C40A92;
+  color: white;
+  border: 2px solid black;
+  font-style: italic;
+  cursor: pointer;
 }
 
-input[type=text], select{
-  background-color: aqua;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
+.btn-subir {
+  margin-top: 5px;
+  font-size: 15px;
+  height: 30px;
+  width: 100px;
+  border-radius: 10px;
+  background-color: #C40A92;
+  color: white;
+  border: 2px solid black;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.btn-agregar {
+  margin-top: 5px;
+  font-size: 15px;
+  height: 30px;
+  width: 100px;
+  border-radius: 10px;
+  background-color: #C40A92;
+  color: white;
+  border: 2px solid black;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.subir-box h2 {
+  font-size: 13px;
+}
+
+.msg-box {
+  margin-bottom: 15px;
+  font-style: italic;
+  font-size: 13px;
   font-family: cursive;
+  color: #C40A92;
 }
 
-input[type=color]{
-  padding: 2px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-family: cursive;
-}
-
-.col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
-}
-
-.col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 6px;
-}
-
-.boton-subir{
-  padding-top: 20px;
+.agregar-box {
+  text-align: center;
 }

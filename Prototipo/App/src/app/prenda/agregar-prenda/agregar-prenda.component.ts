@@ -15,7 +15,10 @@ export class AgregarPrendaComponent implements OnInit {
   llegoUsuario = false;
   images: any[];
   query = '';
+  message = '';
+  linkSelected = '';
   llegoImagenes = false;
+  selected = false;
 
   constructor(
     private router: Router,
@@ -38,13 +41,19 @@ export class AgregarPrendaComponent implements OnInit {
   }
 
   inicializarImagenes(data) {
-    this.llegoImagenes = true;
     console.log(data.items);
     this.images = data.items;
+    this.llegoImagenes = true;
+  }
+
+  selectImage(link) {
+    this.linkSelected = link;
+    this.message = 'Imagen Seleccionada';
+    this.selected = true;
   }
 
   searchImages() {
-    return this.prendaService.getImages(this.query).subscribe(
+    return this.prendaService.getImages(this.query + ' png').subscribe(
       data => this.inicializarImagenes(data),
       error => console.log(error)
     );
