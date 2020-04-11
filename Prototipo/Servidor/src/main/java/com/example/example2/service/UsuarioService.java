@@ -1,5 +1,6 @@
 package com.example.example2.service;
 
+import com.example.example2.model.Armario;
 import com.example.example2.model.Usuario;
 import com.example.example2.model.UsuarioRepository;
 
@@ -15,6 +16,9 @@ class UsuarioService {
 
     @Autowired
     private UsuarioRepository repository;
+
+    @Autowired
+    private ArmarioService armarioService;
 
     @GetMapping("/usuarios")
     public Iterable<Usuario> getUsuarios() {
@@ -39,6 +43,11 @@ class UsuarioService {
 
     @PostMapping("/crearUsuario")
     public Usuario crearUsuario(@RequestBody Usuario user) {
+        Armario armario = new Armario();
+        Long numPrendas = Long.parseLong("0");
+        armario.setNumPrendas(numPrendas);
+        armarioService.crearArmario(armario);
+        user.setArmario(armario);
         return repository.save(user);
     }
 

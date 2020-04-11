@@ -1,8 +1,12 @@
 package com.example.example2.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Usuario {
@@ -19,6 +23,10 @@ public class Usuario {
     private String password;
     private String ciudad;
     private String celular;
+
+    @OneToOne (cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Armario armario;
 
     public Long getId() {
         return id_user;
@@ -90,5 +98,13 @@ public class Usuario {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Armario getArmario() {
+        return armario;
+    }
+
+    public void setArmario(Armario armario) {
+        this.armario = armario;
     }
 }
