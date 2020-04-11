@@ -1,11 +1,19 @@
 package com.example.example2.service;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.sql.Blob;
 import java.util.ArrayList;
 
 import com.example.example2.model.Armario;
 import com.example.example2.model.ArmarioRepository;
 import com.example.example2.model.Prenda;
 
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -104,11 +112,45 @@ class ArmarioService {
     public Armario agregarPrenda(@PathVariable("nickname") String nickname, @RequestBody Prenda prenda){
         Armario armarioEncontrado = findClosetByUser(nickname);
         Long numPrendas = armarioEncontrado.getNumPrendas();
+        Prenda newPrenda = new Prenda();
+        newPrenda.setSeccion(prenda.getSeccion());
+        newPrenda.setTipo(prenda.getTipo());
+        newPrenda.setNivel_formalidad(prenda.getNivel_formalidad());
+        newPrenda.setNivel_abrigo(prenda.getNivel_abrigo());
+        newPrenda.setDisponible(true);
+        newPrenda.setFavorito(false);
+        newPrenda.setDescripcion(prenda.getDescripcion());
+        newPrenda.setColor(prenda.getColor());
+        newPrenda.setImgUrl(prenda.getImgUrl());
+        newPrenda.setImagen(BlobProxy.generateProxy(codeImage(prenda.getImgUrl())));
+
         armarioEncontrado.setNumPrendas(numPrendas++);
-        prendaService.crearPrenda(prenda);
+        prendaService.crearPrenda(newPrenda);
         armarioEncontrado.getPrendas().add(prenda);
         
         return repository.save(armarioEncontrado);
+    }
+
+    public static byte[] codeImage(String img) {
+        Path path = Paths.get(img);
+        byte[] data = null;
+        try{
+            data = Files.readAllBytes(path);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        return data;
+    }
+
+    public static String decodeImage(Blob image){
+        String url = "";
+        try{
+            InputStream is = image.getBinaryStream();
+            Files.copy(is, Paths.get(" "), StandardCopyOption.REPLACE_EXISTING);
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+        return url;
     }
 
 }

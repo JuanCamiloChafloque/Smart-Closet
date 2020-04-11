@@ -1,9 +1,14 @@
 package com.example.example2.model;
 
+import java.sql.Blob;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Prenda {
@@ -20,6 +25,11 @@ public class Prenda {
     private boolean favorito;
     private boolean disponible;
     private String descripcion;
+    private String imgUrl;
+    
+    @Lob
+    @JsonIgnore
+    private Blob imagen;
 
     @ManyToOne
     private Armario armario;
@@ -28,7 +38,15 @@ public class Prenda {
         return id_prenda;
     }
 
-    public String getDescripcion() {
+    public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
+	public String getDescripcion() {
         return descripcion;
     }
 
@@ -102,5 +120,13 @@ public class Prenda {
 
     public void setArmario(Armario armario) {
         this.armario = armario;
+    }
+
+    public void setImagen(Blob imagen) {
+        this.imagen = imagen;
+    }
+
+    public Blob getImage() {
+        return imagen;
     }
 }
