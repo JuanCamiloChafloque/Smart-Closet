@@ -198,7 +198,7 @@ a {
   margin-bottom: 5px;
 }
 
-input {
+input[type="text"], input[type="color"] {
   margin-bottom: 5px;
   margin-left: 10px;
   height: 25px;
@@ -245,17 +245,19 @@ select {
   cursor: pointer;
 }
 
-.btn-subir {
-  margin-top: 5px;
-  font-size: 15px;
-  height: 30px;
-  width: 100px;
-  border-radius: 10px;
-  background-color: #C40A92;
-  color: white;
-  border: 2px solid black;
+input[type="file"] {
+  display: none;
+}
+
+.subir-box label {
+  padding: 3px 15px 3px 15px;
   font-style: italic;
-  cursor: pointer;
+  border: 2px solid black;
+  background-color: #C40A92;
+  border-radius: 5px;
+  color: white;
+  font-family: cursive;
+  width: 300px;
 }
 
 .btn-agregar {
@@ -273,6 +275,15 @@ select {
 
 .subir-box h2 {
   font-size: 13px;
+}
+
+.subir-box img {
+  margin-top: 15px;
+  padding: 12px;
+  width: 130px;
+  height: 130px;
+  border: 2px solid black;
+  border-radius: 5px;
 }
 
 .msg-box {

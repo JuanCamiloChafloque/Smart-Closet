@@ -25,25 +25,26 @@ public class Prenda {
     private boolean favorito;
     private boolean disponible;
     private String descripcion;
-    private String imgUrl;
+    private String img_url;
     
     @Lob
     @JsonIgnore
     private Blob imagen;
 
     @ManyToOne
+    @JsonIgnore
     private Armario armario;
 
     public Long getId() {
         return id_prenda;
     }
 
-    public String getImgUrl() {
-		return imgUrl;
+    public String getImg_url() {
+		return img_url;
 	}
 
-	public void setImgUrl(String imgUrl) {
-		this.imgUrl = imgUrl;
+	public void setImg_url(String img_url) {
+		this.img_url = img_url;
 	}
 
 	public String getDescripcion() {

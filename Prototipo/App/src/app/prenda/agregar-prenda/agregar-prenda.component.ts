@@ -3,6 +3,7 @@ import { Usuario } from 'src/app/usuario/services/usuario';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UsuarioService } from 'src/app/usuario/services/usuario.service';
 import { PrendaService } from '../services/prenda.service';
+import { Prenda } from '../services/prenda';
 
 @Component({
   selector: 'app-agregar-prenda',
@@ -16,9 +17,23 @@ export class AgregarPrendaComponent implements OnInit {
   images: any[];
   query = '';
   message = '';
-  linkSelected = '';
   llegoImagenes = false;
   selected = false;
+  selectedImage = false;
+  foundImage;
+  imageUser;
+  prenda: Prenda = new Prenda(
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+  );
 
   constructor(
     private router: Router,
@@ -49,7 +64,7 @@ export class AgregarPrendaComponent implements OnInit {
   }
 
   selectImage(link) {
-    this.linkSelected = link;
+    this.foundImage = link;
     this.message = 'Imagen Seleccionada';
     this.selected = true;
   }
@@ -58,6 +73,43 @@ export class AgregarPrendaComponent implements OnInit {
     return this.prendaService.getImages(this.query + ' png').subscribe(
       data => this.inicializarImagenes(data),
       error => console.log(error)
+    );
+  }
+
+  subirFoto(event) {
+    this.selectedImage = true;
+    this.imageUser = event.target.files[0];
+  }
+
+  crearPrendaBusqueda() {
+    this.prenda.disponible = true;
+    this.prenda.favorito = false;
+    this.prenda.imgUrl = this.foundImage;
+    console.log(this.prenda);
+    this.prendaService.create(this.prenda, localStorage.getItem('User')).subscribe(
+      result => {
+        console.log(result);
+        this.router.navigate(['/mi-armario']);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  crearPrendaSubida() {
+    this.prenda.disponible = true;
+    this.prenda.favorito = false;
+    this.prenda.imgUrl = this.imageUser.name;
+    console.log(this.prenda);
+    this.prendaService.create(this.prenda, localStorage.getItem('User')).subscribe(
+      result => {
+        console.log(result);
+        this.router.navigate(['/mi-armario']);
+      },
+      error => {
+        console.log(error);
+      }
     );
   }
 

@@ -69,15 +69,15 @@
           </div>
         </div>
         <div class="input-box">
-          <select class="input-seccion">
+          <select [(ngModel)]="prenda.seccion" class="input-seccion">
             <option selected disabled>Tipo de prenda...</option>
             <option value="Superior">Superior</option>
             <option value="Inferior">Inferior</option>
             <option value="Accesorio">Accesorio</option>
             <option value="Zapato">Zapato</option>
           </select><br>
-          <input class="input-tipo" placeholder="Camisa, Camiseta, Blusa..." type="text"><br>
-          <select class="input-formalidad">
+          <input class="input-tipo" placeholder="Camisa, Camiseta, Blusa..." type="text" [(ngModel)]="prenda.tipo"><br>
+          <select [(ngModel)]="prenda.nivelFormalidad" class="input-formalidad">
             <option selected disabled>Nivel de formalidad...</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -85,7 +85,7 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <select class="input-abrigo">
+          <select [(ngModel)]="prenda.nivelAbrigo" class="input-abrigo">
             <option selected disabled>Nivel de abrigo...</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -93,15 +93,17 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input class="input-color" type="color" value="#ff0000"><br>
-          <input class="input-busqueda" [(ngModel)]="query" placeholder="Camisa blanca, Blusa roja..." type="text"> <br>
+          <input [(ngModel)]="prenda.color" class="input-color" type="color" value="#ff0000"><br>
+          <input [(ngModel)]="prenda.descripcion" class="input-busqueda" [(ngModel)]="query" placeholder="Camisa blanca, Blusa roja..." type="text"> <br>
           <button class="btn-buscar" (click)="searchImages()">Buscar</button>
         </div>
       </div>
       <div class="subir-box">
-        <h2>¿No encontraste lo que buscabas? Sube tu propia foto</h2>
-        <button class="btn-subir">Subir foto</button><br>
-        <img src="">
+        <h2>¿No encontraste lo que buscabas? Sube tu propia foto</h2><br>
+        <input type="file" id="file" (change)="subirFoto($event)">
+        <label for="file">Subir Foto</label><br>
+        <img *ngIf="selectedImage == true"  src="../../../assets/images/{{imageUser.name}}"><br>
+        <button (click)="crearPrendaSubida()" *ngIf="selectedImage == true" class="btn-agregar">Crear prenda</button>
       </div>
     </div>
     <div *ngIf="llegoImagenes == true" class="api-box">
@@ -112,7 +114,7 @@
         </div>
       </div>
       <div *ngIf="selected == true" class="agregar-box">
-        <button class="btn-agregar">Crear prenda</button>
+        <button (click)="crearPrendaBusqueda()" class="btn-agregar">Crear prenda</button>
       </div>
       <div class="msg-box">
         {{message}}

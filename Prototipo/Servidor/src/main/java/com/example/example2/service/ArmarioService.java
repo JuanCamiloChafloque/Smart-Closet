@@ -117,22 +117,23 @@ class ArmarioService {
         newPrenda.setTipo(prenda.getTipo());
         newPrenda.setNivel_formalidad(prenda.getNivel_formalidad());
         newPrenda.setNivel_abrigo(prenda.getNivel_abrigo());
-        newPrenda.setDisponible(true);
-        newPrenda.setFavorito(false);
+        newPrenda.setDisponible(prenda.isDisponible());
+        newPrenda.setFavorito(prenda.isFavorito());
         newPrenda.setDescripcion(prenda.getDescripcion());
         newPrenda.setColor(prenda.getColor());
-        newPrenda.setImgUrl(prenda.getImgUrl());
-        newPrenda.setImagen(BlobProxy.generateProxy(codeImage(prenda.getImgUrl())));
+        newPrenda.setImg_url(prenda.getImg_url());
+        newPrenda.setArmario(armarioEncontrado);
+        //newPrenda.setImagen(BlobProxy.generateProxy(codeImage(prenda.getImg_url())));
 
-        armarioEncontrado.setNumPrendas(numPrendas++);
+        armarioEncontrado.setNumPrendas((numPrendas + 1));
         prendaService.crearPrenda(newPrenda);
-        armarioEncontrado.getPrendas().add(prenda);
+        armarioEncontrado.getPrendas().add(newPrenda);
         
         return repository.save(armarioEncontrado);
     }
 
     public static byte[] codeImage(String img) {
-        Path path = Paths.get(img);
+        Path path = Paths.get("../../../../../../../../App/src/assets/images/" + img);
         byte[] data = null;
         try{
             data = Files.readAllBytes(path);
@@ -142,11 +143,11 @@ class ArmarioService {
         return data;
     }
 
-    public static String decodeImage(Blob image){
-        String url = "";
+    public static String decodeImage(Blob image, String img_url){
+        String url = "../ImagesDB";
         try{
             InputStream is = image.getBinaryStream();
-            Files.copy(is, Paths.get(" "), StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(is, Paths.get(url + img_url), StandardCopyOption.REPLACE_EXISTING);
         }catch(Exception e) {
             e.printStackTrace();
         }
