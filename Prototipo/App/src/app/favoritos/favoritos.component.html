@@ -1,1 +1,93 @@
-<p>favoritos works!</p>
+<div *ngIf="llegoUsuario == true && llegoPrenda == true" class="wrapper">
+  <div class="side-bar">
+    <div class="img-box">
+      <img src="../../../assets/images/SmartCloset.png" alt="SC...">
+    </div>
+    <div class="user-box">
+      <div class="user-image">
+        <a><i class="fas fa-wifi"></i></a>
+      </div>
+      <div class="user-name">
+        <p>{{user.nickname}}</p>
+      </div>
+    </div>
+    <div class="options-box">
+      <div class="config-box">
+        <a [routerLink]="['/perfil']"><i class="fas fa-user"></i></a>
+      </div>
+      <div class="share-box">
+        <a><i class="fas fa-share"></i></a>
+      </div>
+      <div class="clima-box">
+        <a [routerLink]="['/ver-clima']"><i class="fas fa-cloud"></i></a>
+      </div>
+    </div>
+    <div class="cont-box">
+      <div class="generate-box">
+        <a><i class="fas fa-tshirt"></i></a><br>
+        <a>Generar atuendo</a>
+      </div>
+      <div class="closet-box">
+        <a [routerLink]="['/mi-armario']"><i class="fas fa-door-closed"></i></a>
+        <a [routerLink]="['/mi-armario']">Mi armario</a>
+      </div>
+      <div class="favorite-box">
+        <a [routerLink]="['/favoritos']"><i class="fas fa-star"></i></a>
+        <a [routerLink]="['/favoritos']">Favoritos</a>
+      </div>
+      <div class="history-box">
+        <a><i class="fas fa-book"></i></a>
+        <a href="#">Historial de atuendos</a>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="title">
+      <img src="../../assets/images/Favorito.png" alt="Star...">
+      <h2>Mis prendas favoritas</h2>
+    </div>
+    <div class="panel-box">
+      <h2>Filtra tus favoritos</h2>
+      <select [(ngModel)]="seccionSelected" (change)="displayFavorites()">
+        <option selected disabled>Selecciona una sección</option>
+        <option>Superior</option>
+        <option>Inferior</option>
+        <option>Zapato</option>
+        <option>Accesorio</option>
+        <option>Todas</option>
+      </select>
+    </div>
+    <div class="msg-box">
+      {{message}}
+    </div>
+    <div class="display-box">
+      <div class="box" *ngFor="let prenda of filter">
+        <div class="image">
+          <img src="{{prenda.url}}" alt="Prenda...">
+        </div>
+        <div class="details">
+          <div class="cnt-box">
+            <h2>Sección</h2>
+            <p>{{prenda.seccion}}</p>
+            <h2>Tipo</h2>
+            <p>{{prenda.tipo}}</p>
+            <h2>Descripción</h2>
+            <p>{{prenda.descripcion}}</p>
+          </div>
+        </div>
+        <div class="desc-box">
+          <div class="form-box">
+            <a><i class="fab fa-black-tie"></i></a>
+            <h2>{{prenda.formalidad}}/5</h2>
+          </div>
+          <div class="abrigo-box">
+            <a><i class="fas fa-snowflake"></i></a>
+            <h2>{{prenda.abrigo}}/5</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
