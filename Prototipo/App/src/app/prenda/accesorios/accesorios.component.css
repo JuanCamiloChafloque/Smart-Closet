@@ -158,6 +158,44 @@ a {
   transform: scale(1.05);
 }
 
+.box .details {
+  top: 3px;
+  left: 10px;
+  bottom: 85px;
+  right: 10px;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  transform: scaleY(0);
+  transition: transform .5s;
+}
+
+.box:hover .details {
+  transform: scaleY(1);
+}
+
+.box .details .cnt-box {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: #fff;
+  font-family: cursive;
+}
+
+.box .details .cnt-box h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  color: #ff0;
+}
+
+.box .details .cnt-box p {
+  margin: 10px 0 0;
+  padding: 0;
+}
+
 .btn-box {
   text-align: center;
   width: 100%;
@@ -212,5 +250,3 @@ button {
 .btn {
   margin-bottom: 10px;
 }
-
-

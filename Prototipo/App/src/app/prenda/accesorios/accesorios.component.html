@@ -49,7 +49,17 @@
     <div class="display-box">
       <div class="box" *ngFor="let prenda of accesorios">
         <div class="image">
-          <img src="../../../assets/images/{{prenda.url}}" alt="Prenda...">
+          <img src="{{prenda.url}}" alt="Prenda...">
+        </div>
+        <div class="details">
+          <div class="cnt-box">
+            <h2>Sección</h2>
+            <p>{{prenda.seccion}}</p>
+            <h2>Tipo</h2>
+            <p>{{prenda.tipo}}</p>
+            <h2>Descripción</h2>
+            <p>{{prenda.descripcion}}</p>
+          </div>
         </div>
         <div class="desc-box">
           <div class="form-box">

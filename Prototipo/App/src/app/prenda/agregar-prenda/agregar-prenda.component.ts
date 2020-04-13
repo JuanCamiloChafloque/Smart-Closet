@@ -100,7 +100,7 @@ export class AgregarPrendaComponent implements OnInit {
   crearPrendaSubida() {
     this.prenda.disponible = true;
     this.prenda.favorito = false;
-    this.prenda.url = this.imageUser.name;
+    this.prenda.url = '../../../assets/images/' + this.imageUser.name;
     console.log(this.prenda);
     this.prendaService.create(this.prenda, localStorage.getItem('User')).subscribe(
       result => {
