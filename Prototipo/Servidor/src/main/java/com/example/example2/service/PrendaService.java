@@ -24,7 +24,7 @@ class PrendaService {
     }
 
     @PutMapping("/modificarFavorito/{id}")
-    public Prenda modificarFavorito(@PathVariable("id") Long id_prenda){
+    public Prenda modificarFavorito(@PathVariable("id") Long id_prenda, @RequestBody Prenda prenda){
         Prenda prendaEncontrada = repository.findById(id_prenda).get();
         if(prendaEncontrada.isFavorito()){
             prendaEncontrada.setFavorito(false);
@@ -35,7 +35,7 @@ class PrendaService {
     }
 
     @PutMapping("/modificarDisponible/{id}")
-    public Prenda modificarDisponible(@PathVariable("id") Long id_prenda){
+    public Prenda modificarDisponible(@PathVariable("id") Long id_prenda, @RequestBody Prenda prenda){
         Prenda prendaEncontrada = repository.findById(id_prenda).get();
         if(prendaEncontrada.isDisponible()){
             prendaEncontrada.setDisponible(false);

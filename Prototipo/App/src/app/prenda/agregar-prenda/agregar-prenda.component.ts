@@ -84,7 +84,7 @@ export class AgregarPrendaComponent implements OnInit {
   crearPrendaBusqueda() {
     this.prenda.disponible = true;
     this.prenda.favorito = false;
-    this.prenda.imgUrl = this.foundImage;
+    this.prenda.url = this.foundImage;
     console.log(this.prenda);
     this.prendaService.create(this.prenda, localStorage.getItem('User')).subscribe(
       result => {
@@ -100,7 +100,7 @@ export class AgregarPrendaComponent implements OnInit {
   crearPrendaSubida() {
     this.prenda.disponible = true;
     this.prenda.favorito = false;
-    this.prenda.imgUrl = this.imageUser.name;
+    this.prenda.url = this.imageUser.name;
     console.log(this.prenda);
     this.prendaService.create(this.prenda, localStorage.getItem('User')).subscribe(
       result => {

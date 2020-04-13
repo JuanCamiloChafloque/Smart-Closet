@@ -38,6 +38,13 @@ export class PrendaService {
     );
   }
 
+  private delete<T>(url): Observable<T> {
+    console.log('delete:', url);
+    return this.http.delete<T>(url).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   getImages(query) {
     return this.http.get('https://customsearch.googleapis.com/customsearch/v1?key=' + environment.imageSearch.apiKey
                           + '&cx=' + environment.imageSearch.idEngine + '&q=' + query
@@ -49,13 +56,13 @@ export class PrendaService {
     return this.put(url, {
       seccion: prenda.seccion,
       tipo: prenda.tipo,
-      nivelFormalidad: +prenda.nivelFormalidad,
-      nivelAbrigo: +prenda.nivelAbrigo,
+      formalidad: +prenda.formalidad,
+      abrigo: +prenda.abrigo,
       color: prenda.color,
       favorito: prenda.favorito,
       disponible: prenda.disponible,
       descripcion: prenda.descripcion,
-      imgUrl: prenda.imgUrl
+      url: prenda.url
     });
   }
 
@@ -82,5 +89,40 @@ export class PrendaService {
   getPrendasFavoritas(nickname: string) {
     const url = `http://localhost:8080/armario/${nickname}/prendas/favoritos`;
     return this.get<Prenda[]>(url);
+  }
+
+  editarFavorito(id: number, prenda: Prenda) {
+    const url = `http://localhost:8080/modificarFavorito/${id}`;
+    return this.put(url, {
+      seccion: prenda.seccion,
+      tipo: prenda.tipo,
+      formalidad: +prenda.formalidad,
+      abrigo: +prenda.abrigo,
+      color: prenda.color,
+      favorito: prenda.favorito,
+      disponible: prenda.disponible,
+      descripcion: prenda.descripcion,
+      url: prenda.url
+    });
+  }
+
+  editarDisponible(id: number, prenda: Prenda) {
+    const url = `http://localhost:8080/modificarDisponible/${id}`;
+    return this.put(url, {
+      seccion: prenda.seccion,
+      tipo: prenda.tipo,
+      formalidad: +prenda.formalidad,
+      abrigo: +prenda.abrigo,
+      color: prenda.color,
+      favorito: prenda.favorito,
+      disponible: prenda.disponible,
+      descripcion: prenda.descripcion,
+      url: prenda.url
+    });
+  }
+
+  eliminarPrenda(id: number) {
+    const url = `http://localhost:8080/eliminarPrenda/${id}`;
+    return this.delete<Prenda>(url);
   }
 }

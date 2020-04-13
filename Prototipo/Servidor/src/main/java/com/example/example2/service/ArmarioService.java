@@ -115,13 +115,13 @@ class ArmarioService {
         Prenda newPrenda = new Prenda();
         newPrenda.setSeccion(prenda.getSeccion());
         newPrenda.setTipo(prenda.getTipo());
-        newPrenda.setNivel_formalidad(prenda.getNivel_formalidad());
-        newPrenda.setNivel_abrigo(prenda.getNivel_abrigo());
+        newPrenda.setFormalidad(prenda.getFormalidad());
+        newPrenda.setAbrigo(prenda.getAbrigo());
         newPrenda.setDisponible(prenda.isDisponible());
         newPrenda.setFavorito(prenda.isFavorito());
         newPrenda.setDescripcion(prenda.getDescripcion());
         newPrenda.setColor(prenda.getColor());
-        newPrenda.setImg_url(prenda.getImg_url());
+        newPrenda.setUrl(prenda.getUrl());
         newPrenda.setArmario(armarioEncontrado);
         //newPrenda.setImagen(BlobProxy.generateProxy(codeImage(prenda.getImg_url())));
 

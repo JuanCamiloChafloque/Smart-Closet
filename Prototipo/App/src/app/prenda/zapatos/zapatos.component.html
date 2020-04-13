@@ -42,8 +42,44 @@
     </div>
   </div>
   <div class="content">
-
-
+    <div class="title">
+      <img src="../../../assets/images/zapatos.png" alt="Zapatos...">
+      <h2>Mi armario: Zapatos</h2>
+    </div>
+    <div class="display-box">
+      <div class="box" *ngFor="let prenda of zapatos">
+        <div class="image">
+          <img src="../../../assets/images/{{prenda.url}}" alt="Prenda...">
+        </div>
+        <div class="desc-box">
+          <div class="form-box">
+            <a><i class="fab fa-black-tie"></i></a>
+            <h2>{{prenda.formalidad}}/5</h2>
+          </div>
+          <div class="abrigo-box">
+            <a><i class="fas fa-snowflake"></i></a>
+            <h2>{{prenda.abrigo}}/5</h2>
+          </div>
+        </div>
+        <div class="btn-box">
+          <div *ngIf="prenda.favorito == false" class="btn">
+            <button (click)="cambiarFavorito(prenda.id)" class="btn-nofavorito"></button>
+          </div>
+          <div *ngIf="prenda.favorito == true" class="btn">
+            <button (click)="cambiarFavorito(prenda.id)" class="btn-favorito"></button>
+          </div>
+          <div *ngIf="prenda.disponible == false" class="btn">
+            <button (click)="cambiarDisponible(prenda.id)" class="btn-nodisponible"></button>
+          </div>
+          <div *ngIf="prenda.disponible == true" class="btn">
+            <button (click)="cambiarDisponible(prenda.id)" class="btn-disponible"></button>
+          </div>
+          <div class="btn">
+            <button (click)="eliminarPrenda(prenda.id)" class="btn-eliminar"></button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

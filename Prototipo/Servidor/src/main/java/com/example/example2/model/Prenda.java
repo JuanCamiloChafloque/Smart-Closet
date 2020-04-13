@@ -19,13 +19,13 @@ public class Prenda {
 
     private String seccion;
     private String tipo;
-    private Long nivel_formalidad;
-    private Long nivel_abrigo;
+    private Long formalidad;
+    private Long abrigo;
     private String color;
     private boolean favorito;
     private boolean disponible;
     private String descripcion;
-    private String img_url;
+    private String url;
     
     @Lob
     @JsonIgnore
@@ -39,12 +39,12 @@ public class Prenda {
         return id_prenda;
     }
 
-    public String getImg_url() {
-		return img_url;
+    public String getUrl() {
+		return url;
 	}
 
-	public void setImg_url(String img_url) {
-		this.img_url = img_url;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public String getDescripcion() {
@@ -79,20 +79,20 @@ public class Prenda {
         this.color = color;
     }
 
-    public Long getNivel_abrigo() {
-        return nivel_abrigo;
+    public Long getAbrigo() {
+        return abrigo;
     }
 
-    public void setNivel_abrigo(Long nivel_abrigo) {
-        this.nivel_abrigo = nivel_abrigo;
+    public void setAbrigo(Long abrigo) {
+        this.abrigo = abrigo;
     }
 
-    public Long getNivel_formalidad() {
-        return nivel_formalidad;
+    public Long getFormalidad() {
+        return formalidad;
     }
 
-    public void setNivel_formalidad(Long nivel_formalidad) {
-        this.nivel_formalidad = nivel_formalidad;
+    public void setFormalidad(Long formalidad) {
+        this.formalidad = formalidad;
     }
 
     public String getTipo() {
