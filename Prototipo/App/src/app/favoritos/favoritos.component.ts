@@ -82,6 +82,21 @@ export class FavoritosComponent implements OnInit {
     } else {
       this.message = '';
     }
+
+    this.actualizarDisplay();
+  }
+
+  actualizarDisplay() {
+    const display = document.getElementsByClassName('display-box') as HTMLCollectionOf<HTMLElement>;
+    if (this.filter.length <= 3) {
+      display[0].style.top = '50%';
+    } else if (this.filter.length > 3 && this.filter.length <= 6) {
+      display[0].style.top = '75%';
+    } else if (this.filter.length > 6 && this.filter.length <= 9) {
+      display[0].style.top = '100%';
+    } else if (this.filter.length > 9 && this.filter.length <= 12) {
+      display[0].style.top = '120%';
+    }
   }
 
 }

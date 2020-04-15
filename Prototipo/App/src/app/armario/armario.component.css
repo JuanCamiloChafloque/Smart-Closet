@@ -56,7 +56,7 @@ label, h1, h2, p, button {
   cursor: pointer;
 }
 
-.config-box, .share-box, .clima-box {
+.config-box, .clima-box {
   margin-bottom: 10px;
 }
 
@@ -75,6 +75,11 @@ label, h1, h2, p, button {
   color: black;
   font-family: cursive;
   font-weight: bold;
+}
+
+.generate-box img, .closet-box img, .favorite-box img, .history-box img {
+  width: 23px;
+  height: 23px;
 }
 
 a {

@@ -28,7 +28,6 @@ import { PrendaService } from './prenda/services/prenda.service';
 import { AgregarPrendaComponent } from './prenda/agregar-prenda/agregar-prenda.component';
 import { HistorialComponent } from './historial/historial.component';
 import { GenerarAtuendoComponent } from './generar-atuendo/generar-atuendo.component';
-import { CompartirComponent } from './compartir/compartir.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +47,6 @@ import { CompartirComponent } from './compartir/compartir.component';
     AgregarPrendaComponent,
     HistorialComponent,
     GenerarAtuendoComponent,
-    CompartirComponent
   ],
   imports: [
     BrowserModule,

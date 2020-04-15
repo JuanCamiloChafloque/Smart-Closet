@@ -56,7 +56,7 @@ label, h1, h2, p, select, option {
   cursor: pointer;
 }
 
-.config-box, .share-box, .clima-box {
+.config-box, .clima-box {
   margin-bottom: 10px;
 }
 
@@ -75,6 +75,11 @@ label, h1, h2, p, select, option {
   color: black;
   font-family: cursive;
   font-weight: bold;
+}
+
+.generate-box img, .closet-box img, .favorite-box img, .history-box img {
+  width: 23px;
+  height: 23px;
 }
 
 a {
@@ -145,7 +150,7 @@ option {
   width: 950px;
   position: absolute;
   left: 60%;
-  top: 70%;
+  top: 100%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: row;
@@ -171,6 +176,7 @@ option {
 }
 
 .image {
+  margin-top: 10px;
   text-align: center;
   overflow: hidden;
 }

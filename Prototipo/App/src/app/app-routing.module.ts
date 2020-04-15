@@ -15,7 +15,6 @@ import { AccesoriosComponent } from './prenda/accesorios/accesorios.component';
 import { AgregarPrendaComponent } from './prenda/agregar-prenda/agregar-prenda.component';
 import { HistorialComponent } from './historial/historial.component';
 import { GenerarAtuendoComponent } from './generar-atuendo/generar-atuendo.component';
-import { CompartirComponent } from './compartir/compartir.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -33,7 +32,6 @@ const routes: Routes = [
   { path: 'agregar-prenda', component: AgregarPrendaComponent },
   { path: 'historial', component: HistorialComponent },
   { path: 'generar-atuendo', component: GenerarAtuendoComponent },
-  { path: 'compartir', component: CompartirComponent },
   { path: '', pathMatch: 'full', redirectTo: '/main-page' }
 ];
 
