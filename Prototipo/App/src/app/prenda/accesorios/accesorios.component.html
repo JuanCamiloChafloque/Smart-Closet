@@ -46,6 +46,9 @@
       <img src="../../../assets/images/accesorios.png" alt="Zapatos...">
       <h2>Mi armario: Accesorios</h2>
     </div>
+    <div *ngIf="vacio == true" class="vacio">
+      {{vacioMessage}}
+    </div>
     <div class="display-box">
       <div class="box" *ngFor="let prenda of accesorios">
         <div class="image">

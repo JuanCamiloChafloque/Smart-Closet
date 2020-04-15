@@ -104,6 +104,17 @@ a {
   align-items: center;
 }
 
+.vacio {
+  width: 100%;
+  font-family: cursive;
+  text-align: center;
+  font-size: 25px;
+  font-style: italic;
+  margin-top: 80px;
+  color: #C40A92;
+  font-weight: bold;
+}
+
 .title img {
   width: 50px;
   height: 50px;

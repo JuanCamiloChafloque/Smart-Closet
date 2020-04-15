@@ -15,6 +15,8 @@ export class InferiorComponent implements OnInit {
   user: Usuario = undefined;
   llegoUsuario = false;
   llegoPrenda = false;
+  vacioMessage = '';
+  vacio = false;
   inferiores: Prenda[];
   prendaEditar: Prenda;
 
@@ -46,6 +48,10 @@ export class InferiorComponent implements OnInit {
 
   llegaronInferiores() {
     this.llegoPrenda = true;
+    if (this.inferiores.length === 0) {
+      this.vacio = true;
+      this.vacioMessage = 'No tienes prendas en el momento';
+    }
   }
 
   inicializar() {
@@ -94,17 +100,21 @@ export class InferiorComponent implements OnInit {
   }
 
   eliminarPrenda(id: number) {
-    let prendaEliminar: Prenda;
-    this.prendaService.eliminarPrenda(id).subscribe(
-      results => {
-        console.log(results);
+
+    if (window.confirm('Estás seguro que quieres eliminar la prenda?')) {
+      let prendaEliminar: Prenda;
+      this.prendaService.eliminarPrenda(id).subscribe(
+        results => {
+          console.log(results);
+        }
+      );
+      for (const prenda of this.inferiores) {
+        if (prenda.id === id) {
+          prendaEliminar = prenda;
+        }
       }
-    );
-    for (const prenda of this.inferiores) {
-      if (prenda.id === id) {
-        prendaEliminar = prenda;
-      }
+      this.inferiores = this.inferiores.filter(obj => obj !== prendaEliminar);
     }
-    this.inferiores = this.inferiores.filter(obj => obj !== prendaEliminar);
   }
+
 }

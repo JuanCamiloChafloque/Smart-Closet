@@ -15,6 +15,8 @@ export class SuperiorComponent implements OnInit {
   user: Usuario = undefined;
   llegoUsuario = false;
   llegoPrenda = false;
+  vacioMessage = '';
+  vacio = false;
   superiores: Prenda[];
   prendaEditar: Prenda;
 
@@ -45,6 +47,10 @@ export class SuperiorComponent implements OnInit {
 
   llegaronSuperiores() {
     this.llegoPrenda = true;
+    if (this.superiores.length === 0) {
+      this.vacio = true;
+      this.vacioMessage = 'No tienes prendas en el momento';
+    }
   }
 
   inicializar() {
@@ -93,18 +99,22 @@ export class SuperiorComponent implements OnInit {
   }
 
   eliminarPrenda(id: number) {
-    let prendaEliminar: Prenda;
-    this.prendaService.eliminarPrenda(id).subscribe(
-      results => {
-        console.log(results);
+
+    if (window.confirm('Estás seguro que quieres eliminar la prenda?')) {
+      let prendaEliminar: Prenda;
+      this.prendaService.eliminarPrenda(id).subscribe(
+        results => {
+          console.log(results);
+        }
+      );
+      for (const prenda of this.superiores) {
+        if (prenda.id === id) {
+          prendaEliminar = prenda;
+        }
       }
-    );
-    for (const prenda of this.superiores) {
-      if (prenda.id === id) {
-        prendaEliminar = prenda;
-      }
+      this.superiores = this.superiores.filter(obj => obj !== prendaEliminar);
     }
-    this.superiores = this.superiores.filter(obj => obj !== prendaEliminar);
+
   }
 
 }

@@ -15,6 +15,8 @@ export class ZapatosComponent implements OnInit {
   user: Usuario = undefined;
   llegoUsuario = false;
   llegoPrenda = false;
+  vacioMessage = '';
+  vacio = false;
   zapatos: Prenda[];
   prendaEditar: Prenda;
 
@@ -46,6 +48,10 @@ export class ZapatosComponent implements OnInit {
 
   llegaronZapatos() {
     this.llegoPrenda = true;
+    if (this.zapatos.length === 0) {
+      this.vacio = true;
+      this.vacioMessage = 'No tienes prendas en el momento';
+    }
   }
 
   inicializar() {
@@ -94,18 +100,22 @@ export class ZapatosComponent implements OnInit {
   }
 
   eliminarPrenda(id: number) {
-    let prendaEliminar: Prenda;
-    this.prendaService.eliminarPrenda(id).subscribe(
-      results => {
-        console.log(results);
+
+    if (window.confirm('Estás seguro que quieres eliminar la prenda?')) {
+      let prendaEliminar: Prenda;
+      this.prendaService.eliminarPrenda(id).subscribe(
+        results => {
+          console.log(results);
+        }
+      );
+      for (const prenda of this.zapatos) {
+        if (prenda.id === id) {
+          prendaEliminar = prenda;
+        }
       }
-    );
-    for (const prenda of this.zapatos) {
-      if (prenda.id === id) {
-        prendaEliminar = prenda;
-      }
+      this.zapatos = this.zapatos.filter(obj => obj !== prendaEliminar);
     }
-    this.zapatos = this.zapatos.filter(obj => obj !== prendaEliminar);
+
   }
 
 }
