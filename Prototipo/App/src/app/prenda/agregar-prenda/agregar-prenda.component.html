@@ -52,6 +52,12 @@
           <div class="lbl">
             <label class="lbl-prenda">Tipo de prenda</label>
           </div>
+          <div *ngIf="sup == true" class="lbl">
+            <label class="lbl-cuello">Tipo de cuello</label>
+          </div>
+          <div *ngIf="sup == true" class="lbl">
+            <label class="lbl-manga">Tipo de manga</label>
+          </div>
           <div class="lbl">
             <label class="lbl-formalidad">Nivel de formalidad</label>
           </div>
@@ -66,7 +72,7 @@
           </div>
         </div>
         <div class="input-box">
-          <select [(ngModel)]="prenda.seccion" class="input-seccion">
+          <select [(ngModel)]="prenda.seccion" class="input-seccion" (change)="filtrarSeccion()">
             <option selected disabled>Tipo de prenda...</option>
             <option value="Superior">Superior</option>
             <option value="Inferior">Inferior</option>
@@ -74,6 +80,20 @@
             <option value="Zapato">Zapato</option>
           </select><br>
           <input class="input-tipo" placeholder="Camisa, Camiseta, Blusa..." type="text" [(ngModel)]="prenda.tipo"><br>
+          <select *ngIf="sup == true" class="input-cuello">
+            <option selected disabled>Tipo de cuello...</option>
+            <option value="1">Redondo</option>
+            <option value="2">Tortuga</option>
+            <option value="3">V</option>
+            <option value="3">Con cuello</option>
+            <option value="4">Escote</option>
+          </select><br>
+          <select *ngIf="sup == true" class="input-manga">
+            <option selected disabled>Tipo de manga...</option>
+            <option value="1">Manga larga</option>
+            <option value="2">Manga corta</option>
+            <option value="3">3/4</option>
+          </select><br>
           <select [(ngModel)]="prenda.formalidad" class="input-formalidad">
             <option selected disabled>Nivel de formalidad...</option>
             <option value="1">1</option>

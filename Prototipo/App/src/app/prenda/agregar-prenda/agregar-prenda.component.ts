@@ -22,6 +22,7 @@ export class AgregarPrendaComponent implements OnInit {
   selectedImage = false;
   foundImage;
   imageUser;
+  sup = true;
   prenda: Prenda = new Prenda(
     undefined,
     undefined,
@@ -111,6 +112,12 @@ export class AgregarPrendaComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  filtrarSeccion() {
+    if (this.prenda.seccion === 'Superior') {
+      this.sup = true;
+    }
   }
 
 }

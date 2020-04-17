@@ -16,7 +16,8 @@ export class ClimaService {
     .set('lat', lat)
     .set('lon', lon)
     .set('units', 'metric')
-    .set('appid', this.apiKey);
+    .set('appid', this.apiKey)
+    .set('lang', 'sp');
 
     return this.http.get(this.url, {params});
   }

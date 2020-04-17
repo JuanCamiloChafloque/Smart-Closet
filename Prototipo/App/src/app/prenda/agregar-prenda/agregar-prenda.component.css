@@ -1,7 +1,3 @@
-label, h1, h2, p, button, input, select {
-  font-family: cursive;
-}
-
 .wrapper {
   display: flex;
   position: relative;
@@ -41,7 +37,6 @@ label, h1, h2, p, button, input, select {
 .user-box p{
   padding-left: 10px;
   font-weight: bold;
-  font-family: cursive;
 }
 
 .options-box {
@@ -73,7 +68,6 @@ label, h1, h2, p, button, input, select {
   text-decoration: none;
   cursor: pointer;
   color: black;
-  font-family: cursive;
   font-weight: bold;
 }
 
@@ -127,7 +121,7 @@ a {
   text-align: center;
   position: absolute;
   left: 59%;
-  top: 35%;
+  top: 40%;
   transform: translate(-50%, -50%);
   display: inline-flex;
   justify-content: space-evenly;
@@ -140,11 +134,12 @@ a {
   width: 990px;
   position: absolute;
   left: 59%;
-  top: 78%;
+  top: 88%;
   transform: translate(-50%, -50%);
   padding: 10px 20px 10px 20px;
   border: 1.5px solid black;
   border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .api-box a {
@@ -155,7 +150,6 @@ a {
 .api-box h2 {
   width: 100%;
   text-align: center;
-  font-family: cursive;
   font-size: 15px;
   margin-bottom: 20px;
 }
@@ -165,7 +159,6 @@ a {
   font-size: 10px;
   width: 100%;
   text-align: center;
-  font-family: cursive;
   font-weight: bold;
 }
 
@@ -259,7 +252,6 @@ input[type="file"] {
   background-color: #C40A92;
   border-radius: 10px;
   color: white;
-  font-family: cursive;
   width: 200px;
 }
 
@@ -291,7 +283,6 @@ input[type="file"] {
 .msg-box {
   font-style: italic;
   font-size: 13px;
-  font-family: cursive;
   color: #C40A92;
 }
 

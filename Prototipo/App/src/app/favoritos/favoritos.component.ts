@@ -95,8 +95,13 @@ export class FavoritosComponent implements OnInit {
     } else if (this.filter.length > 6 && this.filter.length <= 9) {
       display[0].style.top = '100%';
     } else if (this.filter.length > 9 && this.filter.length <= 12) {
-      display[0].style.top = '120%';
+      display[0].style.top = '125%';
+    } else if (this.filter.length > 12 && this.filter.length <= 15) {
+      display[0].style.top = '150%';
+    } else if (this.filter.length > 15 && this.filter.length <= 18) {
+      display[0].style.top = '175%';
     }
+
   }
 
 }

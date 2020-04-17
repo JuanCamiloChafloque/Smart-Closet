@@ -67,10 +67,10 @@
               <td>Humedad</td><td>{{clima.main.humidity}}%</td>
             </tr>
             <tr>
-              <td>Amanecer</td><td>{{clima.sys.sunrise * 1000 | date:"H:mm"}}</td>
+              <td>Descripción</td><td>{{clima.weather[0].description}}</td>
             </tr>
             <tr>
-              <td>Puesta de sol</td><td>{{clima.sys.sunset * 1000 | date:"H:mm"}}</td>
+              <td>Nubosidad</td><td>{{clima.clouds.all}}%</td>
             </tr>
           </tbody>
         </table>
