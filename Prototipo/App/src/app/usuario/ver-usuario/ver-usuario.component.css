@@ -1,4 +1,4 @@
-label, h1, h2, p {
+label, h1, h2, p, button {
   font-family: cursive;
 }
 
@@ -104,7 +104,7 @@ a {
 
 .perfil-box {
   width: 450px;
-  border: 3px solid black;
+  border: 1.5px solid black;
   border-radius: 10px;
   background-color: #4DC4EB;
   text-align: center;
@@ -112,7 +112,7 @@ a {
   left: 60%;
   top: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0.95;
+  opacity: 0.90;
 }
 
 .logout {
@@ -127,7 +127,8 @@ a {
 }
 
 .perfil-box img {
-  width: 130px;
+  width: 140px;
+  margin-bottom: 15px;
 }
 
 .title {
@@ -148,20 +149,20 @@ label {
 
 .final {
   padding-bottom: 20px;
-  border-bottom: 0.5px solid black;
+  border-bottom: 1.5px solid black;
+  margin: 0 25px 25px 25px;
 }
 
 button {
   margin-left: 15px;
   margin-right: 15px;
-  font-size: 15px;
+  font-size: 14px;
   height: 45px;
-  width: 120px;
+  width: 115px;
   border-radius: 10px;
   background-color: #C40A92;
   color: white;
-  border: 2px solid black;
-  font-style: italic;
+  border: 1.5px solid black;
   cursor: pointer;
   margin-top: 15px;
   outline: none;

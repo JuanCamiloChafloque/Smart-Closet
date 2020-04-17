@@ -60,7 +60,7 @@ export class RegistroComponent implements OnInit {
           result => {
             console.log(result);
             localStorage.setItem('User', this.usuario.nickname);
-            this.router.navigate(['/perfil']);
+            this.router.navigate(['/mi-armario']);
           },
           error => {
             console.log(error);

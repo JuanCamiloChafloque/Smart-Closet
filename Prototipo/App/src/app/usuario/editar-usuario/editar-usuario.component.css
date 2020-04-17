@@ -1,4 +1,4 @@
-label, h1, h2, p {
+label, h1, h2, p, button {
   font-family: cursive;
 }
 
@@ -104,7 +104,7 @@ a {
 
 .perfil-box {
   width: 450px;
-  border: 3px solid black;
+  border: 1.5px solid black;
   border-radius: 10px;
   background-color: #4DC4EB;
   text-align: center;
@@ -122,6 +122,7 @@ a {
 
 .perfil-box img {
   width: 130px;
+  margin-bottom: 15px;
 }
 
 .title {
@@ -147,13 +148,12 @@ label {
 
 button {
   font-size: 15px;
-  height: 45px;
-  width: 120px;
+  height: 40px;
+  width: 115px;
   border-radius: 10px;
   background-color: #C40A92;
   color: white;
-  border: 2px solid black;
-  font-style: italic;
+  border: 1.5px solid black;
   cursor: pointer;
   margin-top: 15px;
   outline: none;
@@ -176,7 +176,6 @@ button {
 .form label {
   font-size: 18px;
   font-weight: bold;
-  font-style: italic;
   margin-bottom: 5px;
 }
 
@@ -186,10 +185,11 @@ input {
   height: 25px;
   width: 175px;
   border-radius: 5px;
-  border: 2.3px solid #C40A92;
+  border: 1.5px solid #C40A92;
   overflow: hidden;
   outline: none;
   padding-left: 5px;
+  font-family: cursive;
 }
 
 select {
@@ -198,7 +198,7 @@ select {
   margin-bottom: 5px;
   margin-left: 10px;
   border-radius: 5px;
-  border: 2.3px solid #C40A92;
+  border: 1.5px solid #C40A92;
   overflow: hidden;
   outline: none;
   padding-left: 5px;

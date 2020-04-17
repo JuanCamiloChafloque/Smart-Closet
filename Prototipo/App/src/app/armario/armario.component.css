@@ -105,7 +105,7 @@ a {
 
 .armario-box {
   width: 600px;
-  border: 3px solid black;
+  border: 1.5px solid black;
   border-radius: 10px;
   background-color: #4DC4EB;
   text-align: center;
@@ -143,17 +143,17 @@ a {
 }
 
 .title-armario h1 {
-  padding-left: 5px;
+  margin-left: 10px;
 }
 
 .superiores, .inferiores, .zapatos, .accesorios {
-  border: 3px solid black;
+  border: 2px solid black;
   background-color: #C40A92;
   padding: 10px 25px 10px 25px;
   border-radius: 10px;
   margin-left: 50px;
   margin-right: 50px;
-  opacity: 0.89;
+  opacity: 0.90;
 }
 
 .boton-agregar{
@@ -164,27 +164,25 @@ a {
 }
 
 .btn-prenda {
-  font-size: 15px;
+  font-size: 14px;
   height: 30px;
   width: 125px;
-  border-radius: 8px;
+  border-radius: 10px;
   background-color: #C40A92;
   color: white;
   border: 2px solid black;
-  font-style: italic;
   cursor: pointer;
   outline: none;
 }
 
 .btn-agregar {
-  font-size: 18px;
-  height: 50px;
-  width: 150px;
-  border-radius: 8px;
+  font-size: 15px;
+  height: 45px;
+  width: 130px;
+  border-radius: 10px;
   background-color: #C40A92;
   color: white;
   border: 2px solid black;
-  font-style: italic;
   cursor: pointer;
   outline: none;
 }

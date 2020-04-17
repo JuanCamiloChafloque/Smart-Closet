@@ -18,8 +18,8 @@ h2, h1, label, input, button {
   transform: translate(-50%, -50%);
   width: 500px;
   border-radius: 20px;
-  border: 3px solid black;
-  opacity: 0.83;
+  border: 1.5px solid black;
+  opacity: 0.90;
 }
 
 .title {
@@ -35,8 +35,8 @@ h2, h1, label, input, button {
 }
 
 .title h1 {
-  font-size: 28px;
-  font-style: italic;
+  margin-left: 10px;
+  font-size: 25px;
 }
 
 .form {
@@ -45,9 +45,8 @@ h2, h1, label, input, button {
 }
 
 .form label {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
-  font-style: italic;
 }
 
 .form-input {
@@ -56,8 +55,8 @@ h2, h1, label, input, button {
 }
 
 input {
-  margin-left: 20px;
-  height: 27px;
+  margin-left: 10px;
+  height: 35px;
   width: 190px;
   border-radius: 5px;
   border: 2.3px solid #C40A92;
@@ -67,7 +66,7 @@ input {
 }
 
 .lbl-user {
-  margin-left: 40px;
+  margin-left: 35px;
 }
 
 .btn-box {
@@ -76,14 +75,13 @@ input {
 }
 
 button {
-  font-size: 22px;
-  height: 65px;
-  width: 200px;
+  font-size: 17px;
+  height: 45px;
+  width: 165px;
   border-radius: 10px;
   background-color: #C40A92;
   color: white;
-  border: 2px solid black;
-  font-style: italic;
+  border: 1.5px solid black;
   cursor: pointer;
   margin-bottom: 15px;
   outline: none;
@@ -95,6 +93,7 @@ a {
   border-bottom: 0.5px solid blue;
   cursor: pointer;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .a-box {
