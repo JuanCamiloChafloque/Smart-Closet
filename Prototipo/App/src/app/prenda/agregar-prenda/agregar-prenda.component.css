@@ -231,6 +231,7 @@ select {
 }
 
 .btn-buscar {
+  margin-top: 5px;
   margin-left: 7px;
   font-size: 14px;
   height: 27px;

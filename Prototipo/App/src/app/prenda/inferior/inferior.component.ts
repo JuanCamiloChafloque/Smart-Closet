@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UsuarioService } from 'src/app/usuario/services/usuario.service';
 import { PrendaService } from '../services/prenda.service';
 import { Prenda } from '../services/prenda';
+import { Inferior } from '../services/inferior';
 
 @Component({
   selector: 'app-inferior',
@@ -17,8 +18,7 @@ export class InferiorComponent implements OnInit {
   llegoPrenda = false;
   vacioMessage = '';
   vacio = false;
-  inferiores: Prenda[];
-  prendaEditar: Prenda;
+  inferiores: Inferior[];
 
   constructor(
     private router: Router,
@@ -68,14 +68,14 @@ export class InferiorComponent implements OnInit {
           prenda.favorito = true;
         }
       }
-      this.prendaEditar = prenda;
     }
-    this.prendaService.editarFavorito(id, this.prendaEditar).subscribe(
+
+    this.prendaService.editarFavorito(id).subscribe(
       results => {
         console.log(results);
-        this.prendaEditar = undefined;
       }
     );
+
   }
 
   cambiarDisponible(id: number) {
@@ -88,12 +88,11 @@ export class InferiorComponent implements OnInit {
           prenda.disponible = true;
         }
       }
-      this.prendaEditar = prenda;
     }
-    this.prendaService.editarDisponible(id, this.prendaEditar).subscribe(
+
+    this.prendaService.editarDisponible(id).subscribe(
       results => {
         console.log(results);
-        this.prendaEditar = undefined;
       }
     );
 

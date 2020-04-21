@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UsuarioService } from 'src/app/usuario/services/usuario.service';
 import { PrendaService } from '../services/prenda.service';
 import { Prenda } from '../services/prenda';
+import { Zapato } from '../services/zapato';
 
 @Component({
   selector: 'app-zapatos',
@@ -17,8 +18,7 @@ export class ZapatosComponent implements OnInit {
   llegoPrenda = false;
   vacioMessage = '';
   vacio = false;
-  zapatos: Prenda[];
-  prendaEditar: Prenda;
+  zapatos: Zapato[];
 
   constructor(
     private router: Router,
@@ -68,12 +68,11 @@ export class ZapatosComponent implements OnInit {
           prenda.favorito = true;
         }
       }
-      this.prendaEditar = prenda;
     }
-    this.prendaService.editarFavorito(id, this.prendaEditar).subscribe(
+
+    this.prendaService.editarFavorito(id).subscribe(
       results => {
         console.log(results);
-        this.prendaEditar = undefined;
       }
     );
   }
@@ -88,12 +87,11 @@ export class ZapatosComponent implements OnInit {
           prenda.disponible = true;
         }
       }
-      this.prendaEditar = prenda;
     }
-    this.prendaService.editarDisponible(id, this.prendaEditar).subscribe(
+
+    this.prendaService.editarDisponible(id).subscribe(
       results => {
         console.log(results);
-        this.prendaEditar = undefined;
       }
     );
 

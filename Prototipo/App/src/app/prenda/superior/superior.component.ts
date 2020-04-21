@@ -4,6 +4,7 @@ import { UsuarioService } from 'src/app/usuario/services/usuario.service';
 import { Usuario } from 'src/app/usuario/services/usuario';
 import { PrendaService } from '../services/prenda.service';
 import { Prenda } from '../services/prenda';
+import { Superior } from '../services/superior';
 
 @Component({
   selector: 'app-superior',
@@ -17,8 +18,7 @@ export class SuperiorComponent implements OnInit {
   llegoPrenda = false;
   vacioMessage = '';
   vacio = false;
-  superiores: Prenda[];
-  prendaEditar: Prenda;
+  superiores: Superior[];
 
   constructor(
     private router: Router,
@@ -67,12 +67,11 @@ export class SuperiorComponent implements OnInit {
           prenda.favorito = true;
         }
       }
-      this.prendaEditar = prenda;
     }
-    this.prendaService.editarFavorito(id, this.prendaEditar).subscribe(
+
+    this.prendaService.editarFavorito(id).subscribe(
       results => {
         console.log(results);
-        this.prendaEditar = undefined;
       }
     );
   }
@@ -87,12 +86,11 @@ export class SuperiorComponent implements OnInit {
           prenda.disponible = true;
         }
       }
-      this.prendaEditar = prenda;
     }
-    this.prendaService.editarDisponible(id, this.prendaEditar).subscribe(
+
+    this.prendaService.editarDisponible(id).subscribe(
       results => {
         console.log(results);
-        this.prendaEditar = undefined;
       }
     );
 

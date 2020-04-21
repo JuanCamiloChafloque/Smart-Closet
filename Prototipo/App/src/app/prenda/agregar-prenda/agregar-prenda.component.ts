@@ -4,6 +4,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UsuarioService } from 'src/app/usuario/services/usuario.service';
 import { PrendaService } from '../services/prenda.service';
 import { Prenda } from '../services/prenda';
+import { Superior } from '../services/superior';
+import { Inferior } from '../services/inferior';
+import { Zapato } from '../services/zapato';
+import { Accesorio } from '../services/accesorio';
 
 @Component({
   selector: 'app-agregar-prenda',
@@ -22,7 +26,11 @@ export class AgregarPrendaComponent implements OnInit {
   selectedImage = false;
   foundImage;
   imageUser;
-  sup = true;
+
+  sup = false;
+  inf = false;
+  zap = false;
+
   prenda: Prenda = new Prenda(
     undefined,
     undefined,
@@ -87,15 +95,49 @@ export class AgregarPrendaComponent implements OnInit {
     this.prenda.favorito = false;
     this.prenda.url = this.foundImage;
     console.log(this.prenda);
-    this.prendaService.create(this.prenda, localStorage.getItem('User')).subscribe(
-      result => {
-        console.log(result);
-        this.router.navigate(['/mi-armario']);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+
+    if (this.prenda.seccion === 'Superior') {
+      this.prendaService.createSuperior(this.prenda as Superior, localStorage.getItem('User')).subscribe(
+        result => {
+          console.log(result);
+          this.router.navigate(['/mi-armario']);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    } else if (this.prenda.seccion === 'Inferior') {
+      this.prendaService.createInferior(this.prenda as Inferior, localStorage.getItem('User')).subscribe(
+        result => {
+          console.log(result);
+          this.router.navigate(['/mi-armario']);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    } else if (this.prenda.seccion === 'Zapato') {
+      this.prendaService.createZapato(this.prenda as Zapato, localStorage.getItem('User')).subscribe(
+        result => {
+          console.log(result);
+          this.router.navigate(['/mi-armario']);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    } else if (this.prenda.seccion === 'Accesorio') {
+      this.prendaService.createAccesorio(this.prenda as Accesorio, localStorage.getItem('User')).subscribe(
+        result => {
+          console.log(result);
+          this.router.navigate(['/mi-armario']);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+
   }
 
   crearPrendaSubida() {
@@ -103,20 +145,68 @@ export class AgregarPrendaComponent implements OnInit {
     this.prenda.favorito = false;
     this.prenda.url = '../../../assets/images/' + this.imageUser.name;
     console.log(this.prenda);
-    this.prendaService.create(this.prenda, localStorage.getItem('User')).subscribe(
-      result => {
-        console.log(result);
-        this.router.navigate(['/mi-armario']);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+
+    if (this.prenda.seccion === 'Superior') {
+      this.prendaService.createSuperior(this.prenda as Superior, localStorage.getItem('User')).subscribe(
+        result => {
+          console.log(result);
+          this.router.navigate(['/mi-armario']);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    } else if (this.prenda.seccion === 'Inferior') {
+      this.prendaService.createInferior(this.prenda as Inferior, localStorage.getItem('User')).subscribe(
+        result => {
+          console.log(result);
+          this.router.navigate(['/mi-armario']);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    } else if (this.prenda.seccion === 'Zapato') {
+      this.prendaService.createZapato(this.prenda as Zapato, localStorage.getItem('User')).subscribe(
+        result => {
+          console.log(result);
+          this.router.navigate(['/mi-armario']);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    } else if (this.prenda.seccion === 'Accesorio') {
+      this.prendaService.createAccesorio(this.prenda as Accesorio, localStorage.getItem('User')).subscribe(
+        result => {
+          console.log(result);
+          this.router.navigate(['/mi-armario']);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+
   }
 
   filtrarSeccion() {
     if (this.prenda.seccion === 'Superior') {
       this.sup = true;
+      this.zap = false;
+      this.inf = false;
+    } else if (this.prenda.seccion === 'Inferior') {
+      this.sup = false;
+      this.zap = false;
+      this.inf = true;
+    } else if (this.prenda.seccion === 'Zapato') {
+      this.sup = false;
+      this.zap = true;
+      this.inf = false;
+    } else {
+      this.sup = false;
+      this.zap = false;
+      this.inf = false;
     }
   }
 

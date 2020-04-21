@@ -9,11 +9,14 @@ import java.nio.file.StandardCopyOption;
 import java.sql.Blob;
 import java.util.ArrayList;
 
+import com.example.example2.model.Accesorio;
 import com.example.example2.model.Armario;
 import com.example.example2.model.ArmarioRepository;
+import com.example.example2.model.Inferior;
 import com.example.example2.model.Prenda;
+import com.example.example2.model.Superior;
+import com.example.example2.model.Zapato;
 
-import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,48 +47,48 @@ class ArmarioService {
     }
 
     @GetMapping("/armario/{nickname}/prendas/superior")
-    public Iterable<Prenda> getPrendasSuperiores(@PathVariable("nickname") String nickname) {
-        ArrayList<Prenda> superiores = new ArrayList<Prenda>();
+    public Iterable<Superior> getPrendasSuperiores(@PathVariable("nickname") String nickname) {
+        ArrayList<Superior> superiores = new ArrayList<Superior>();
         Iterable<Prenda> prendas = getPrendasUser(nickname);
         for(Prenda actual: prendas) {
-            if(actual.getSeccion().equalsIgnoreCase("Superior")){
-                superiores.add(actual);
+            if(actual instanceof Superior){
+                superiores.add((Superior)actual);
             }
         }
         return superiores;
     }
 
     @GetMapping("/armario/{nickname}/prendas/inferior")
-    public Iterable<Prenda> getPrendasInferiores(@PathVariable("nickname") String nickname) {
-        ArrayList<Prenda> inferiores = new ArrayList<Prenda>();
+    public Iterable<Inferior> getPrendasInferiores(@PathVariable("nickname") String nickname) {
+        ArrayList<Inferior> inferiores = new ArrayList<Inferior>();
         Iterable<Prenda> prendas = getPrendasUser(nickname);
         for(Prenda actual: prendas) {
-            if(actual.getSeccion().equalsIgnoreCase("Inferior")){
-                inferiores.add(actual);
+            if(actual instanceof Inferior){
+                inferiores.add((Inferior)actual);
             }
         }
         return inferiores;
     }
 
     @GetMapping("/armario/{nickname}/prendas/zapatos")
-    public Iterable<Prenda> getPrendasZapatos(@PathVariable("nickname") String nickname) {
-        ArrayList<Prenda> zapatos = new ArrayList<Prenda>();
+    public Iterable<Zapato> getPrendasZapatos(@PathVariable("nickname") String nickname) {
+        ArrayList<Zapato> zapatos = new ArrayList<Zapato>();
         Iterable<Prenda> prendas = getPrendasUser(nickname);
         for(Prenda actual: prendas) {
-            if(actual.getSeccion().equalsIgnoreCase("Zapato")){
-                zapatos.add(actual);
+            if(actual instanceof Zapato){
+                zapatos.add((Zapato)actual);
             }
         }
         return zapatos;
     }
 
     @GetMapping("/armario/{nickname}/prendas/accesorios")
-    public Iterable<Prenda> getPrendasAccesorios(@PathVariable("nickname") String nickname) {
-        ArrayList<Prenda> accesorios = new ArrayList<Prenda>();
+    public Iterable<Accesorio> getPrendasAccesorios(@PathVariable("nickname") String nickname) {
+        ArrayList<Accesorio> accesorios = new ArrayList<Accesorio>();
         Iterable<Prenda> prendas = getPrendasUser(nickname);
         for(Prenda actual: prendas) {
-            if(actual.getSeccion().equalsIgnoreCase("Accesorio")){
-                accesorios.add(actual);
+            if(actual instanceof Accesorio){
+                accesorios.add((Accesorio)actual);
             }
         }
         return accesorios;
@@ -108,11 +111,11 @@ class ArmarioService {
         return repository.save(armario);
     }
 
-    @PutMapping("/agregarPrenda/{nickname}")
-    public Armario agregarPrenda(@PathVariable("nickname") String nickname, @RequestBody Prenda prenda){
+    @PutMapping("/agregarSuperior/{nickname}")
+    public Armario agregarSuperior(@PathVariable("nickname") String nickname, @RequestBody Superior prenda){
         Armario armarioEncontrado = findClosetByUser(nickname);
         Long numPrendas = armarioEncontrado.getNumPrendas();
-        Prenda newPrenda = new Prenda();
+        Superior newPrenda = new Superior();
         newPrenda.setSeccion(prenda.getSeccion());
         newPrenda.setTipo(prenda.getTipo());
         newPrenda.setFormalidad(prenda.getFormalidad());
@@ -121,6 +124,82 @@ class ArmarioService {
         newPrenda.setFavorito(prenda.isFavorito());
         newPrenda.setDescripcion(prenda.getDescripcion());
         newPrenda.setColor(prenda.getColor());
+        newPrenda.setUrl(prenda.getUrl());
+        newPrenda.setCuello(prenda.getCuello());
+        newPrenda.setManga(prenda.getManga());
+        newPrenda.setArmario(armarioEncontrado);
+        //newPrenda.setImagen(BlobProxy.generateProxy(codeImage(prenda.getImg_url())));
+
+        armarioEncontrado.setNumPrendas((numPrendas + 1));
+        prendaService.crearPrenda(newPrenda);
+        armarioEncontrado.getPrendas().add(newPrenda);
+        
+        return repository.save(armarioEncontrado);
+    }
+
+    @PutMapping("/agregarInferior/{nickname}")
+    public Armario agregarInferior(@PathVariable("nickname") String nickname, @RequestBody Inferior prenda){
+        Armario armarioEncontrado = findClosetByUser(nickname);
+        Long numPrendas = armarioEncontrado.getNumPrendas();
+        Inferior newPrenda = new Inferior();
+        newPrenda.setSeccion(prenda.getSeccion());
+        newPrenda.setTipo(prenda.getTipo());
+        newPrenda.setFormalidad(prenda.getFormalidad());
+        newPrenda.setAbrigo(prenda.getAbrigo());
+        newPrenda.setDisponible(prenda.isDisponible());
+        newPrenda.setFavorito(prenda.isFavorito());
+        newPrenda.setDescripcion(prenda.getDescripcion());
+        newPrenda.setColor(prenda.getColor());
+        newPrenda.setBota(prenda.getBota());
+        newPrenda.setUrl(prenda.getUrl());
+        newPrenda.setArmario(armarioEncontrado);
+        //newPrenda.setImagen(BlobProxy.generateProxy(codeImage(prenda.getImg_url())));
+
+        armarioEncontrado.setNumPrendas((numPrendas + 1));
+        prendaService.crearPrenda(newPrenda);
+        armarioEncontrado.getPrendas().add(newPrenda);
+        
+        return repository.save(armarioEncontrado);
+    }
+
+    @PutMapping("/agregarAccesorio/{nickname}")
+    public Armario agregarAccesorio(@PathVariable("nickname") String nickname, @RequestBody Accesorio prenda){
+        Armario armarioEncontrado = findClosetByUser(nickname);
+        Long numPrendas = armarioEncontrado.getNumPrendas();
+        Accesorio newPrenda = new Accesorio();
+        newPrenda.setSeccion(prenda.getSeccion());
+        newPrenda.setTipo(prenda.getTipo());
+        newPrenda.setFormalidad(prenda.getFormalidad());
+        newPrenda.setAbrigo(prenda.getAbrigo());
+        newPrenda.setDisponible(prenda.isDisponible());
+        newPrenda.setFavorito(prenda.isFavorito());
+        newPrenda.setDescripcion(prenda.getDescripcion());
+        newPrenda.setColor(prenda.getColor());
+        newPrenda.setUrl(prenda.getUrl());
+        newPrenda.setArmario(armarioEncontrado);
+        //newPrenda.setImagen(BlobProxy.generateProxy(codeImage(prenda.getImg_url())));
+
+        armarioEncontrado.setNumPrendas((numPrendas + 1));
+        prendaService.crearPrenda(newPrenda);
+        armarioEncontrado.getPrendas().add(newPrenda);
+        
+        return repository.save(armarioEncontrado);
+    }
+
+    @PutMapping("/agregarZapato/{nickname}")
+    public Armario agregarZapato(@PathVariable("nickname") String nickname, @RequestBody Zapato prenda){
+        Armario armarioEncontrado = findClosetByUser(nickname);
+        Long numPrendas = armarioEncontrado.getNumPrendas();
+        Zapato newPrenda = new Zapato();
+        newPrenda.setSeccion(prenda.getSeccion());
+        newPrenda.setTipo(prenda.getTipo());
+        newPrenda.setFormalidad(prenda.getFormalidad());
+        newPrenda.setAbrigo(prenda.getAbrigo());
+        newPrenda.setDisponible(prenda.isDisponible());
+        newPrenda.setFavorito(prenda.isFavorito());
+        newPrenda.setDescripcion(prenda.getDescripcion());
+        newPrenda.setColor(prenda.getColor());
+        newPrenda.setForma(prenda.getForma());
         newPrenda.setUrl(prenda.getUrl());
         newPrenda.setArmario(armarioEncontrado);
         //newPrenda.setImagen(BlobProxy.generateProxy(codeImage(prenda.getImg_url())));

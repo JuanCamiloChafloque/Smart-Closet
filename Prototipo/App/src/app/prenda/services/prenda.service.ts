@@ -4,6 +4,10 @@ import { environment } from '../../../environments/environment';
 import { Prenda } from './prenda';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Superior } from './superior';
+import { Inferior } from './inferior';
+import { Zapato } from './zapato';
+import { Accesorio } from './accesorio';
 
 @Injectable({
   providedIn: 'root'
@@ -51,8 +55,57 @@ export class PrendaService {
                           + '&searchType=image');
   }
 
-  create(prenda: Prenda, nickname: string) {
-    const url = `http://localhost:8080/agregarPrenda/${nickname}`;
+  createSuperior(prenda: Superior, nickname: string) {
+    const url = `http://localhost:8080/agregarSuperior/${nickname}`;
+    return this.put(url, {
+      seccion: prenda.seccion,
+      tipo: prenda.tipo,
+      formalidad: +prenda.formalidad,
+      abrigo: +prenda.abrigo,
+      color: prenda.color,
+      favorito: prenda.favorito,
+      disponible: prenda.disponible,
+      descripcion: prenda.descripcion,
+      cuello: prenda.cuello,
+      manga: prenda.manga,
+      url: prenda.url
+    });
+  }
+
+  createInferior(prenda: Inferior, nickname: string) {
+    const url = `http://localhost:8080/agregarInferior/${nickname}`;
+    return this.put(url, {
+      seccion: prenda.seccion,
+      tipo: prenda.tipo,
+      formalidad: +prenda.formalidad,
+      abrigo: +prenda.abrigo,
+      color: prenda.color,
+      favorito: prenda.favorito,
+      disponible: prenda.disponible,
+      descripcion: prenda.descripcion,
+      bota: prenda.bota,
+      url: prenda.url
+    });
+  }
+
+  createZapato(prenda: Zapato, nickname: string) {
+    const url = `http://localhost:8080/agregarZapato/${nickname}`;
+    return this.put(url, {
+      seccion: prenda.seccion,
+      tipo: prenda.tipo,
+      formalidad: +prenda.formalidad,
+      abrigo: +prenda.abrigo,
+      color: prenda.color,
+      favorito: prenda.favorito,
+      disponible: prenda.disponible,
+      descripcion: prenda.descripcion,
+      forma: prenda.forma,
+      url: prenda.url
+    });
+  }
+
+  createAccesorio(prenda: Accesorio, nickname: string) {
+    const url = `http://localhost:8080/agregarAccesorio/${nickname}`;
     return this.put(url, {
       seccion: prenda.seccion,
       tipo: prenda.tipo,
@@ -68,22 +121,22 @@ export class PrendaService {
 
   getPrendasSuperiores(nickname: string) {
     const url = `http://localhost:8080/armario/${nickname}/prendas/superior`;
-    return this.get<Prenda[]>(url);
+    return this.get<Superior[]>(url);
   }
 
   getPrendasInferiores(nickname: string) {
     const url = `http://localhost:8080/armario/${nickname}/prendas/inferior`;
-    return this.get<Prenda[]>(url);
+    return this.get<Inferior[]>(url);
   }
 
   getPrendasZapatos(nickname: string) {
     const url = `http://localhost:8080/armario/${nickname}/prendas/zapatos`;
-    return this.get<Prenda[]>(url);
+    return this.get<Zapato[]>(url);
   }
 
   getPrendasAccesorios(nickname: string) {
     const url = `http://localhost:8080/armario/${nickname}/prendas/accesorios`;
-    return this.get<Prenda[]>(url);
+    return this.get<Accesorio[]>(url);
   }
 
   getPrendasFavoritas(nickname: string) {
@@ -91,33 +144,33 @@ export class PrendaService {
     return this.get<Prenda[]>(url);
   }
 
-  editarFavorito(id: number, prenda: Prenda) {
+  editarFavorito(id: number) {
     const url = `http://localhost:8080/modificarFavorito/${id}`;
     return this.put(url, {
-      seccion: prenda.seccion,
-      tipo: prenda.tipo,
-      formalidad: +prenda.formalidad,
-      abrigo: +prenda.abrigo,
-      color: prenda.color,
-      favorito: prenda.favorito,
-      disponible: prenda.disponible,
-      descripcion: prenda.descripcion,
-      url: prenda.url
+      seccion: '',
+      tipo: '',
+      formalidad: -1,
+      abrigo: -1,
+      color: '',
+      favorito: '',
+      disponible: '',
+      descripcion: '',
+      url: ''
     });
   }
 
-  editarDisponible(id: number, prenda: Prenda) {
+  editarDisponible(id: number) {
     const url = `http://localhost:8080/modificarDisponible/${id}`;
     return this.put(url, {
-      seccion: prenda.seccion,
-      tipo: prenda.tipo,
-      formalidad: +prenda.formalidad,
-      abrigo: +prenda.abrigo,
-      color: prenda.color,
-      favorito: prenda.favorito,
-      disponible: prenda.disponible,
-      descripcion: prenda.descripcion,
-      url: prenda.url
+      seccion: '',
+      tipo: '',
+      formalidad: -1,
+      abrigo: -1,
+      color: '',
+      favorito: '',
+      disponible: '',
+      descripcion: '',
+      url: ''
     });
   }
 

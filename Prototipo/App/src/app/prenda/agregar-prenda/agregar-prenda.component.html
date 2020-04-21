@@ -58,6 +58,12 @@
           <div *ngIf="sup == true" class="lbl">
             <label class="lbl-manga">Tipo de manga</label>
           </div>
+          <div *ngIf="inf == true" class="lbl">
+            <label class="lbl-manga">Tipo de bota</label>
+          </div>
+          <div *ngIf="zap == true" class="lbl">
+            <label class="lbl-manga">Tipo de forma</label>
+          </div>
           <div class="lbl">
             <label class="lbl-formalidad">Nivel de formalidad</label>
           </div>
@@ -72,46 +78,76 @@
           </div>
         </div>
         <div class="input-box">
-          <select [(ngModel)]="prenda.seccion" class="input-seccion" (change)="filtrarSeccion()">
-            <option selected disabled>Tipo de prenda...</option>
-            <option value="Superior">Superior</option>
-            <option value="Inferior">Inferior</option>
-            <option value="Accesorio">Accesorio</option>
-            <option value="Zapato">Zapato</option>
-          </select><br>
-          <input class="input-tipo" placeholder="Camisa, Camiseta, Blusa..." type="text" [(ngModel)]="prenda.tipo"><br>
-          <select *ngIf="sup == true" class="input-cuello">
-            <option selected disabled>Tipo de cuello...</option>
-            <option value="1">Redondo</option>
-            <option value="2">Tortuga</option>
-            <option value="3">V</option>
-            <option value="3">Con cuello</option>
-            <option value="4">Escote</option>
-          </select><br>
-          <select *ngIf="sup == true" class="input-manga">
-            <option selected disabled>Tipo de manga...</option>
-            <option value="1">Manga larga</option>
-            <option value="2">Manga corta</option>
-            <option value="3">3/4</option>
-          </select><br>
-          <select [(ngModel)]="prenda.formalidad" class="input-formalidad">
-            <option selected disabled>Nivel de formalidad...</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select><br>
-          <select [(ngModel)]="prenda.abrigo" class="input-abrigo">
-            <option selected disabled>Nivel de abrigo...</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select><br>
-          <input [(ngModel)]="prenda.color" class="input-color" type="color" value="#ff0000"><br>
-          <input [(ngModel)]="prenda.descripcion" class="input-busqueda" [(ngModel)]="query" placeholder="Camisa blanca, Blusa roja..." type="text"> <br>
+          <div class="inp">
+            <select [(ngModel)]="prenda.seccion" class="input-seccion" (change)="filtrarSeccion()">
+              <option selected disabled>Tipo de prenda...</option>
+              <option value="Superior">Superior</option>
+              <option value="Inferior">Inferior</option>
+              <option value="Accesorio">Accesorio</option>
+              <option value="Zapato">Zapato</option>
+            </select>
+          </div>
+          <div class="inp">
+            <input class="input-tipo" placeholder="Camisa, Camiseta, Blusa..." type="text" [(ngModel)]="prenda.tipo">
+          </div>
+          <div *ngIf="sup == true" class="inp">
+            <select [(ngModel)]="prenda.cuello" class="input-cuello">
+              <option selected disabled>Tipo de cuello...</option>
+              <option value="Redondo">Redondo</option>
+              <option value="Tortuga">Tortuga</option>
+              <option value="V">V</option>
+              <option value="Cuello">Cuello</option>
+              <option value="Escote">Escote</option>
+            </select>
+          </div>
+          <div *ngIf="sup == true" class="inp">
+            <select [(ngModel)]="prenda.manga" class="input-manga">
+              <option selected disabled>Tipo de manga...</option>
+              <option value="Manga larga">Manga larga</option>
+              <option value="Manga corta">Manga corta</option>
+              <option value="3/4">3/4</option>
+            </select>
+          </div>
+          <div *ngIf="inf == true" class="inp">
+            <select [(ngModel)]="prenda.bota" class="input-bota">
+              <option selected disabled>Tipo de Bota...</option>
+              <option value="Slim">Slim</option>
+              <option value="Entubada">Entubada</option>
+            </select>
+          </div>
+          <div *ngIf="zap == true" class="inp">
+            <select [(ngModel)]="prenda.forma" class="input-forma">
+              <option selected disabled>Tipo de Forma...</option>
+              <option value="Redonda">Redonda</option>
+              <option value="Punta">Punta</option>
+            </select>
+          </div>
+          <div class="inp">
+            <select [(ngModel)]="prenda.formalidad" class="input-formalidad">
+              <option selected disabled>Nivel de formalidad...</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div class="inp">
+            <select [(ngModel)]="prenda.abrigo" class="input-abrigo">
+              <option selected disabled>Nivel de abrigo...</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div class="inp">
+            <input [(ngModel)]="prenda.color" class="input-color" type="color" value="#ff0000">
+          </div>
+          <div class="inp">
+            <input [(ngModel)]="prenda.descripcion" class="input-busqueda" [(ngModel)]="query" placeholder="Camisa blanca, Blusa roja..." type="text">
+          </div>
           <button class="btn-buscar" (click)="searchImages()">Buscar</button>
         </div>
       </div>

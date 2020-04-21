@@ -1,4 +1,4 @@
-export class Prenda {
+export class Superior {
   constructor(
     public id: number,
     public seccion: string,
@@ -9,10 +9,8 @@ export class Prenda {
     public favorito: boolean,
     public disponible: boolean,
     public descripcion: string,
-    public url: string,
-    public cuello?: string,
-    public manga?: string,
-    public bota?: string,
-    public forma?: string
+    public cuello: string,
+    public manga: string,
+    public url: string
   ) {}
 }

@@ -2,25 +2,27 @@
 GET http://localhost:8080/armario/Chafo/prendas
 
 ###
-GET http://localhost:8080/armario/Chafo/prendas/inferior
+GET http://localhost:8080/armario/Chafo/prendas/favoritos
 
 ###
 GET http://localhost:8080/armario/Chafo/prendas/accesorios
 
 ###
-PUT http://localhost:8080/agregarPrenda/Chafo
+PUT http://localhost:8080/agregarSuperior/Chafo
 Content-Type: application/json
 
 {
     "seccion": "Superior",
     "tipo": "Sueter",
-    "nivel_formalidad": 3,
-    "nivel_abrigo": 5,
+    "formalidad": 3,
+    "abrigo": 5,
     "color": "azul",
     "favorito": false,
     "disponible": true,
     "descripcion": "Sueter Azul",
-    "img_url": "Chafo-1.png"
+    "url": "Chafo-1.png",
+    "manga": "Larga",
+    "cuello": "Redondo"
 }
 
 ###
