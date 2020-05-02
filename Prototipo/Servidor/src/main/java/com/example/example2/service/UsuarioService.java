@@ -1,10 +1,12 @@
 package com.example.example2.service;
 
+import com.example.example2.exceptions.NotFoundException;
 import com.example.example2.model.Armario;
 import com.example.example2.model.Usuario;
 import com.example.example2.model.UsuarioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -62,8 +64,20 @@ class UsuarioService {
         usuarioEncontrado.setNickname(user.getNickname());
         usuarioEncontrado.setPassword(user.getPassword());
         usuarioEncontrado.setCelular(user.getCelular());
+        usuarioEncontrado.setPregunta(user.getPregunta());
+        usuarioEncontrado.setRespuesta(user.getRespuesta());
 
         return repository.save(usuarioEncontrado);
+    }
+
+    @DeleteMapping("/eliminarUsuario/{id}")
+    public void eliminarUsuario(@PathVariable("id") Long id_user) {
+        if(repository.existsById(id_user)){
+            repository.deleteById(id_user);
+        }
+        else {
+            throw new NotFoundException();
+        }
     }
 
 }

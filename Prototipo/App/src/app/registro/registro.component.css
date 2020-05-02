@@ -45,7 +45,7 @@
 }
 
 .lbl {
-  margin-bottom: 4.5px;
+  margin-bottom: 7px;
 }
 
 .form label {
@@ -67,8 +67,8 @@ input {
 }
 
 select {
-  width: 175px;
-  height: 25px;
+  width: 185px;
+  height: 27px;
   margin-bottom: 5px;
   margin-left: 10px;
   border-radius: 5px;
@@ -80,7 +80,7 @@ select {
 
 .btn-box {
   text-align: center;
-  margin-top: 35px;
+  margin-top: 15px;
   margin-bottom: 25px;
 }
 
@@ -96,7 +96,7 @@ button {
 }
 
 .msg-box {
-  margin-bottom: 15px;
+  margin-bottom: 7px;
   font-style: italic;
   font-size: 13px;
 }

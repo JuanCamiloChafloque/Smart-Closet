@@ -39,7 +39,9 @@ export class RegistroService {
       nickname: user.nickname,
       password: user.password,
       ciudad: user.ciudad,
-      celular: user.celular
+      celular: user.celular,
+      pregunta: user.pregunta,
+      respuesta: user.respuesta
     });
   }
 

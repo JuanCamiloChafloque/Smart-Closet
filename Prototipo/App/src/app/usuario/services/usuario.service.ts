@@ -37,6 +37,13 @@ export class UsuarioService {
     );
   }
 
+  private delete<T>(url): Observable<T> {
+    console.log('delete:', url);
+    return this.http.delete<T>(url, {withCredentials: true} ).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   findByNickname(nickname: string) {
     const url = `http://localhost:8080/usuario/${nickname}`;
     return this.get<Usuario>(url);
@@ -57,7 +64,14 @@ export class UsuarioService {
       nickname: user.nickname,
       password: user.password,
       ciudad: user.ciudad,
-      celular: user.celular
+      celular: user.celular,
+      pregunta: user.pregunta,
+      respuesta: user.respuesta
     });
+  }
+
+  remove(id: number) {
+    const url = `http://localhost:8080/eliminarUsuario/${id}`;
+    return this.delete<Usuario>(url);
   }
 }

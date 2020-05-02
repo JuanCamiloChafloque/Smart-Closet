@@ -52,4 +52,23 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  passwordReset() {
+    if (this.user !== '') {
+      for (const actual of this.usuarios) {
+        if (actual.nickname === this.user || actual.correo === this.user) {
+          this.usuario = actual;
+          this.login = true;
+        }
+      }
+      if (this.login === true) {
+        localStorage.setItem('User', this.usuario.nickname);
+        this.router.navigate(['/recuperar-contrasena']);
+      } else {
+        this.message = 'El usuario no existe!';
+      }
+    } else {
+      this.message = 'Digita tu usuario';
+    }
+  }
+
 }

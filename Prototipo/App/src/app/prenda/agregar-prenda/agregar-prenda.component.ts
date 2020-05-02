@@ -30,6 +30,8 @@ export class AgregarPrendaComponent implements OnInit {
   sup = false;
   inf = false;
   zap = false;
+  abrigo = '';
+  formalidad = '';
 
   prenda: Prenda = new Prenda(
     undefined,

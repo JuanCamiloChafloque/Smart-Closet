@@ -40,4 +40,15 @@ export class VerUsuarioComponent implements OnInit {
     this.router.navigate(['/main-page']);
   }
 
+  deleteUser() {
+
+    if (window.confirm('Estás seguro que quieres eliminar tu cuenta?')) {
+      this.userService.remove(this.user.id).subscribe(
+        resultado => {
+          console.log('Usuario eliminado!');
+          this.logout();
+        });
+    }
+  }
+
 }

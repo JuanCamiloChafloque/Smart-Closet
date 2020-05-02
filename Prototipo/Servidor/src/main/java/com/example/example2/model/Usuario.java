@@ -23,13 +23,31 @@ public class Usuario {
     private String password;
     private String ciudad;
     private String celular;
+    private String pregunta;
+    private String respuesta;
 
-    @OneToOne (cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JsonIgnore
     private Armario armario;
 
     public Long getId() {
         return id_user;
+    }
+
+    public String getRespuesta() {
+        return respuesta;
+    }
+
+    public void setRespuesta(String respuesta) {
+        this.respuesta = respuesta;
+    }
+
+    public String getPregunta() {
+        return pregunta;
+    }
+
+    public void setPregunta(String pregunta) {
+        this.pregunta = pregunta;
     }
 
     public void setId(Long id) {

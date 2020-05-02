@@ -8,6 +8,8 @@ export class Usuario {
     public nickname: string,
     public password: string,
     public ciudad: string,
-    public celular: string
+    public celular: string,
+    public pregunta: string,
+    public respuesta: string
   ) {}
 }

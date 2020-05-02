@@ -24,6 +24,8 @@ export class RegistroComponent implements OnInit {
     undefined,
     undefined,
     undefined,
+    undefined,
+    undefined,
     undefined
   );
 
@@ -53,7 +55,6 @@ export class RegistroComponent implements OnInit {
         this.submitted = false;
       }
     }
-
     if (this.submitted === true) {
       if (this.usuario.password === this.confirmPass) {
         this.registroService.create(this.usuario).subscribe(
@@ -77,7 +78,7 @@ export class RegistroComponent implements OnInit {
        this.usuario.genero !== undefined && this.usuario.correo !== undefined &&
        this.usuario.ciudad !== undefined && this.usuario.celular !== undefined &&
        this.usuario.nickname !== undefined && this.usuario.password !== undefined &&
-       this.confirmPass !== '') {
+       this.confirmPass !== '' && this.usuario.pregunta !== '' && this.usuario.respuesta !== '') {
         return true;
     } else {
       this.message = 'Todos los campos son obligatorios';

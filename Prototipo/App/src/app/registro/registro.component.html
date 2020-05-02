@@ -28,6 +28,12 @@
           <label class="lbl-celular">Telefono</label>
         </div>
         <div class="lbl">
+          <label class="lbl-pregSecurity">Pregunta de Seguridad</label>
+        </div>
+        <div class="lbl">
+          <label class="lbl-respSecurity">Respuesta de Seguridad</label>
+        </div>
+        <div class="lbl">
           <label class="lbl-password">Contraseña</label>
         </div>
         <div class="lbl">
@@ -47,6 +53,14 @@
         <input class="input-nickname" type="text" [(ngModel)]="usuario.nickname"><br>
         <input class="input-ciudad" type="text" [(ngModel)]="usuario.ciudad"><br>
         <input class="input-celular" type="text" [(ngModel)]="usuario.celular"><br>
+        <select class="input-pregunta" [(ngModel)]="usuario.pregunta">
+          <option selected disabled>Escoja su pregunta de seguridad...</option>
+          <option value="¿Cuál es el nombre de tu primera mascota?">¿Cuál es el nombre de tu primera mascota?</option>
+          <option value="¿Cuál es tu comida favorita?">¿Cuál es tu comida favorita?</option>
+          <option value="¿Cuál es el nombre de tu madre?">¿Cuál es el nombre de tu madre?</option>
+          <option value="¿Cuál es tu ciudad de nacimiento?">¿Cuál es tu ciudad de nacimiento?</option>
+        </select><br>
+        <input class="input-respuesta" type="text" [(ngModel)]="usuario.respuesta"><br>
         <input class="input-password" type="password" [(ngModel)]="usuario.password"><br>
         <input class="input-confirm" type="password" [(ngModel)]="confirmPass"><br>
       </div>

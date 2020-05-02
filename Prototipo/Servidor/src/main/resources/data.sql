@@ -1,8 +1,8 @@
 insert into armario (id_armario, num_prendas) values (-1, 34);
 insert into armario (id_armario, num_prendas) values (-2, 0);
 
-insert into usuario (id_user, nombre, apellido, genero, correo, nickname, password, ciudad, celular, armario_id_armario) values (-1, 'Juan Camilo', 'Chafloque Mesia', 'Masculino', 'camilochafloque@gmail.com', 'Chafo', 'Chaflo123', 'Bogotá D.C', '3016581019', -1);
-insert into usuario (id_user, nombre, apellido, genero, correo, nickname, password, ciudad, celular, armario_id_armario) values (-2, 'Martin', 'Chafloque Mesia', 'Masculino', 'mart.chafloque@gmail.com', 'Mart', 'Martin123', 'Bogotá D.C', '3158281218', -2);
+insert into usuario (id_user, nombre, apellido, genero, correo, nickname, password, ciudad, celular, pregunta, respuesta, armario_id_armario) values (-1, 'Juan Camilo', 'Chafloque Mesia', 'Masculino', 'camilochafloque@gmail.com', 'Chafo', 'Chaflo123', 'Bogotá D.C', '3016581019', '¿Cuál es tu comida favorita?', 'Pizza', -1);
+insert into usuario (id_user, nombre, apellido, genero, correo, nickname, password, ciudad, celular, pregunta, respuesta, armario_id_armario) values (-2, 'Martin', 'Chafloque Mesia', 'Masculino', 'mart.chafloque@gmail.com', 'Mart', 'Martin123', 'Bogotá D.C', '3158281218', '¿Cuál es tu ciudad de nacimiento?', 'Cali', -2);
 
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-1, 'Superior', 'Camiseta', 2, 2, 'Naranja', false, true, 'Camiseta naranja', '../../../assets/images/Chafo-1.jpg', -1);
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-2, 'Superior', 'Camisa', 5, 4, 'Azul', true, true, 'Camisa Azul manga larga', '../../../assets/images/Chafo-2.jpg', -1);
