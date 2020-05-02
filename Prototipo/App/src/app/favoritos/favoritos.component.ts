@@ -82,8 +82,6 @@ export class FavoritosComponent implements OnInit {
     } else {
       this.message = '';
     }
-
-    this.actualizarDisplay();
   }
 
   actualizarDisplay() {
@@ -101,7 +99,6 @@ export class FavoritosComponent implements OnInit {
     } else if (this.filter.length > 15 && this.filter.length <= 18) {
       display[0].style.top = '175%';
     }
-
   }
 
 }

@@ -7,7 +7,7 @@
   position: fixed;
   width: 235px;
   height: 100vh;
-  background-color: rgb(243, 26, 185);
+  background-color: #C40A92;
   border-right: 4.5px solid black;
 }
 
@@ -127,9 +127,8 @@ a {
 .display-box {
   width: 950px;
   position: absolute;
-  left: 60%;
-  top: 135%;
-  transform: translate(-50%, -50%);
+  left: 22%;
+  top: 18%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
