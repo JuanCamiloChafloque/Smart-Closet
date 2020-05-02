@@ -8,6 +8,7 @@ import { Superior } from '../services/superior';
 import { Inferior } from '../services/inferior';
 import { Zapato } from '../services/zapato';
 import { Accesorio } from '../services/accesorio';
+import { Vestido } from '../services/vestido';
 
 @Component({
   selector: 'app-agregar-prenda',
@@ -138,6 +139,16 @@ export class AgregarPrendaComponent implements OnInit {
           console.log(error);
         }
       );
+    } else if ( this.prenda.seccion === 'Vestido') {
+      this.prendaService.createVestido(this.prenda as Vestido, localStorage.getItem('User')).subscribe(
+        result => {
+          console.log(result);
+          this.router.navigate(['/mi-armario']);
+        },
+        error => {
+          console.log(error);
+        }
+      );
     }
 
   }
@@ -180,6 +191,16 @@ export class AgregarPrendaComponent implements OnInit {
       );
     } else if (this.prenda.seccion === 'Accesorio') {
       this.prendaService.createAccesorio(this.prenda as Accesorio, localStorage.getItem('User')).subscribe(
+        result => {
+          console.log(result);
+          this.router.navigate(['/mi-armario']);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    } else if ( this.prenda.seccion === 'Vestido') {
+      this.prendaService.createVestido(this.prenda as Vestido, localStorage.getItem('User')).subscribe(
         result => {
           console.log(result);
           this.router.navigate(['/mi-armario']);

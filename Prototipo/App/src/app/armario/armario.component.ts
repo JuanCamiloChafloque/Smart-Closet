@@ -12,6 +12,7 @@ export class ArmarioComponent implements OnInit {
 
   user: Usuario;
   llegoUsuario = false;
+  first = true;
 
   constructor(
     private router: Router,
@@ -30,6 +31,18 @@ export class ArmarioComponent implements OnInit {
 
   inicializar() {
     this.llegoUsuario = true;
+  }
+
+  previous() {
+    if (this.first === false) {
+      this.first = true;
+    }
+  }
+
+  next() {
+    if (this.first === true) {
+      this.first = false;
+    }
   }
 
 }

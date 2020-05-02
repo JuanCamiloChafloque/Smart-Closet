@@ -15,6 +15,7 @@ import com.example.example2.model.ArmarioRepository;
 import com.example.example2.model.Inferior;
 import com.example.example2.model.Prenda;
 import com.example.example2.model.Superior;
+import com.example.example2.model.Vestido;
 import com.example.example2.model.Zapato;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,6 +95,18 @@ class ArmarioService {
         return accesorios;
     }
 
+    @GetMapping("/armario/{nickname}/prendas/vestidos")
+    public Iterable<Vestido> getPrendasVestidos(@PathVariable("nickname") String nickname) {
+        ArrayList<Vestido> vestidos = new ArrayList<Vestido>();
+        Iterable<Prenda> prendas = getPrendasUser(nickname);
+        for(Prenda actual: prendas) {
+            if(actual instanceof Vestido){
+                vestidos.add((Vestido)actual);
+            }
+        }
+        return vestidos;
+    }
+
     @GetMapping("/armario/{nickname}/prendas/favoritos")
     public Iterable<Prenda> getPrendasFavoritas(@PathVariable("nickname") String nickname) {
         ArrayList<Prenda> favoritas = new ArrayList<Prenda>();
@@ -167,6 +180,30 @@ class ArmarioService {
         Armario armarioEncontrado = findClosetByUser(nickname);
         Long numPrendas = armarioEncontrado.getNumPrendas();
         Accesorio newPrenda = new Accesorio();
+        newPrenda.setSeccion(prenda.getSeccion());
+        newPrenda.setTipo(prenda.getTipo());
+        newPrenda.setFormalidad(prenda.getFormalidad());
+        newPrenda.setAbrigo(prenda.getAbrigo());
+        newPrenda.setDisponible(prenda.isDisponible());
+        newPrenda.setFavorito(prenda.isFavorito());
+        newPrenda.setDescripcion(prenda.getDescripcion());
+        newPrenda.setColor(prenda.getColor());
+        newPrenda.setUrl(prenda.getUrl());
+        newPrenda.setArmario(armarioEncontrado);
+        //newPrenda.setImagen(BlobProxy.generateProxy(codeImage(prenda.getImg_url())));
+
+        armarioEncontrado.setNumPrendas((numPrendas + 1));
+        prendaService.crearPrenda(newPrenda);
+        armarioEncontrado.getPrendas().add(newPrenda);
+        
+        return repository.save(armarioEncontrado);
+    }
+
+    @PutMapping("/agregarVestido/{nickname}")
+    public Armario agregarVestido(@PathVariable("nickname") String nickname, @RequestBody Vestido prenda){
+        Armario armarioEncontrado = findClosetByUser(nickname);
+        Long numPrendas = armarioEncontrado.getNumPrendas();
+        Vestido newPrenda = new Vestido();
         newPrenda.setSeccion(prenda.getSeccion());
         newPrenda.setTipo(prenda.getTipo());
         newPrenda.setFormalidad(prenda.getFormalidad());

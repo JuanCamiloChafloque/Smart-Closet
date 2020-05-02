@@ -8,6 +8,7 @@ import { Superior } from './superior';
 import { Inferior } from './inferior';
 import { Zapato } from './zapato';
 import { Accesorio } from './accesorio';
+import { Vestido } from './vestido';
 
 @Injectable({
   providedIn: 'root'
@@ -119,6 +120,21 @@ export class PrendaService {
     });
   }
 
+  createVestido(prenda: Vestido, nickname: string) {
+    const url = `http://localhost:8080/agregarVestido/${nickname}`;
+    return this.put(url, {
+      seccion: prenda.seccion,
+      tipo: prenda.tipo,
+      formalidad: +prenda.formalidad,
+      abrigo: +prenda.abrigo,
+      color: prenda.color,
+      favorito: prenda.favorito,
+      disponible: prenda.disponible,
+      descripcion: prenda.descripcion,
+      url: prenda.url
+    });
+  }
+
   getPrendasSuperiores(nickname: string) {
     const url = `http://localhost:8080/armario/${nickname}/prendas/superior`;
     return this.get<Superior[]>(url);
@@ -137,6 +153,11 @@ export class PrendaService {
   getPrendasAccesorios(nickname: string) {
     const url = `http://localhost:8080/armario/${nickname}/prendas/accesorios`;
     return this.get<Accesorio[]>(url);
+  }
+
+  getPrendasVestidos(nickname: string) {
+    const url = `http://localhost:8080/armario/${nickname}/prendas/vestidos`;
+    return this.get<Vestido[]>(url);
   }
 
   getPrendasFavoritas(nickname: string) {

@@ -110,7 +110,21 @@ a {
   opacity: 0.95;
 }
 
-.superiores img, .inferiores img, .zapatos img, .accesorios img {
+.armario-box-sec {
+  width: 600px;
+  height: 562px;
+  border: 1.5px solid black;
+  border-radius: 10px;
+  background-color: #4DC4EB;
+  text-align: center;
+  position: absolute;
+  left: 60%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.95;
+}
+
+.superiores img, .inferiores img, .zapatos img, .accesorios img, .vestidos img {
   width: 140px;
   height: 140px;
 }
@@ -140,7 +154,7 @@ a {
   margin-left: 10px;
 }
 
-.superiores, .inferiores, .zapatos, .accesorios {
+.superiores, .inferiores, .zapatos, .accesorios, .vestidos {
   border: 2px solid black;
   background-color: #C40A92;
   padding: 10px 25px 10px 25px;
@@ -150,11 +164,30 @@ a {
   opacity: 0.90;
 }
 
+.vestidos {
+  margin-left: 55px;
+  margin-top: 9px;
+  width: 142px;
+}
+
 .boton-agregar{
   width: 100%;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 25px;
   margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+}
+
+.boton-agregar-sec{
+  width: 100%;
+  text-align: center;
+  margin-top: 235px;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
 }
 
 .btn-prenda {
@@ -170,6 +203,8 @@ a {
 }
 
 .btn-agregar {
+  margin-left: 15px;
+  margin-right: 15px;
   font-size: 15px;
   height: 45px;
   width: 130px;
@@ -179,4 +214,26 @@ a {
   border: 2px solid black;
   cursor: pointer;
   outline: none;
+}
+
+.prev {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background: url(../../assets/images/previous.png);
+  background-size: cover;
+}
+
+.next {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background: url(../../assets/images/next.png);
+  background-size: cover;
 }

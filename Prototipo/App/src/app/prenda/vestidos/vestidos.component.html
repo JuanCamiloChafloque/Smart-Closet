@@ -40,26 +40,14 @@
   </div>
   <div class="content">
     <div class="title">
-      <img src="../../assets/images/Favorito.png" alt="Star...">
-      <h2>Mis prendas favoritas</h2>
+      <img src="../../../assets/images/vestidos.png" alt="Vestidos...">
+      <h2>Mis vestidos</h2>
     </div>
-    <div class="panel-box">
-      <h2>Filtra tus favoritos</h2>
-      <select [(ngModel)]="seccionSelected" (change)="displayFavorites()">
-        <option selected disabled>Selecciona una sección</option>
-        <option>Superior</option>
-        <option>Inferior</option>
-        <option *ngIf="user.genero == 'Femenino'">Vestido</option>
-        <option>Zapato</option>
-        <option>Accesorio</option>
-        <option>Todas</option>
-      </select>
-    </div>
-    <div class="msg-box">
-      {{message}}
+    <div *ngIf="vacio == true" class="vacio">
+      {{vacioMessage}}
     </div>
     <div class="display-box">
-      <div class="box" *ngFor="let prenda of filter">
+      <div class="box" *ngFor="let prenda of vestidos">
         <div class="image">
           <img src="{{prenda.url}}" alt="Prenda...">
         </div>
@@ -83,8 +71,30 @@
             <h2>{{prenda.abrigo}}/5</h2>
           </div>
         </div>
+        <div class="btn-box">
+          <div *ngIf="prenda.favorito == false" class="btn">
+            <button (click)="cambiarFavorito(prenda.id)" class="btn-nofavorito"></button>
+          </div>
+          <div *ngIf="prenda.favorito == true" class="btn">
+            <button (click)="cambiarFavorito(prenda.id)" class="btn-favorito"></button>
+          </div>
+          <div *ngIf="prenda.disponible == false" class="btn">
+            <button (click)="cambiarDisponible(prenda.id)" class="btn-nodisponible"></button>
+          </div>
+          <div *ngIf="prenda.disponible == true" class="btn">
+            <button (click)="cambiarDisponible(prenda.id)" class="btn-disponible"></button>
+          </div>
+          <div class="btn">
+            <button (click)="eliminarPrenda(prenda.id)" class="btn-eliminar"></button>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+  <div *ngIf="popup == true" class="delete-box">
+    <p>Estás seguro que quieres eliminar esta prenda?</p><br>
+    <button class="btn-popup" (click)="aceptar()">Eliminar</button>
+    <button class="btn-popup" (click)="cancelar()">Cancelar</button>
   </div>
 </div>
 

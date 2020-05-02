@@ -29,6 +29,7 @@ import { AgregarPrendaComponent } from './prenda/agregar-prenda/agregar-prenda.c
 import { HistorialComponent } from './historial/historial.component';
 import { GenerarAtuendoComponent } from './generar-atuendo/generar-atuendo.component';
 import { PasswordComponent } from './usuario/password/password.component';
+import { VestidosComponent } from './prenda/vestidos/vestidos.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { PasswordComponent } from './usuario/password/password.component';
     HistorialComponent,
     GenerarAtuendoComponent,
     PasswordComponent,
+    VestidosComponent,
   ],
   imports: [
     BrowserModule,

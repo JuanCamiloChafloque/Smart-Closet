@@ -39,34 +39,63 @@
     </div>
   </div>
   <div class="content">
-    <div class="armario-box">
-        <div class="title-armario">
-          <img src="../../assets/images/Closet.png" alt="Closet">
-            <h1>Mi Armario</h1>
+    <div *ngIf="first == true" class="armario-box">
+      <div class="title-armario">
+        <img src="../../assets/images/Closet.png" alt="Closet">
+          <h1>Mi Armario</h1>
+      </div>
+      <div class="panel-sup">
+        <div class="superiores">
+          <img src="../../assets/images/superiores.png"><br>
+          <button [routerLink]="['/prendas-superiores']" class="btn-prenda">Superiores</button>
         </div>
-        <div class="panel-sup">
-          <div class="superiores">
-            <img src="../../assets/images/superiores.png"><br>
-            <button [routerLink]="['/prendas-superiores']" class="btn-prenda">Superiores</button>
-          </div>
-          <div class="zapatos">
-            <img src="../../assets/images/zapatos.png"><br>
-            <button [routerLink]="['/prendas-zapatos']" class="btn-prenda">Zapatos</button>
-          </div>
+        <div class="zapatos">
+          <img src="../../assets/images/zapatos.png"><br>
+          <button [routerLink]="['/prendas-zapatos']" class="btn-prenda">Zapatos</button>
         </div>
-        <div class="panel-inf">
-          <div class="inferiores">
-            <img src="../../assets/images/inferiores.png"><br>
-            <button [routerLink]="['/prendas-inferiores']" class="btn-prenda">Inferiores</button>
-          </div>
-          <div class="accesorios">
-            <img src="../../assets/images/accesorios.png"><br>
-            <button [routerLink]="['/prendas-accesorios']" class="btn-prenda">Accesorios</button>
-          </div>
+      </div>
+      <div class="panel-inf">
+        <div class="inferiores">
+          <img src="../../assets/images/inferiores.png"><br>
+          <button [routerLink]="['/prendas-inferiores']" class="btn-prenda">Inferiores</button>
         </div>
-        <div class="boton-agregar">
+        <div class="accesorios">
+          <img src="../../assets/images/accesorios.png"><br>
+          <button [routerLink]="['/prendas-accesorios']" class="btn-prenda">Accesorios</button>
+        </div>
+      </div>
+      <div class="boton-agregar">
+        <div>
+          <button *ngIf="user.genero == 'Femenino' " (click)="previous()" class="prev"></button>
+        </div>
+        <div>
+          <button [routerLink]="['/agregar-prenda']" class="btn-agregar">Agregar Prenda</button>
+        </div>
+        <div>
+          <button *ngIf="user.genero == 'Femenino' " (click)="next()" class="next"></button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="first == false && user.genero == 'Femenino' " class="armario-box-sec">
+      <div class="title-armario">
+        <img src="../../assets/images/Closet.png" alt="Closet">
+          <h1>Mi Armario</h1>
+      </div>
+      <div class="vestidos">
+        <img src="../../assets/images/vestidos.png"><br>
+        <button [routerLink]="['/prendas-vestidos']" class="btn-prenda">Vestidos</button>
+      </div>
+      <div class="boton-agregar-sec">
+          <div>
+            <button *ngIf="user.genero == 'Femenino' " (click)="previous()" class="prev"></button>
+          </div>
+          <div>
             <button [routerLink]="['/agregar-prenda']" class="btn-agregar">Agregar Prenda</button>
-        </div>
+          </div>
+          <div>
+            <button *ngIf="user.genero == 'Femenino' " (click)="next()" class="next"></button>
+          </div>
+      </div>
     </div>
   </div>
 </div>

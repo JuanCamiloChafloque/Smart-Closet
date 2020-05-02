@@ -16,6 +16,7 @@ import { AgregarPrendaComponent } from './prenda/agregar-prenda/agregar-prenda.c
 import { HistorialComponent } from './historial/historial.component';
 import { GenerarAtuendoComponent } from './generar-atuendo/generar-atuendo.component';
 import { PasswordComponent } from './usuario/password/password.component';
+import { VestidosComponent } from './prenda/vestidos/vestidos.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'prendas-inferiores', component: InferiorComponent },
   { path: 'prendas-zapatos', component: ZapatosComponent },
   { path: 'prendas-accesorios', component: AccesoriosComponent },
+  { path: 'prendas-vestidos', component: VestidosComponent },
   { path: 'agregar-prenda', component: AgregarPrendaComponent },
   { path: 'historial', component: HistorialComponent },
   { path: 'generar-atuendo', component: GenerarAtuendoComponent },

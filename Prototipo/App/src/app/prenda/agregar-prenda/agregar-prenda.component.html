@@ -83,6 +83,7 @@
               <option selected disabled>Tipo de prenda...</option>
               <option value="Superior">Superior</option>
               <option value="Inferior">Inferior</option>
+              <option *ngIf="user.genero == 'Femenino'" value="Vestido">Vestido</option>
               <option value="Accesorio">Accesorio</option>
               <option value="Zapato">Zapato</option>
             </select>
