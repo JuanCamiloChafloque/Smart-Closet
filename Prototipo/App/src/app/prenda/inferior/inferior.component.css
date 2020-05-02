@@ -259,3 +259,34 @@ button {
 .btn {
   margin-bottom: 10px;
 }
+
+.delete-box {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 10px;
+  position: absolute;
+  width: 550px;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  color: white;
+  opacity: 0.92;
+}
+
+.btn-popup {
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 14px;
+  height: 45px;
+  width: 115px;
+  border-radius: 10px;
+  background-color: #C40A92;
+  color: white;
+  border: 1.5px solid black;
+  cursor: pointer;
+  margin-top: 15px;
+  outline: none;
+}

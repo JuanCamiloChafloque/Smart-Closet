@@ -71,6 +71,11 @@
       </div>
     </div>
   </div>
+  <div *ngIf="popup == true" class="delete-box">
+    <p>Estás seguro que quieres eliminar tu cuenta?</p><br>
+    <button (click)="aceptar()">Eliminar</button>
+    <button (click)="cancelar()">Cancelar</button>
+  </div>
 </div>
 
 

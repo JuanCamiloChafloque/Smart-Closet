@@ -161,3 +161,19 @@ button {
   margin-top: 15px;
   outline: none;
 }
+
+.delete-box {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 10px;
+  position: absolute;
+  width: 550px;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  color: white;
+  opacity: 0.92;
+}

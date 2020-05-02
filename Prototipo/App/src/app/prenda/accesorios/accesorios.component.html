@@ -91,6 +91,11 @@
       </div>
     </div>
   </div>
+  <div *ngIf="popup == true" class="delete-box">
+    <p>Estás seguro que quieres eliminar esta prenda?</p><br>
+    <button class="btn-popup" (click)="aceptar()">Eliminar</button>
+    <button class="btn-popup" (click)="cancelar()">Cancelar</button>
+  </div>
 </div>
 
 

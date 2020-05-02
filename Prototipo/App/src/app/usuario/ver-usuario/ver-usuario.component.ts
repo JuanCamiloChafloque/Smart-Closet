@@ -13,6 +13,7 @@ export class VerUsuarioComponent implements OnInit {
 
   user: Usuario = undefined;
   llegoUsuario = false;
+  popup = false;
 
   constructor(
     private router: Router,
@@ -41,14 +42,19 @@ export class VerUsuarioComponent implements OnInit {
   }
 
   deleteUser() {
+    this.popup = true;
+  }
 
-    if (window.confirm('Estás seguro que quieres eliminar tu cuenta?')) {
-      this.userService.remove(this.user.id).subscribe(
-        resultado => {
-          console.log('Usuario eliminado!');
-          this.logout();
-        });
-    }
+  aceptar() {
+    this.userService.remove(this.user.id).subscribe(
+      resultado => {
+        console.log('Usuario eliminado!');
+        this.logout();
+      });
+  }
+
+  cancelar() {
+    this.popup = false;
   }
 
 }

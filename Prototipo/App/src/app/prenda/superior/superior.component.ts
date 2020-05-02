@@ -18,6 +18,8 @@ export class SuperiorComponent implements OnInit {
   llegoPrenda = false;
   vacioMessage = '';
   vacio = false;
+  popup = false;
+  idEliminar;
   superiores: Superior[];
 
   constructor(
@@ -97,22 +99,29 @@ export class SuperiorComponent implements OnInit {
   }
 
   eliminarPrenda(id: number) {
-
-    if (window.confirm('Estás seguro que quieres eliminar la prenda?')) {
-      let prendaEliminar: Prenda;
-      this.prendaService.eliminarPrenda(id).subscribe(
-        results => {
-          console.log(results);
-        }
-      );
-      for (const prenda of this.superiores) {
-        if (prenda.id === id) {
-          prendaEliminar = prenda;
-        }
-      }
-      this.superiores = this.superiores.filter(obj => obj !== prendaEliminar);
-    }
-
+    this.idEliminar = id;
+    this.popup = true;
   }
+
+  aceptar() {
+    let prendaEliminar: Prenda;
+    this.prendaService.eliminarPrenda(this.idEliminar).subscribe(
+      results => {
+        console.log(results);
+      }
+    );
+    for (const prenda of this.superiores) {
+      if (prenda.id === this.idEliminar) {
+        prendaEliminar = prenda;
+      }
+    }
+    this.superiores = this.superiores.filter(obj => obj !== prendaEliminar);
+    this.popup = false;
+  }
+
+  cancelar() {
+    this.popup = false;
+  }
+
 
 }

@@ -18,6 +18,8 @@ export class ZapatosComponent implements OnInit {
   llegoPrenda = false;
   vacioMessage = '';
   vacio = false;
+  popup = false;
+  idEliminar;
   zapatos: Zapato[];
 
   constructor(
@@ -98,22 +100,28 @@ export class ZapatosComponent implements OnInit {
   }
 
   eliminarPrenda(id: number) {
+    this.idEliminar = id;
+    this.popup = true;
+  }
 
-    if (window.confirm('Estás seguro que quieres eliminar la prenda?')) {
-      let prendaEliminar: Prenda;
-      this.prendaService.eliminarPrenda(id).subscribe(
-        results => {
-          console.log(results);
-        }
-      );
-      for (const prenda of this.zapatos) {
-        if (prenda.id === id) {
-          prendaEliminar = prenda;
-        }
+  aceptar() {
+    let prendaEliminar: Prenda;
+    this.prendaService.eliminarPrenda(this.idEliminar).subscribe(
+      results => {
+        console.log(results);
       }
-      this.zapatos = this.zapatos.filter(obj => obj !== prendaEliminar);
+    );
+    for (const prenda of this.zapatos) {
+      if (prenda.id === this.idEliminar) {
+        prendaEliminar = prenda;
+      }
     }
+    this.zapatos = this.zapatos.filter(obj => obj !== prendaEliminar);
+    this.popup = false;
+  }
 
+  cancelar() {
+    this.popup = false;
   }
 
 }
