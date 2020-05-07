@@ -27,6 +27,8 @@ export class AgregarPrendaComponent implements OnInit {
   selectedImage = false;
   foundImage;
   imageUser;
+  colors;
+  hexColor = '';
 
   sup = false;
   inf = false;
@@ -65,6 +67,22 @@ export class AgregarPrendaComponent implements OnInit {
 
   inicializar() {
     this.llegoUsuario = true;
+    this.colors = new Map<string, string>();
+    this.colors.set('#ffffff', 'Blanco');
+    this.colors.set('#808080', 'Gris');
+    this.colors.set('#c0c0c0', 'Gris claro');
+    this.colors.set('#000000', 'Negro');
+    this.colors.set('#ff0000', 'Rojo');
+    this.colors.set('#800000', 'Marrón');
+    this.colors.set('#ffff00', 'Amarillo');
+    this.colors.set('#00ff00', 'Verde claro');
+    this.colors.set('#008000', 'Verde');
+    this.colors.set('#00ffff', 'Azul claro');
+    this.colors.set('#0000ff', 'Azul');
+    this.colors.set('#ff00ff', 'Fuscia');
+    this.colors.set('#800080', 'Morado');
+    this.colors.set('#fa8072', 'Salmon');
+    this.colors.set('#ff8000', 'Naranja');
   }
 
   inicializarImagenes(data) {
@@ -96,6 +114,7 @@ export class AgregarPrendaComponent implements OnInit {
   crearPrendaBusqueda() {
     this.prenda.disponible = true;
     this.prenda.favorito = false;
+    this.prenda.color = this.colors.get(this.hexColor);
     this.prenda.url = this.foundImage;
     console.log(this.prenda);
 
@@ -156,6 +175,7 @@ export class AgregarPrendaComponent implements OnInit {
   crearPrendaSubida() {
     this.prenda.disponible = true;
     this.prenda.favorito = false;
+    this.prenda.color = this.colors.get(this.hexColor);
     this.prenda.url = '../../../assets/images/' + this.imageUser.name;
     console.log(this.prenda);
 

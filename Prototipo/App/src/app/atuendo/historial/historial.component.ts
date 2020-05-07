@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from '../usuario/services/usuario';
+import { Usuario } from 'src/app/usuario/services/usuario';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UsuarioService } from '../usuario/services/usuario.service';
+import { UsuarioService } from 'src/app/usuario/services/usuario.service';
 
 @Component({
-  selector: 'app-generar-atuendo',
-  templateUrl: './generar-atuendo.component.html',
-  styleUrls: ['./generar-atuendo.component.css']
+  selector: 'app-historial',
+  templateUrl: './historial.component.html',
+  styleUrls: ['./historial.component.css']
 })
-export class GenerarAtuendoComponent implements OnInit {
+export class HistorialComponent implements OnInit {
 
   user: Usuario;
   llegoUsuario = false;

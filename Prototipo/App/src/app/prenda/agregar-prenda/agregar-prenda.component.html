@@ -21,8 +21,8 @@
     </div>
     <div class="cont-box">
       <div class="generate-box">
-        <a><img src="../../../assets/images/GenerarAtuendo.png" alt=""></a><br>
-        <a>Generar atuendo</a>
+        <a [routerLink]="['/generar-atuendo']"><img src="../../../assets/images/GenerarAtuendo.png" alt=""></a><br>
+        <a [routerLink]="['/generar-atuendo']">Generar atuendo</a>
       </div>
       <div class="closet-box">
         <a [routerLink]="['/mi-armario']"><img src="../../../assets/images/MiArmario.png" alt=""></a>
@@ -33,8 +33,8 @@
         <a [routerLink]="['/favoritos']">Favoritos</a>
       </div>
       <div class="history-box">
-        <a><img src="../../../assets/images/GestionarAtuendo.png" alt=""></a>
-        <a href="#">Gestionar atuendos</a>
+        <a [routerLink]="['/mis-atuendos']"><img src="../../../assets/images/GestionarAtuendo.png" alt=""></a>
+        <a [routerLink]="['/mis-atuendos']">Gestionar atuendos</a>
       </div>
     </div>
   </div>
@@ -144,7 +144,10 @@
             </select>
           </div>
           <div class="inp">
-            <input [(ngModel)]="prenda.color" class="input-color" type="color" value="#ff0000">
+            <input [(ngModel)]="hexColor" class="input-color" type="color" value="#ff0000" list="colors">
+            <datalist id="colors">
+                <option *ngFor="let color of colors.keys()">{{color}}</option>
+            </datalist>
           </div>
           <div class="inp">
             <input [(ngModel)]="prenda.descripcion" class="input-busqueda" [(ngModel)]="query" placeholder="Camisa blanca, Blusa roja..." type="text">

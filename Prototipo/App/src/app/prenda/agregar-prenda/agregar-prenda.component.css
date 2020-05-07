@@ -217,6 +217,12 @@ input[type="color"] {
   width: 172px;
 }
 
+datalist {
+  width: 100%;
+  border-radius: 10px;
+  border: 1.5px solid #C40A92;
+}
+
 select {
   width: 175px;
   height: 25px;

@@ -13,10 +13,13 @@ import { InferiorComponent } from './prenda/inferior/inferior.component';
 import { ZapatosComponent } from './prenda/zapatos/zapatos.component';
 import { AccesoriosComponent } from './prenda/accesorios/accesorios.component';
 import { AgregarPrendaComponent } from './prenda/agregar-prenda/agregar-prenda.component';
-import { HistorialComponent } from './historial/historial.component';
 import { GenerarAtuendoComponent } from './generar-atuendo/generar-atuendo.component';
 import { PasswordComponent } from './usuario/password/password.component';
 import { VestidosComponent } from './prenda/vestidos/vestidos.component';
+import { VerAtuendosComponent } from './atuendo/ver-atuendos/ver-atuendos.component';
+import { HistorialComponent } from './atuendo/historial/historial.component';
+import { CompartirComponent } from './atuendo/compartir/compartir.component';
+import { CrearAtuendoComponent } from './atuendo/crear-atuendo/crear-atuendo.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -33,9 +36,12 @@ const routes: Routes = [
   { path: 'prendas-accesorios', component: AccesoriosComponent },
   { path: 'prendas-vestidos', component: VestidosComponent },
   { path: 'agregar-prenda', component: AgregarPrendaComponent },
-  { path: 'historial', component: HistorialComponent },
   { path: 'generar-atuendo', component: GenerarAtuendoComponent },
   { path: 'recuperar-contrasena', component: PasswordComponent },
+  { path: 'mis-atuendos', component: VerAtuendosComponent },
+  { path: 'historial', component: HistorialComponent },
+  { path: 'compartir', component: CompartirComponent },
+  { path: 'crear-atuendo', component: CrearAtuendoComponent },
   { path: '', pathMatch: 'full', redirectTo: '/main-page' }
 ];
 

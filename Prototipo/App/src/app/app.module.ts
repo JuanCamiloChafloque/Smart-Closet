@@ -26,10 +26,14 @@ import { ZapatosComponent } from './prenda/zapatos/zapatos.component';
 import { AccesoriosComponent } from './prenda/accesorios/accesorios.component';
 import { PrendaService } from './prenda/services/prenda.service';
 import { AgregarPrendaComponent } from './prenda/agregar-prenda/agregar-prenda.component';
-import { HistorialComponent } from './historial/historial.component';
 import { GenerarAtuendoComponent } from './generar-atuendo/generar-atuendo.component';
 import { PasswordComponent } from './usuario/password/password.component';
 import { VestidosComponent } from './prenda/vestidos/vestidos.component';
+import { CrearAtuendoComponent } from './atuendo/crear-atuendo/crear-atuendo.component';
+import { HistorialComponent } from './atuendo/historial/historial.component';
+import { CompartirComponent } from './atuendo/compartir/compartir.component';
+import { VerAtuendosComponent } from './atuendo/ver-atuendos/ver-atuendos.component';
+import { AtuendoService } from './atuendo/services/atuendo.service';
 
 @NgModule({
   declarations: [
@@ -47,10 +51,13 @@ import { VestidosComponent } from './prenda/vestidos/vestidos.component';
     ZapatosComponent,
     AccesoriosComponent,
     AgregarPrendaComponent,
-    HistorialComponent,
     GenerarAtuendoComponent,
     PasswordComponent,
     VestidosComponent,
+    CrearAtuendoComponent,
+    HistorialComponent,
+    CompartirComponent,
+    VerAtuendosComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +75,8 @@ import { VestidosComponent } from './prenda/vestidos/vestidos.component';
     ClimaService,
     FavoritoService,
     ArmarioService,
-    PrendaService
+    PrendaService,
+    AtuendoService
   ],
   bootstrap: [AppComponent]
 })
