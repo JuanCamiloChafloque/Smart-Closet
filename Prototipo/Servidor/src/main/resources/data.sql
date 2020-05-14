@@ -2,14 +2,14 @@ insert into armario (id_armario, num_prendas) values (-1, 34);
 insert into armario (id_armario, num_prendas) values (-2, 0);
 
 insert into usuario (id_user, nombre, apellido, genero, correo, nickname, password, ciudad, celular, pregunta, respuesta, armario_id_armario) values (-1, 'Juan Camilo', 'Chafloque Mesia', 'Masculino', 'camilochafloque@gmail.com', 'Chafo', 'Chaflo123', 'Bogotá D.C', '3016581019', '¿Cuál es tu comida favorita?', 'Pizza', -1);
-insert into usuario (id_user, nombre, apellido, genero, correo, nickname, password, ciudad, celular, pregunta, respuesta, armario_id_armario) values (-2, 'Martin', 'Chafloque Mesia', 'Masculino', 'mart.chafloque@gmail.com', 'Mart', 'Martin123', 'Bogotá D.C', '3158281218', '¿Cuál es tu ciudad de nacimiento?', 'Cali', -2);
+insert into usuario (id_user, nombre, apellido, genero, correo, nickname, password, ciudad, celular, pregunta, respuesta, armario_id_armario) values (-2, 'María', 'Rodriguez Gonzalez', 'Femenino', 'maria_rod@gmail.com', 'Mary', 'Mari123', 'Bogotá D.C', '3158281218', '¿Cuál es tu ciudad de nacimiento?', 'Cali', -2);
 
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-1, 'Superior', 'Camiseta', 2, 2, 'Naranja', false, true, 'Camiseta naranja', '../../../assets/images/Chafo-1.jpg', -1);
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-2, 'Superior', 'Camisa', 5, 4, 'Azul', true, true, 'Camisa Azul manga larga', '../../../assets/images/Chafo-2.jpg', -1);
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-3, 'Superior', 'Camisa', 4, 2, 'Verde', false, true, 'Camisa verde manga corta', '../../../assets/images/Chafo-3.jpg', -1);
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-4, 'Superior', 'Camiseta', 2, 2, 'Azul', false, true, 'Camiseta azul', '../../../assets/images/Chafo-4.jpg', -1);
-insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-5, 'Superior', 'Camisa', 3, 2, 'Amarilla', true, true, 'Camisa amarilla manga corta', '../../../assets/images/Chafo-5.jpg', -1);
-insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-6, 'Superior', 'Camiseta', 2, 2, 'Roja', false, true, 'Camiseta roja', '../../../assets/images/Chafo-6.jpg', -1);
+insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-5, 'Superior', 'Camisa', 3, 2, 'Amarillo', true, true, 'Camisa amarilla manga corta', '../../../assets/images/Chafo-5.jpg', -1);
+insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-6, 'Superior', 'Camiseta', 2, 2, 'Rojo', false, true, 'Camiseta roja', '../../../assets/images/Chafo-6.jpg', -1);
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-7, 'Superior', 'Chaqueta', 2, 5, 'Naranja', true, true, 'Hoodie naranja', '../../../assets/images/Chafo-7.jpg', -1);
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-8, 'Superior', 'Chaqueta', 3, 5, 'Gris', true, true, 'Chaqueta gris', '../../../assets/images/Chafo-8.jpg', -1);
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-9, 'Inferior', 'Jeans', 3, 3, 'Azul', true, true, 'Jeans azules', '../../../assets/images/Chafo-9.jpg', -1);
@@ -29,14 +29,14 @@ insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorit
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-23, 'Accesorio', 'Beanie', 1, 4, 'Gris', true, true, 'Beanie gris', '../../../assets/images/Chafo-23.jpg', -1);
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-24, 'Accesorio', 'Beanie', 1, 4, 'Negro', false, true, 'Beanie negro', '../../../assets/images/Chafo-24.jpg', -1);
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-25, 'Zapato', 'Tenis', 2, 2, 'Blanco', true, true, 'Tenis blancos', '../../../assets/images/Chafo-25.jpg', -1);
-insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-26, 'Zapato', 'Zapatillas', 1, 2, 'Roja', false, true, 'Zapatillas rojas', '../../../assets/images/Chafo-26.jpg', -1);
+insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-26, 'Zapato', 'Zapatillas', 1, 2, 'Rojo', false, true, 'Zapatillas rojas', '../../../assets/images/Chafo-26.jpg', -1);
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-27, 'Zapato', 'Zaptatos', 3, 2, 'Azul', true, true, 'Zapatos azules', '../../../assets/images/Chafo-27.jpg', -1);
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-28, 'Zapato', 'Tenis', 2, 2, 'Negro', true, true, 'Tenis negros', '../../../assets/images/Chafo-28.jpg', -1);
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-29, 'Accesorio', 'Cachucha', 2, 3, 'Blanco', false, true, 'Cachucha blanca', '../../../assets/images/Chafo-29.jpg', -1);
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-30, 'Zapato', 'Zapatillas', 1, 2, 'Azul', false, true, 'Zapatillas azules', '../../../assets/images/Chafo-30.jpg', -1);
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-31, 'Inferior', 'Jeans', 2, 3, 'Negro', false, true, 'Jeans negros', '../../../assets/images/Chafo-31.jpg', -1);
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-32, 'Inferior', 'Sudadera', 1, 2, 'Negro', false, true, 'Sudadera negra', '../../../assets/images/Chafo-32.jpg', -1);
-insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-33, 'Superior', 'Camisa', 4, 2, 'Blanca', false, true, 'Camisa blanca manga corta', '../../../assets/images/Chafo-33.jpg', -1);
+insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-33, 'Superior', 'Camisa', 4, 2, 'Blanco', false, true, 'Camisa blanca manga corta', '../../../assets/images/Chafo-33.jpg', -1);
 insert into prenda (id_prenda, seccion, tipo, formalidad, abrigo, color, favorito, disponible, descripcion, url, armario_id_armario) values (-34, 'Superior', 'Chaqueta', 2, 5, 'Negro', true, true, 'Hoodie negro', '../../../assets/images/Chafo-34.jpg', -1);
 
 insert into superior (id_prenda, cuello, manga) values (-1, 'Redondo', 'Manga corta');
@@ -73,3 +73,15 @@ insert into inferior (id_prenda, bota) values (-31, 'Entubado');
 insert into inferior (id_prenda, bota) values (-32, 'Entubado');
 insert into superior (id_prenda, cuello, manga) values (-33, 'Cuello', 'Manga corta');
 insert into superior (id_prenda, cuello, manga) values (-34, 'Redondo', 'Manga larga');
+
+insert into atuendo (id_atuendo, favorito, armario_id_armario) values (-1, false, -1);
+insert into atuendo (id_atuendo, favorito, armario_id_armario) values (-2, true, -1);
+
+insert into atuendoxprenda (id_atuendo_id_atuendo, id_prenda_id_prenda) values (-1, -1);
+insert into atuendoxprenda (id_atuendo_id_atuendo, id_prenda_id_prenda) values (-1, -9);
+insert into atuendoxprenda (id_atuendo_id_atuendo, id_prenda_id_prenda) values (-1, -26);
+insert into atuendoxprenda (id_atuendo_id_atuendo, id_prenda_id_prenda) values (-1, -29);
+insert into atuendoxprenda (id_atuendo_id_atuendo, id_prenda_id_prenda) values (-2, -6);
+insert into atuendoxprenda (id_atuendo_id_atuendo, id_prenda_id_prenda) values (-2, -31);
+insert into atuendoxprenda (id_atuendo_id_atuendo, id_prenda_id_prenda) values (-2, -30);
+insert into atuendoxprenda (id_atuendo_id_atuendo, id_prenda_id_prenda) values (-2, -23);

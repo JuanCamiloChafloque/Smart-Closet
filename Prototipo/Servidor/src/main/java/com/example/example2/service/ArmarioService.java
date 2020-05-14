@@ -8,10 +8,15 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.Blob;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.example.example2.model.Accesorio;
 import com.example.example2.model.Armario;
 import com.example.example2.model.ArmarioRepository;
+import com.example.example2.model.Atuendo;
+import com.example.example2.model.AtuendoPrendaId;
+import com.example.example2.model.AtuendoRepository;
+import com.example.example2.model.AtuendoXPrenda;
 import com.example.example2.model.Inferior;
 import com.example.example2.model.Prenda;
 import com.example.example2.model.Superior;
@@ -36,6 +41,11 @@ class ArmarioService {
 
     @Autowired
     private PrendaService prendaService;
+
+    @Autowired
+    private AtuendoService atuendoService;
+
+    @Autowired AtuendoRepository atuendoRepository;
     
     @GetMapping("/armario/{nickname}")
     public Armario findClosetByUser(@PathVariable("nickname") String nickname) {
@@ -45,6 +55,23 @@ class ArmarioService {
     @GetMapping("/armario/{nickname}/prendas")
     public Iterable<Prenda> getPrendasUser(@PathVariable("nickname") String nickname) {
         return findClosetByUser(nickname).getPrendas();
+    }
+
+    @GetMapping("/armario/{nickname}/atuendos")
+    public Iterable<Atuendo> getAtuendosUser(@PathVariable("nickname") String nickname){
+        return findClosetByUser(nickname).getAtuendos();
+    }
+
+    @GetMapping("/armario/{nickname}/{id}/prendas")
+    public Iterable<Prenda> getPrendasAtuendo(@PathVariable("nickname") String nickname, @PathVariable("id") Long id){
+        List<Prenda> prendas = new ArrayList<Prenda>();
+        Iterable<AtuendoXPrenda> atuendoPrendas = atuendoService.findById(id).getPrendas();
+        for(AtuendoXPrenda actual: atuendoPrendas){
+            if(actual.getAtuendoId().getId() == id){
+                prendas.add(actual.getPrendaId());
+            }        
+        }
+        return prendas;
     }
 
     @GetMapping("/armario/{nickname}/prendas/superior")
@@ -119,9 +146,54 @@ class ArmarioService {
         return favoritas;
     }
 
+    @GetMapping("/armario/{nickname}/atuendos/favoritos")
+    public Iterable<Atuendo> getAtuendosFavoritos(@PathVariable("nickname") String nickname){
+        ArrayList<Atuendo> favoritos = new ArrayList<Atuendo>();
+        Iterable<Atuendo> atuendos = getAtuendosUser(nickname);
+        for(Atuendo actual: atuendos){
+            if(actual.isFavorito()){
+                favoritos.add(actual);
+            }
+        }
+        return favoritos;
+    }
+
     @PostMapping("/crearArmario")
     public Armario crearArmario(@RequestBody Armario armario) {
         return repository.save(armario);
+    }
+
+    /*@PutMapping("/crearAtuendo/{nickname}")
+    public Armario crearAtuendo(@PathVariable("nickname") String nickname, @RequestBody Atuendo atuendo){
+        Armario armarioEncontrado = findClosetByUser(nickname);
+        Atuendo newAtuendo = new Atuendo();
+        newAtuendo.setFavorito(false);
+        newAtuendo.setArmario(armarioEncontrado);
+
+        return repository.save(armarioEncontrado);
+    }*/
+
+    @PutMapping("/agregarAtuendo/{nickname}")
+    public Armario agregarPrendaAtuendo(@PathVariable("nickname") String nickname,  @RequestBody List<Prenda> prendas){
+        Armario armarioEncontrado = findClosetByUser(nickname);
+        Atuendo newAtuendo = new Atuendo();
+        newAtuendo.setFavorito(false);
+        newAtuendo.setArmario(armarioEncontrado);
+        Atuendo atuendoCreado = atuendoService.crearAtuendo(newAtuendo);
+
+        for(Prenda actual: prendas){
+            AtuendoXPrenda nuevo = new AtuendoXPrenda();
+            AtuendoPrendaId id = new AtuendoPrendaId();
+            id.setIdAtuendo(atuendoCreado.getId());
+            id.setIdPrenda(actual.getId());
+            nuevo.setEmbId(id);
+            nuevo.setAtuendoId(atuendoCreado);
+            nuevo.setPrendaId(actual);
+            atuendoCreado.getPrendas().add(nuevo);
+            atuendoRepository.save(atuendoCreado);
+        }
+
+        return repository.save(armarioEncontrado);
     }
 
     @PutMapping("/agregarSuperior/{nickname}")

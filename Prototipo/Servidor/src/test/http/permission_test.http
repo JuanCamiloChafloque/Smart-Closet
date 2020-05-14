@@ -5,7 +5,10 @@ GET http://localhost:8080/armario/Chafo/prendas
 GET http://localhost:8080/armario/Chafo/prendas/favoritos
 
 ###
-GET http://localhost:8080/armario/Chafo/prendas/accesorios
+GET http://localhost:8080/armario/Chafo/prendas/inferior
+
+###
+GET http://localhost:8080/armario/Chafo/-1/prendas
 
 ###
 PUT http://localhost:8080/agregarSuperior/Chafo
