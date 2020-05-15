@@ -64,6 +64,9 @@
           <div *ngIf="zap == true" class="lbl">
             <label class="lbl-manga">Tipo de forma</label>
           </div>
+          <div *ngIf="ves == true" class="lbl">
+            <label class="lbl-largo">Largo del vestido</label>
+          </div>
           <div class="lbl">
             <label class="lbl-formalidad">Nivel de formalidad</label>
           </div>
@@ -121,6 +124,13 @@
               <option selected disabled>Tipo de Forma...</option>
               <option value="Redonda">Redonda</option>
               <option value="Punta">Punta</option>
+            </select>
+          </div>
+          <div *ngIf="ves == true" class="inp">
+            <select [(ngModel)]="prenda.largo" class="input-largo">
+              <option selected disabled>Largo del vestido...</option>
+              <option value="Corto">Corto</option>
+              <option value="Largo">Largo</option>
             </select>
           </div>
           <div class="inp">

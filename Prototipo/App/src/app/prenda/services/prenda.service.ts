@@ -131,6 +131,7 @@ export class PrendaService {
       favorito: prenda.favorito,
       disponible: prenda.disponible,
       descripcion: prenda.descripcion,
+      largo: prenda.largo,
       url: prenda.url
     });
   }

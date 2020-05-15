@@ -33,6 +33,7 @@ export class AgregarPrendaComponent implements OnInit {
   sup = false;
   inf = false;
   zap = false;
+  ves = false;
   abrigo = '';
   formalidad = '';
 
@@ -79,10 +80,13 @@ export class AgregarPrendaComponent implements OnInit {
     this.colors.set('#008000', 'Verde');
     this.colors.set('#00ffff', 'Azul claro');
     this.colors.set('#0000ff', 'Azul');
-    this.colors.set('#ff00ff', 'Fuscia');
+    this.colors.set('#000080', 'Azul oscuro');
+    this.colors.set('#808000', 'Oliva');
+    this.colors.set('#ff00ff', 'Fucsia');
     this.colors.set('#800080', 'Morado');
     this.colors.set('#fa8072', 'Salmon');
     this.colors.set('#ff8000', 'Naranja');
+    this.colors.set('#fff8e7', 'Beige');
   }
 
   inicializarImagenes(data) {
@@ -238,18 +242,27 @@ export class AgregarPrendaComponent implements OnInit {
       this.sup = true;
       this.zap = false;
       this.inf = false;
+      this.ves = false;
     } else if (this.prenda.seccion === 'Inferior') {
       this.sup = false;
       this.zap = false;
+      this.ves = false;
       this.inf = true;
     } else if (this.prenda.seccion === 'Zapato') {
       this.sup = false;
       this.zap = true;
       this.inf = false;
+      this.ves = false;
+    } else if (this.prenda.seccion === 'Vestido') {
+      this.ves = true;
+      this.sup = false;
+      this.zap = false;
+      this.inf = false;
     } else {
       this.sup = false;
       this.zap = false;
       this.inf = false;
+      this.ves = false;
     }
   }
 

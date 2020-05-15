@@ -9,6 +9,7 @@ export class Vestido {
     public favorito: boolean,
     public disponible: boolean,
     public descripcion: string,
+    public largo: string,
     public url: string
   ) {}
 }

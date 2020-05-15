@@ -13,6 +13,7 @@ export class Prenda {
     public cuello?: string,
     public manga?: string,
     public bota?: string,
-    public forma?: string
+    public forma?: string,
+    public largo?: string
   ) {}
 }
