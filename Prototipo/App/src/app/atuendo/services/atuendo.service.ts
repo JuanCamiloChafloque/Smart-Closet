@@ -49,6 +49,11 @@ export class AtuendoService {
     return this.get<Atuendo[]>(url);
   }
 
+  getAtuendosFavoritos(nickname: string) {
+    const url = `http://localhost:8080/armario/${nickname}/atuendos/favoritos`;
+    return this.get<Atuendo[]>(url);
+  }
+
   getPrendasAtuendo(nickname: string, id: number){
     const url = `http://localhost:8080/armario/${nickname}/${id}/prendas`;
     return this.get<Prenda[]>(url);
@@ -73,6 +78,13 @@ export class AtuendoService {
     const url = `http://localhost:8080/crearAtuendo/${nickname}`;
     return this.put(url, {
       favorito: atuendo.favorito
+    });
+  }
+
+  editarFavorito(id: number) {
+    const url = `http://localhost:8080/modificarAtuendoFavorito/${id}`;
+    return this.put(url, {
+      favorito: false
     });
   }
 

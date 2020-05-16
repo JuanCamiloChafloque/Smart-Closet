@@ -109,7 +109,7 @@ export class CrearAtuendoComponent implements OnInit {
 
   verify(prenda: Prenda): boolean {
 
-    if (prenda.seccion === 'Superior') {
+    /*if (prenda.seccion === 'Superior') {
       if (this.vSuperior === false) {
         this.vSuperior = true;
         return true;
@@ -117,7 +117,7 @@ export class CrearAtuendoComponent implements OnInit {
         this.message = 'Ya tienes una prenda superior en tu atuendo';
         return false;
       }
-    }
+    }*/
     if (prenda.seccion === 'Inferior') {
       if (this.vInferior === false) {
         this.vInferior = true;
@@ -145,7 +145,7 @@ export class CrearAtuendoComponent implements OnInit {
         return false;
       }
     }
-    if (prenda.seccion === 'Accesorio') {
+    if (prenda.seccion === 'Accesorio' || prenda.seccion === 'Superior') {
       return true;
     }
 
@@ -175,7 +175,7 @@ export class CrearAtuendoComponent implements OnInit {
 
     if (ves === true) {
       if (zap === true) {
-        this.atuendo.favorito = false;
+        this.atuendo.favorito = true;
         this.atuendo.prendas = this.escogidas;
         this.atuendoService.createAtuendo(localStorage.getItem('User'), this.atuendo).subscribe(
           results => {
@@ -194,7 +194,7 @@ export class CrearAtuendoComponent implements OnInit {
       }
     } else {
       if (sup === true && inf === true && zap === true) {
-        this.atuendo.favorito = false;
+        this.atuendo.favorito = true;
         this.atuendo.prendas = this.escogidas;
         this.atuendoService.createAtuendo(localStorage.getItem('User'), this.atuendo).subscribe(
           results => {

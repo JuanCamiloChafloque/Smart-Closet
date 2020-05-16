@@ -172,7 +172,7 @@ class ArmarioService {
     public Atuendo crearAtuendo(@PathVariable("nickname") String nickname, @RequestBody Atuendo atuendo){
         Armario armarioEncontrado = findClosetByUser(nickname);
         Atuendo newAtuendo = new Atuendo();
-        newAtuendo.setFavorito(false);
+        newAtuendo.setFavorito(atuendo.isFavorito());
         newAtuendo.setArmario(armarioEncontrado);
         Atuendo atuendoCreado = atuendoService.crearAtuendo(newAtuendo);
         armarioEncontrado.getAtuendos().add(newAtuendo);
@@ -219,7 +219,6 @@ class ArmarioService {
         newPrenda.setCuello(prenda.getCuello());
         newPrenda.setManga(prenda.getManga());
         newPrenda.setArmario(armarioEncontrado);
-        //newPrenda.setImagen(BlobProxy.generateProxy(codeImage(prenda.getImg_url())));
 
         armarioEncontrado.setNumPrendas((numPrendas + 1));
         prendaService.crearPrenda(newPrenda);
@@ -244,7 +243,6 @@ class ArmarioService {
         newPrenda.setBota(prenda.getBota());
         newPrenda.setUrl(prenda.getUrl());
         newPrenda.setArmario(armarioEncontrado);
-        //newPrenda.setImagen(BlobProxy.generateProxy(codeImage(prenda.getImg_url())));
 
         armarioEncontrado.setNumPrendas((numPrendas + 1));
         prendaService.crearPrenda(newPrenda);
@@ -268,7 +266,6 @@ class ArmarioService {
         newPrenda.setColor(prenda.getColor());
         newPrenda.setUrl(prenda.getUrl());
         newPrenda.setArmario(armarioEncontrado);
-        //newPrenda.setImagen(BlobProxy.generateProxy(codeImage(prenda.getImg_url())));
 
         armarioEncontrado.setNumPrendas((numPrendas + 1));
         prendaService.crearPrenda(newPrenda);
@@ -293,7 +290,6 @@ class ArmarioService {
         newPrenda.setColor(prenda.getColor());
         newPrenda.setUrl(prenda.getUrl());
         newPrenda.setArmario(armarioEncontrado);
-        //newPrenda.setImagen(BlobProxy.generateProxy(codeImage(prenda.getImg_url())));
 
         armarioEncontrado.setNumPrendas((numPrendas + 1));
         prendaService.crearPrenda(newPrenda);
@@ -318,7 +314,6 @@ class ArmarioService {
         newPrenda.setForma(prenda.getForma());
         newPrenda.setUrl(prenda.getUrl());
         newPrenda.setArmario(armarioEncontrado);
-        //newPrenda.setImagen(BlobProxy.generateProxy(codeImage(prenda.getImg_url())));
 
         armarioEncontrado.setNumPrendas((numPrendas + 1));
         prendaService.crearPrenda(newPrenda);

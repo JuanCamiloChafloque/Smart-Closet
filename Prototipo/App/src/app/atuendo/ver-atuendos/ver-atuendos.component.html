@@ -39,6 +39,52 @@
     </div>
   </div>
   <div class="content">
-
+    <div class="title">
+      <img src="../../../assets/images/Atuendos-favoritos.png" alt="Atuendos...">
+      <h2>Mis atuendos favoritos</h2>
+    </div>
+    <div *ngIf="vacio == true" class="vacio">
+      {{vacioMessage}}
+    </div>
+    <div class="display-box">
+      <div class="box" *ngFor="let atuendo of atuendos">
+        <div class="panel-sup">
+          <div [ngClass]="{'superior':atuendo.numSup > 1,'image-superior':atuendo.numSup <= 1}">
+            <div *ngFor="let prenda of atuendo.prendas">
+              <img *ngIf="prenda.seccion == 'Superior'" src="{{prenda.url}}" alt="Atuendos...">
+            </div>
+          </div>
+          <div [ngClass]="{'accesorio':atuendo.numAcc > 1, 'image-accesorio': atuendo.numAcc <= 1}">
+            <div *ngFor="let prenda of atuendo.prendas">
+              <img *ngIf="prenda.seccion == 'Accesorio'" src="{{prenda.url}}" alt="Atuendos...">
+            </div>
+            <div *ngIf="atuendo.numAcc == 0" class="noAcc">
+              <img src="../../../assets/images/NoAcc.png" alt="Atuendos...">
+            </div>
+          </div>
+        </div>
+        <div class="panel-inf">
+          <div class="image-inferior" *ngFor="let prenda of atuendo.prendas">
+            <img *ngIf="prenda.seccion == 'Inferior'" src="{{prenda.url}}" alt="Atuendos...">
+          </div>
+          <div class="image-zapato" *ngFor="let prenda of atuendo.prendas">
+            <img *ngIf="prenda.seccion == 'Zapato'" src="{{prenda.url}}" alt="Atuendos...">
+          </div>
+        </div>
+        <div class="btn-box">
+          <div *ngIf="atuendo.favorito == true" class="btn">
+            <button class="btn-favorito"></button>
+          </div>
+          <div class="btn">
+            <button (click)="eliminar(atuendo.id)" class="btn-eliminar"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="popup == true" class="delete-box">
+    <p>Estás seguro que quieres eliminar este atuendo de tus favoritos?</p><br>
+    <button class="btn-popup" (click)="aceptar()">Eliminar</button>
+    <button class="btn-popup" (click)="cancelar()">Cancelar</button>
   </div>
 </div>

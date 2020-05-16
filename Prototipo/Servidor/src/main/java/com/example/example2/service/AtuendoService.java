@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +25,17 @@ public class AtuendoService {
     @GetMapping("/findAtuendo/{id}")
     public Atuendo findById(@PathVariable("id") Long id) {
         return repository.findById(id).get();
+    }
+
+    @PutMapping("/modificarAtuendoFavorito/{id}")
+    public Atuendo modificarFavorito(@PathVariable("id") Long id_atuendo, @RequestBody Atuendo atuendo){
+        Atuendo atuendoEncontrado = repository.findById(id_atuendo).get();
+        if(atuendoEncontrado.isFavorito()){
+            atuendoEncontrado.setFavorito(false);
+        } else {
+            atuendoEncontrado.setFavorito(true);
+        }
+        return repository.save(atuendoEncontrado);
     }
     
 }
