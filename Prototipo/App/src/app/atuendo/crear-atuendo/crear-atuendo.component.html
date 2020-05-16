@@ -1,4 +1,11 @@
-<div *ngIf="llegoUsuario == true" class="wrapper">
+<script>
+  function changeColor(this) {
+  }
+
+</script>
+
+
+<div *ngIf="llegoUsuario == true && llegoPrendas == true" class="wrapper">
   <div class="side-bar">
     <div class="img-box">
       <img src="../../assets/images/SmartCloset.png" alt="SC...">
@@ -33,12 +40,64 @@
         <a [routerLink]="['/favoritos']">Favoritos</a>
       </div>
       <div class="history-box">
-        <a [routerLink]="['/mis-atuendos']"><img src="../../assets/images/GestionarAtuendo.png" alt=""></a>
-        <a [routerLink]="['/mis-atuendos']">Gestionar atuendos</a>
+        <a [routerLink]="['/menu-atuendos']"><img src="../../assets/images/GestionarAtuendo.png" alt=""></a>
+        <a [routerLink]="['/menu-atuendos']">Gestionar atuendos</a>
       </div>
     </div>
   </div>
   <div class="content">
-
+    <div class="title">
+      <img src="../../../assets/images/GestionarAtuendo.png" alt="Star...">
+      <h2>Crear mi Atuendo</h2>
+    </div>
+    <div class="panel-box">
+      <h2>Filtra tus prendas</h2>
+      <select [(ngModel)]="seccionSelected" (change)="displayPrendas()">
+        <option selected disabled>Selecciona una sección</option>
+        <option>Superior</option>
+        <option>Inferior</option>
+        <option *ngIf="user.genero == 'Femenino'">Vestido</option>
+        <option>Zapato</option>
+        <option>Accesorio</option>
+      </select>
+    </div>
+    <div *ngIf="escogidas.length == 0" class="msg-agregar">
+      {{message}}
+    </div>
+    <div *ngIf="escogidas.length > 0" class="atuendo-box">
+      <div class="prendas-box" *ngFor="let prenda of escogidas">
+        <div class="prenda-escogida">
+          <div class="img-prenda">
+            <img src="{{prenda.url}}" alt="Prenda...">
+          </div>
+          <div class="btn-prenda">
+            <button (click)="eliminarPrenda(prenda.id)" class="btn-eliminar"></button>
+          </div>
+        </div>
+      </div>
+      <div class="btn-agregar">
+        <button (click)="crearAtuendo()">Crear Atuendo</button>
+      </div>
+      <div class="msg-error">
+        {{message}}
+      </div>
+    </div>
+    <div class="display-box">
+      <div [ngClass]="{'box':prenda.selected == false, 'assigned': prenda.selected == true}" *ngFor="let prenda of filter">
+        <div class="image">
+          <img (click)="agregarPrenda(prenda)" src="{{prenda.url}}" alt="Prenda...">
+        </div>
+        <div class="desc-box">
+          <div class="form-box">
+            <a><i class="fab fa-black-tie"></i></a>
+            <h2>{{prenda.formalidad}}/5</h2>
+          </div>
+          <div class="abrigo-box">
+            <a><i class="fas fa-snowflake"></i></a>
+            <h2>{{prenda.abrigo}}/5</h2>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

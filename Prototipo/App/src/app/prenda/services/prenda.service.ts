@@ -136,6 +136,11 @@ export class PrendaService {
     });
   }
 
+  getPrendas(nickname: string) {
+    const url = `http://localhost:8080/armario/${nickname}/prendas`;
+    return this.get<Prenda[]>(url);
+  }
+
   getPrendasSuperiores(nickname: string) {
     const url = `http://localhost:8080/armario/${nickname}/prendas/superior`;
     return this.get<Superior[]>(url);

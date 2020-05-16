@@ -93,3 +93,179 @@ a {
   align-content: center;
   height: 100vh;
 }
+
+.title {
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title img {
+  width: 50px;
+  height: 50px;
+}
+
+.title h2 {
+  margin-left: 15px;
+  font-size: 30px;
+}
+
+.panel-box {
+  margin-top: 25px;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 9px;
+}
+
+.panel-box select {
+  width: 175px;
+  height: 25px;
+  border-radius: 5px;
+  border: 1.5px solid #C40A92;
+  overflow: hidden;
+  outline: none;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+option {
+  cursor: pointer;
+}
+
+.display-box {
+  width: 950px;
+  position: absolute;
+  left: 22%;
+  top: 55%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  justify-content: center;
+}
+
+.display-box .box {
+  position: relative;
+  width: 275px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  display: inline-block;
+}
+
+.display-box .assigned {
+  position: relative;
+  width: 275px;
+  border: 5px dashed #C40A92;
+  border-radius: 10px;
+  margin: 10px;
+  display: inline-block;
+}
+
+.desc-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 5px;
+}
+
+.image {
+  margin-top: 10px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.image img {
+  width: 220px;
+  height: 220px;
+  transition: transform 1s;
+}
+
+.box:hover .image img {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.form-box, .abrigo-box {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.form-box h2, .abrigo-box h2 {
+  font-size: 12px;
+}
+
+.atuendo-box {
+  text-align: center;
+  margin-left: 30px;
+  width: 950px;
+}
+
+.prendas-box {
+  display: inline-flex;
+  margin: 5px;
+}
+
+.prenda-escogida img {
+  width: 75px;
+  height: 75px;
+}
+
+.btn-agregar {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.btn-agregar button {
+  font-size: 14px;
+  height: 35px;
+  width: 105px;
+  border-radius: 10px;
+  background-color: #C40A92;
+  color: white;
+  border: 1.5px solid black;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-eliminar {
+  background: url(../../../assets/images/NoDisponible.png);
+  background-size: cover;
+}
+
+.btn-prenda button {
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.msg-agregar {
+  width: 100%;
+  margin-top: 80px;
+  text-align: center;
+  color: #C40A92;
+  font-weight: bold;
+}
+
+.msg-error {
+  width: 100%;
+  text-align: center;
+  color: #C40A92;
+  font-weight: bold;
+}
+
+
+

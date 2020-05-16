@@ -18,8 +18,8 @@ import { PasswordComponent } from './usuario/password/password.component';
 import { VestidosComponent } from './prenda/vestidos/vestidos.component';
 import { VerAtuendosComponent } from './atuendo/ver-atuendos/ver-atuendos.component';
 import { HistorialComponent } from './atuendo/historial/historial.component';
-import { CompartirComponent } from './atuendo/compartir/compartir.component';
 import { CrearAtuendoComponent } from './atuendo/crear-atuendo/crear-atuendo.component';
+import { MenuAtuendoComponent } from './atuendo/menu-atuendo/menu-atuendo.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -38,9 +38,9 @@ const routes: Routes = [
   { path: 'agregar-prenda', component: AgregarPrendaComponent },
   { path: 'generar-atuendo', component: GenerarAtuendoComponent },
   { path: 'recuperar-contrasena', component: PasswordComponent },
+  { path: 'menu-atuendos', component: MenuAtuendoComponent },
   { path: 'mis-atuendos', component: VerAtuendosComponent },
   { path: 'historial', component: HistorialComponent },
-  { path: 'compartir', component: CompartirComponent },
   { path: 'crear-atuendo', component: CrearAtuendoComponent },
   { path: '', pathMatch: 'full', redirectTo: '/main-page' }
 ];

@@ -39,6 +39,31 @@
     </div>
   </div>
   <div class="content">
-
+    <div class="armario-box">
+      <div class="title-armario">
+        <img src="../../../assets/images/GestionarAtuendo.png" alt="Closet">
+          <h1>Mis Atuendos</h1>
+      </div>
+      <div class="panel-sup">
+        <div class="favoritos">
+          <img src="../../../assets/images/Atuendos-favoritos.png"><br>
+          <button [routerLink]="['/mis-atuendos']" class="btn-atuendo">Atuendos favoritos</button>
+        </div>
+        <div class="historial">
+          <img src="../../../assets/images/Historial.png"><br>
+          <button [routerLink]="['/historial']" class="btn-atuendo">Historial de atuendos</button>
+        </div>
+      </div>
+      <div class="panel-inf">
+        <div class="crear">
+          <img src="../../../assets/images/GenerarAtuendo.png"><br>
+          <button [routerLink]="['/crear-atuendo']" class="btn-atuendo">Crear mi atuendo</button>
+        </div>
+        <div class="calendario">
+          <img src="../../../assets/images/Calendario.png"><br>
+          <button class="btn-atuendo">Mi calendario</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

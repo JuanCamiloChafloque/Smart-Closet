@@ -19,6 +19,7 @@ import com.example.example2.model.AtuendoRepository;
 import com.example.example2.model.AtuendoXPrenda;
 import com.example.example2.model.Inferior;
 import com.example.example2.model.Prenda;
+import com.example.example2.model.PrendaRepository;
 import com.example.example2.model.Superior;
 import com.example.example2.model.Vestido;
 import com.example.example2.model.Zapato;
@@ -45,7 +46,11 @@ class ArmarioService {
     @Autowired
     private AtuendoService atuendoService;
 
-    @Autowired AtuendoRepository atuendoRepository;
+    @Autowired 
+    private AtuendoRepository atuendoRepository;
+
+    @Autowired
+    private PrendaRepository prendaRepository;
     
     @GetMapping("/armario/{nickname}")
     public Armario findClosetByUser(@PathVariable("nickname") String nickname) {
@@ -163,35 +168,36 @@ class ArmarioService {
         return repository.save(armario);
     }
 
-    /*@PutMapping("/crearAtuendo/{nickname}")
-    public Armario crearAtuendo(@PathVariable("nickname") String nickname, @RequestBody Atuendo atuendo){
-        Armario armarioEncontrado = findClosetByUser(nickname);
-        Atuendo newAtuendo = new Atuendo();
-        newAtuendo.setFavorito(false);
-        newAtuendo.setArmario(armarioEncontrado);
-
-        return repository.save(armarioEncontrado);
-    }*/
-
-    @PutMapping("/agregarAtuendo/{nickname}")
-    public Armario agregarPrendaAtuendo(@PathVariable("nickname") String nickname,  @RequestBody List<Prenda> prendas){
+    @PutMapping("/crearAtuendo/{nickname}")
+    public Atuendo crearAtuendo(@PathVariable("nickname") String nickname, @RequestBody Atuendo atuendo){
         Armario armarioEncontrado = findClosetByUser(nickname);
         Atuendo newAtuendo = new Atuendo();
         newAtuendo.setFavorito(false);
         newAtuendo.setArmario(armarioEncontrado);
         Atuendo atuendoCreado = atuendoService.crearAtuendo(newAtuendo);
+        armarioEncontrado.getAtuendos().add(newAtuendo);
 
-        for(Prenda actual: prendas){
-            AtuendoXPrenda nuevo = new AtuendoXPrenda();
-            AtuendoPrendaId id = new AtuendoPrendaId();
-            id.setIdAtuendo(atuendoCreado.getId());
-            id.setIdPrenda(actual.getId());
-            nuevo.setEmbId(id);
-            nuevo.setAtuendoId(atuendoCreado);
-            nuevo.setPrendaId(actual);
-            atuendoCreado.getPrendas().add(nuevo);
-            atuendoRepository.save(atuendoCreado);
-        }
+        repository.save(armarioEncontrado);
+
+        return atuendoCreado;
+    }
+
+    @PutMapping("/agregarAtuendo/{nickname}/{idA}/{idP}")
+    public Armario agregarPrendaAtuendo(@PathVariable("nickname") String nickname, @PathVariable("idA") Long idA, @PathVariable("idP") Long idP, @RequestBody Prenda prenda){
+
+        Armario armarioEncontrado = findClosetByUser(nickname);
+        Atuendo atuendoEncontrado = atuendoRepository.findById(idA).get();
+        Prenda prendaEncontrada = prendaRepository.findById(idP).get();
+
+        AtuendoXPrenda nuevo = new AtuendoXPrenda();
+        AtuendoPrendaId idAP = new AtuendoPrendaId();
+        idAP.setIdAtuendo(atuendoEncontrado.getId());
+        idAP.setIdPrenda(prendaEncontrada.getId());
+        nuevo.setEmbId(idAP);
+        nuevo.setAtuendoId(atuendoEncontrado);
+        nuevo.setPrendaId(prendaEncontrada);
+        atuendoEncontrado.getPrendas().add(nuevo);
+        atuendoRepository.save(atuendoEncontrado);
 
         return repository.save(armarioEncontrado);
     }

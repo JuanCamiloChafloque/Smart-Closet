@@ -33,12 +33,13 @@
         <a [routerLink]="['/favoritos']">Favoritos</a>
       </div>
       <div class="history-box">
-        <a [routerLink]="['/mis-atuendos']"><img src="../../assets/images/GestionarAtuendo.png" alt=""></a>
-        <a [routerLink]="['/mis-atuendos']">Gestionar atuendos</a>
+        <a [routerLink]="['/menu-atuendos']"><img src="../../assets/images/GestionarAtuendo.png" alt=""></a>
+        <a [routerLink]="['/menu-atuendos']">Gestionar atuendos</a>
       </div>
     </div>
   </div>
   <div class="content">
+    <button (click)="generarAtuendos()">Click</button>
 
   </div>
 </div>

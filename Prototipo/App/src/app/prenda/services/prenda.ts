@@ -14,6 +14,7 @@ export class Prenda {
     public manga?: string,
     public bota?: string,
     public forma?: string,
-    public largo?: string
+    public largo?: string,
+    public selected?: boolean
   ) {}
 }

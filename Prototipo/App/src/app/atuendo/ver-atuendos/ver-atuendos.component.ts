@@ -36,7 +36,6 @@ export class VerAtuendosComponent implements OnInit {
     this.atuendoService.getAtuendos(localStorage.getItem('User')).subscribe(
       results => {
         this.atuendos = results;
-        console.log(this.atuendos);
         this.llegaronAtuendos();
       }
     );
@@ -49,7 +48,7 @@ export class VerAtuendosComponent implements OnInit {
 
   llegaronAtuendos() {
     this.llegoAtuendos = true;
-    for (const atuendo of this.atuendos){
+    for (const atuendo of this.atuendos) {
       this.atuendoService.getPrendasAtuendo(localStorage.getItem('User'), atuendo.id).subscribe(
         results => {
           atuendo.prendas = results;

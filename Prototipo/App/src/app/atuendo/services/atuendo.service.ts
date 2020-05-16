@@ -39,6 +39,11 @@ export class AtuendoService {
     );
   }
 
+  getAtuendoById(id: number) {
+    const url = `http://localhost:8080/findAtuendo/${id}`;
+    return this.get<Atuendo>(url);
+  }
+
   getAtuendos(nickname: string) {
     const url = `http://localhost:8080/armario/${nickname}/atuendos`;
     return this.get<Atuendo[]>(url);
@@ -47,6 +52,28 @@ export class AtuendoService {
   getPrendasAtuendo(nickname: string, id: number){
     const url = `http://localhost:8080/armario/${nickname}/${id}/prendas`;
     return this.get<Prenda[]>(url);
+  }
+
+  agregarPrendaAtuendo(nickname: string, idA: number, idP: number, prenda: Prenda) {
+    const url = `http://localhost:8080/agregarAtuendo/${nickname}/${idA}/${idP}`;
+    return this.put(url, {
+      seccion: prenda.seccion,
+      tipo: prenda.tipo,
+      formalidad: +prenda.formalidad,
+      abrigo: +prenda.abrigo,
+      color: prenda.color,
+      favorito: prenda.favorito,
+      disponible: prenda.disponible,
+      descripcion: prenda.descripcion,
+      url: prenda.url
+    });
+  }
+
+  createAtuendo(nickname: string, atuendo: Atuendo) {
+    const url = `http://localhost:8080/crearAtuendo/${nickname}`;
+    return this.put(url, {
+      favorito: atuendo.favorito
+    });
   }
 
 }

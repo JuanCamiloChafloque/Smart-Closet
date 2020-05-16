@@ -10,6 +10,7 @@ import { PrendaService } from '../prenda/services/prenda.service';
 import { Vestido } from '../prenda/services/vestido';
 import { ClimaService } from '../clima/services/clima.service';
 import { Atuendo } from '../atuendo/services/atuendo';
+import { Prenda } from '../prenda/services/prenda';
 
 @Component({
   selector: 'app-generar-atuendo',
@@ -21,8 +22,8 @@ export class GenerarAtuendoComponent implements OnInit {
   user: Usuario;
   llegoUsuario = false;
 
-  formalidad;
-  clima = -1;
+  formalidad = 3;
+  clima = 2;
   climaApi;
   favoritos;
   checkVestido = false;
@@ -59,6 +60,13 @@ export class GenerarAtuendoComponent implements OnInit {
       }
     );
 
+    /*this.climaService.getClimaByName(this.user.ciudad).subscribe(
+      (data: any) => {
+        this.apiClima = data;
+        this.climaApi = this.apiClima.main.temp;
+      }
+    );*/
+
     this.prendaService.getPrendasInferiores(localStorage.getItem('User')).subscribe(
       results => {
         this.inferiores = results;
@@ -77,13 +85,6 @@ export class GenerarAtuendoComponent implements OnInit {
       }
     );
 
-    this.climaService.getClimaByName(this.user.ciudad).subscribe(
-      (data: any) => {
-        this.apiClima = data;
-        this.climaApi = this.apiClima.main.temp;
-      }
-    );
-
     this.prendaService.getPrendasVestidos(localStorage.getItem('User')).subscribe(
       results => {
         this.vestidos = results;
@@ -92,12 +93,14 @@ export class GenerarAtuendoComponent implements OnInit {
   }
 
   generarAtuendos() {
-    let atuendos: Atuendo[];
+    let atuendos: Atuendo[] = [];
 
     for (let i = 0; i < 3; i++) {
-      const rand = (Math.random() * this.superiores.length) as number;
+      const rand = Math.round((Math.random() * this.superiores.length));
       const supActual = this.superiores[rand];
-      if (supActual.formalidad === this.formalidad) {
+      console.log(rand);
+      console.log(supActual);
+      if (supActual.formalidad >= this.formalidad - 1 && supActual.formalidad <= this.formalidad - 1) {
         if (this.clima === -1) {
           this.clima = this.calcularAbrigoAPI(this.climaApi);
         }
@@ -106,6 +109,9 @@ export class GenerarAtuendoComponent implements OnInit {
         }
       }
     }
+
+    console.log(atuendos);
+
   }
 
   calcularAbrigoAPI(temp: number ): number {
@@ -125,19 +131,25 @@ export class GenerarAtuendoComponent implements OnInit {
   generarInd(superior: Superior): Atuendo {
 
     const color = superior.color;
-    let atuendo: Atuendo;
+    let atuendo: Atuendo = new Atuendo(undefined, undefined, []);
+    let colorSuperior;
+    let colorInferior;
     atuendo.prendas.push(superior);
 
-    //Agregar segundo superior
     if (superior.tipo === 'Chaqueta' || superior.tipo === 'Saco' || superior.tipo === 'Abrigo') {
       for (const sup of this.superiores) {
-        if (sup.id !== superior.id) {
-          if (sup.tipo === 'Camiseta' || sup.tipo === 'Blusa' || sup.tipo === 'Top' || sup.tipo === 'Camisa') {
-            if (sup.abrigo >= 2) {
-              if (sup.formalidad >= superior.formalidad - 1 && sup.formalidad <= superior.formalidad + 1) {
-                const colores = this.coloresClima(this.clima);
-                if (colores.includes(sup.color)) {
-                  atuendo.prendas.push(sup);
+        if (sup.disponible === true) {
+          if (sup.id !== superior.id) {
+            if (sup.tipo === 'Camiseta' || sup.tipo === 'Blusa' || sup.tipo === 'Top' || sup.tipo === 'Camisa') {
+              if (sup.abrigo > 2) {
+                if (sup.formalidad >= this.formalidad - 1 && sup.formalidad <= this.formalidad + 1) {
+                  const colores = this.coloresClima(this.clima);
+                  if (colores.includes(sup.color)) {
+                    atuendo.prendas.push(sup);
+                    sup.disponible = false;
+                    colorSuperior = sup.color;
+                    break;
+                  }
                 }
               }
             }
@@ -146,19 +158,62 @@ export class GenerarAtuendoComponent implements OnInit {
       }
     }
 
-    //Agregar inferior
+    for (const inf of this.inferiores) {
+      if (inf.disponible === true) {
+        if (inf.abrigo >= this.clima - 1 && inf.abrigo <= this.clima + 1) {
+          if (inf.formalidad >= this.formalidad - 1 && inf.formalidad <= this.formalidad + 1) {
+            const colores = this.coloresClima(this.clima);
+            if (colores.includes(inf.color)) {
+              atuendo.prendas.push(inf);
+              colorInferior = inf.color;
+              inf.disponible = false;
+              break;
+            }
+          }
+        }
+      }
+    }
 
-    //Agregar zapatos
+    for (const zap of this.zapatos) {
+      if (zap.disponible === true) {
+        if (zap.abrigo >= this.clima - 1 && zap.abrigo <= this.clima + 1) {
+          if (zap.formalidad >= this.formalidad - 1 && zap.formalidad <= this.formalidad + 1) {
+            const colores = this.coloresClima(this.clima);
+            if (colores.includes(zap.color)) {
+              atuendo.prendas.push(zap);
+              zap.disponible = false;
+              break;
+            }
+          }
+        }
+      }
+    }
 
-    //Agregar accesorio
+    if (this.clima >= 4) {
+      for (const acc of this.accesorios) {
+        if (acc.disponible === true) {
+          if (this.clima === 5) {
+            if (acc.formalidad >= this.formalidad - 1 && acc.formalidad <= this.formalidad + 1) {
+              const colores = this.coloresClima(this.clima);
+              if (acc.color === colorSuperior || acc.color === colorInferior) {
+                atuendo.prendas.push(acc);
+                acc.disponible = false;
+                break;
+              }
+            }
+          }
+        }
+      }
+    }
 
     return atuendo;
   }
 
   coloresClima(abrigo: number): string[] {
 
-    let colores: string[];
+    let colores: string[] = [];
     if (abrigo === 1) {
+      colores.push('Negro');
       colores.push('Blanco');
       colores.push('Azul claro');
       colores.push('Verde claro');
@@ -167,6 +222,7 @@ export class GenerarAtuendoComponent implements OnInit {
       colores.push('Salmon');
       colores.push('Fucsia');
     } else if (abrigo === 2) {
+      colores.push('Negro');
       colores.push('Blanco');
       colores.push('Azul');
       colores.push('Verde');
@@ -196,6 +252,7 @@ export class GenerarAtuendoComponent implements OnInit {
     } else if (abrigo === 5) {
       colores.push('Morado');
       colores.push('Beige');
+      colores.push('Blanco');
       colores.push('Negro');
       colores.push('Gris');
       colores.push('Verde');

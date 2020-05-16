@@ -31,9 +31,9 @@ import { PasswordComponent } from './usuario/password/password.component';
 import { VestidosComponent } from './prenda/vestidos/vestidos.component';
 import { CrearAtuendoComponent } from './atuendo/crear-atuendo/crear-atuendo.component';
 import { HistorialComponent } from './atuendo/historial/historial.component';
-import { CompartirComponent } from './atuendo/compartir/compartir.component';
 import { VerAtuendosComponent } from './atuendo/ver-atuendos/ver-atuendos.component';
 import { AtuendoService } from './atuendo/services/atuendo.service';
+import { MenuAtuendoComponent } from './atuendo/menu-atuendo/menu-atuendo.component';
 
 @NgModule({
   declarations: [
@@ -56,8 +56,8 @@ import { AtuendoService } from './atuendo/services/atuendo.service';
     VestidosComponent,
     CrearAtuendoComponent,
     HistorialComponent,
-    CompartirComponent,
     VerAtuendosComponent,
+    MenuAtuendoComponent,
   ],
   imports: [
     BrowserModule,
