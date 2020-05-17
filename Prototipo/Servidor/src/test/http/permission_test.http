@@ -11,6 +11,9 @@ GET http://localhost:8080/armario/Chafo/prendas/inferior
 GET http://localhost:8080/armario/Chafo/-1/prendas
 
 ###
+GET http://localhost:8080/ultimaVez/-7
+
+###
 PUT http://localhost:8080/agregarSuperior/Chafo
 Content-Type: application/json
 

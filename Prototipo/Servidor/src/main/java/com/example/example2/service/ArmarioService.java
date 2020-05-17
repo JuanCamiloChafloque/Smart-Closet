@@ -187,13 +187,14 @@ class ArmarioService {
         return atuendoCreado;
     }
 
-    @PutMapping("/crearFecha/{nickname}/{idA}")
-    public Calendario crearFecha(@PathVariable("nickname") String nickname, @PathVariable("idA") Long id_atuendo, @RequestBody String fecha){
+    @PutMapping("/crearFecha/{nickname}/{idA}/{fecha}")
+    public Calendario crearFecha(@PathVariable("nickname") String nickname, @PathVariable("idA") Long id_atuendo, @PathVariable("fecha") String fecha, @RequestBody String cal){
         Armario armarioEncontrado = findClosetByUser(nickname);
         Atuendo atuendoEncontrado = atuendoRepository.findById(id_atuendo).get();
         Calendario calendario = new Calendario();
+                
         calendario.setFecha(Date.valueOf(fecha));
-        calendario.setAtuendo(atuendoEncontrado);
+        calendario.setArmario(armarioEncontrado);
         calendario.setAtuendo(atuendoEncontrado);
         Calendario calendarioCreado = calendarioService.crearCalendario(calendario);
         armarioEncontrado.getCalendario().add(calendario);

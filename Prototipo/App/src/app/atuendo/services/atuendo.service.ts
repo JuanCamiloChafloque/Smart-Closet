@@ -89,10 +89,18 @@ export class AtuendoService {
   }
 
   ponerAtuendo(nickname: string, id: number, poner: string) {
-    const url = `http://localhost:8080/crearFecha/${nickname}/${id}`;
-    return this.put(url, {
-      fecha: poner
-    });
+    const url = `http://localhost:8080/crearFecha/${nickname}/${id}/${poner}`;
+    return this.put(url, {poner});
+  }
+
+  ultimaVez(id: number) {
+    const url = `http://localhost:8080/ultimaVez/${id}`;
+    return this.get<Date>(url);
+  }
+
+  cantidadVeces(id: number) {
+    const url = `http://localhost:8080/cantidadVeces/${id}`;
+    return this.get<number>(url);
   }
 
 }

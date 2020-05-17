@@ -158,7 +158,7 @@ export class GenerarAtuendoComponent implements OnInit {
     let colorInferior;
     atuendo.prendas.push(superior);
 
-    if (superior.tipo === 'Chaqueta' || superior.tipo === 'Saco' || superior.tipo === 'Abrigo') {
+    if (superior.tipo === 'Chaqueta' || superior.tipo === 'Saco' || superior.tipo === 'Abrigo' || superior.tipo === 'Hoodie') {
       for (const sup of this.superiores) {
         if (sup.disponible === true) {
           if (sup.id !== superior.id) {
@@ -199,14 +199,12 @@ export class GenerarAtuendoComponent implements OnInit {
 
     for (const zap of this.zapatos) {
       if (zap.disponible === true) {
-        if (zap.abrigo >= this.clima - 1 && zap.abrigo <= this.clima + 1) {
-          if (zap.formalidad >= this.formalidad - 1 && zap.formalidad <= this.formalidad + 1) {
-            const colores = this.coloresClima(this.clima);
-            if (colores.includes(zap.color)) {
-              atuendo.prendas.push(zap);
-              zap.disponible = false;
-              break;
-            }
+        if (zap.formalidad >= this.formalidad - 1 && zap.formalidad <= this.formalidad + 1) {
+          const colores = this.coloresClima(this.clima);
+          if (colores.includes(zap.color)) {
+            atuendo.prendas.push(zap);
+            zap.disponible = false;
+            break;
           }
         }
       }
@@ -215,15 +213,13 @@ export class GenerarAtuendoComponent implements OnInit {
     if (this.clima >= 4) {
       for (const acc of this.accesorios) {
         if (acc.disponible === true) {
-          if (this.clima === 5) {
-            if (acc.formalidad >= this.formalidad - 1 && acc.formalidad <= this.formalidad + 1) {
-              const colores = this.coloresClima(this.clima);
-              if (acc.color === colorSuperior || acc.color === colorInferior) {
-                atuendo.numAcc += 1;
-                atuendo.prendas.push(acc);
-                acc.disponible = false;
-                break;
-              }
+          if (acc.formalidad >= this.formalidad - 1 && acc.formalidad <= this.formalidad + 1) {
+            const colores = this.coloresClima(this.clima);
+            if (acc.color === colorSuperior || acc.color === colorInferior) {
+              atuendo.numAcc += 1;
+              atuendo.prendas.push(acc);
+              acc.disponible = false;
+              break;
             }
           }
         }
@@ -299,11 +295,41 @@ export class GenerarAtuendoComponent implements OnInit {
             data => console.log(data)
           );
         }
+        this.crearFecha(atuendoNuevo.id);
         this.router.navigate(['/menu-atuendos']);
       });
 
+  }
 
+  crearFecha(id: number) {
+    const date: Date = new Date();
+    let mesM = '';
+    let diaM = '';
 
+    const anio = date.getFullYear();
+    const mes = date.getMonth() + 1;
+    const dia = date.getDate();
+
+    if (mes < 10) {
+      mesM = '0' + mes;
+    } else {
+      mesM = '' + mes;
+    }
+
+    if (dia < 10) {
+      diaM = '0' + dia;
+    } else {
+      diaM = '' + dia;
+    }
+
+    const fecha = anio + '-' + mesM + '-' + diaM;
+    console.log(fecha);
+
+    this.atuendoService.ponerAtuendo(localStorage.getItem('User'), id, fecha).subscribe(
+      results => {
+        console.log(results);
+        this.router.navigate(['/menu-atuendos']);
+      });
   }
 
 }

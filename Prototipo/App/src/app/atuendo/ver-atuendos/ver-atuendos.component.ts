@@ -79,11 +79,27 @@ export class VerAtuendosComponent implements OnInit {
 
   poner(id: number) {
     const date: Date = new Date();
-    const anio = date.getFullYear();
-    const mes = date.getMonth();
-    const dia = date.getDay();
+    let mesM = '';
+    let diaM = '';
 
-    const fecha = anio + '/' + mes + '/' + dia;
+    const anio = date.getFullYear();
+    const mes = date.getMonth() + 1;
+    const dia = date.getDate();
+
+    if (mes < 10) {
+      mesM = '0' + mes;
+    } else {
+      mesM = '' + mes;
+    }
+
+    if (dia < 10) {
+      diaM = '0' + dia;
+    } else {
+      diaM = '' + dia;
+    }
+
+    const fecha = anio + '-' + mesM + '-' + diaM;
+    console.log(fecha);
 
     this.atuendoService.ponerAtuendo(localStorage.getItem('User'), id, fecha).subscribe(
       results => {

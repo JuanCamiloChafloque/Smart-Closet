@@ -5,6 +5,8 @@ export class Atuendo {
     public favorito: boolean,
     public prendas: Prenda[],
     public numSup?: number,
-    public numAcc?: number
+    public numAcc?: number,
+    public ultimo?: Date,
+    public cantidad?: number
   ) {}
 }
