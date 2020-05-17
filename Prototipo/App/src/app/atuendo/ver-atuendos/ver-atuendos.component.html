@@ -72,8 +72,14 @@
           </div>
         </div>
         <div class="btn-box">
-          <div *ngIf="atuendo.favorito == true" class="btn">
+          <div class="btn">
             <button class="btn-favorito"></button>
+          </div>
+          <div class="btn">
+            <button class="btn-share"></button>
+          </div>
+          <div class="btn">
+            <button (click)="poner(atuendo.id)" class="btn-choose"></button>
           </div>
           <div class="btn">
             <button (click)="eliminar(atuendo.id)" class="btn-eliminar"></button>

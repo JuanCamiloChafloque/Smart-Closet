@@ -77,6 +77,21 @@ export class VerAtuendosComponent implements OnInit {
     console.log(this.atuendos);
   }
 
+  poner(id: number) {
+    const date: Date = new Date();
+    const anio = date.getFullYear();
+    const mes = date.getMonth();
+    const dia = date.getDay();
+
+    const fecha = anio + '/' + mes + '/' + dia;
+
+    this.atuendoService.ponerAtuendo(localStorage.getItem('User'), id, fecha).subscribe(
+      results => {
+        console.log(results);
+        this.router.navigate(['/menu-atuendos']);
+      });
+  }
+
   eliminar(id: number) {
     this.idEliminar = id;
     this.popup = true;

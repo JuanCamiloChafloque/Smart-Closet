@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.Blob;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import com.example.example2.model.Atuendo;
 import com.example.example2.model.AtuendoPrendaId;
 import com.example.example2.model.AtuendoRepository;
 import com.example.example2.model.AtuendoXPrenda;
+import com.example.example2.model.Calendario;
 import com.example.example2.model.Inferior;
 import com.example.example2.model.Prenda;
 import com.example.example2.model.PrendaRepository;
@@ -45,6 +47,9 @@ class ArmarioService {
 
     @Autowired
     private AtuendoService atuendoService;
+
+    @Autowired
+    private CalendarioService calendarioService;
 
     @Autowired 
     private AtuendoRepository atuendoRepository;
@@ -180,6 +185,22 @@ class ArmarioService {
         repository.save(armarioEncontrado);
 
         return atuendoCreado;
+    }
+
+    @PutMapping("/crearFecha/{nickname}/{idA}")
+    public Calendario crearFecha(@PathVariable("nickname") String nickname, @PathVariable("idA") Long id_atuendo, @RequestBody String fecha){
+        Armario armarioEncontrado = findClosetByUser(nickname);
+        Atuendo atuendoEncontrado = atuendoRepository.findById(id_atuendo).get();
+        Calendario calendario = new Calendario();
+        calendario.setFecha(Date.valueOf(fecha));
+        calendario.setAtuendo(atuendoEncontrado);
+        calendario.setAtuendo(atuendoEncontrado);
+        Calendario calendarioCreado = calendarioService.crearCalendario(calendario);
+        armarioEncontrado.getCalendario().add(calendario);
+
+        repository.save(armarioEncontrado);
+
+        return calendarioCreado;
     }
 
     @PutMapping("/agregarAtuendo/{nickname}/{idA}/{idP}")

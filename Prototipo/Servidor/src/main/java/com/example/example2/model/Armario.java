@@ -31,6 +31,10 @@ public class Armario {
     @JsonIgnore
     private List<Atuendo> atuendos;
 
+    @OneToMany(mappedBy = "armario")
+    @JsonIgnore
+    private List<Calendario> calendario;
+
     public Long getId() {
         return id_armario;
     }
@@ -69,6 +73,14 @@ public class Armario {
 
     public void addAtuendo(Atuendo atuendo) {
         this.atuendos.add(atuendo);
+    }
+
+    public List<Calendario> getCalendario() {
+        return calendario;
+    }
+
+    public void addCalendario(Calendario calendario) {
+        this.calendario.add(calendario);
     }
 
 }

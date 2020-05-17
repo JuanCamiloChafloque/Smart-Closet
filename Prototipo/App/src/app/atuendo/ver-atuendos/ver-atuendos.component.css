@@ -210,7 +210,7 @@ a {
 }
 
 .noAcc {
-  opacity: 0.05;
+  opacity: 0.00;
 }
 
 .noAcc img {
@@ -227,6 +227,11 @@ button {
   outline: none;
 }
 
+.btn-choose {
+  background: url(../../../assets/images/Choose.png);
+  background-size: cover;
+}
+
 .btn-favorito {
   background: url(../../../assets/images/Favorito.png);
   background-size: cover;
@@ -234,6 +239,11 @@ button {
 
 .btn-eliminar {
   background: url(../../../assets/images/Eliminar.png);
+  background-size: cover;
+}
+
+.btn-share {
+  background: url(../../../assets/images/Share.png);
   background-size: cover;
 }
 

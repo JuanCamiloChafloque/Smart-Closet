@@ -11,6 +11,7 @@ import { Vestido } from '../prenda/services/vestido';
 import { ClimaService } from '../clima/services/clima.service';
 import { Atuendo } from '../atuendo/services/atuendo';
 import { Prenda } from '../prenda/services/prenda';
+import { AtuendoService } from '../atuendo/services/atuendo.service';
 
 @Component({
   selector: 'app-generar-atuendo',
@@ -22,25 +23,32 @@ export class GenerarAtuendoComponent implements OnInit {
   user: Usuario;
   llegoUsuario = false;
 
-  formalidad = 3;
-  clima = 2;
+  selectForm = '';
+  selectCli = '';
+  formalidad = -1;
+  clima = -1;
   climaApi;
   favoritos;
   checkVestido = false;
+  message = '';
+  MAX_IT = 0;
+  generar = false;
 
   superiores: Superior[];
   inferiores: Inferior[];
   zapatos: Zapato[];
   accesorios: Accesorio[];
   vestidos: Vestido[];
-  apiClima;
+
+  atuendos: Atuendo[] = [];
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private userService: UsuarioService,
     private prendaService: PrendaService,
-    private climaService: ClimaService
+    private climaService: ClimaService,
+    private atuendoService: AtuendoService
   ) { }
 
   ngOnInit(): void {
@@ -60,12 +68,11 @@ export class GenerarAtuendoComponent implements OnInit {
       }
     );
 
-    /*this.climaService.getClimaByName(this.user.ciudad).subscribe(
+    this.climaService.getClimaByName(this.user.ciudad).subscribe(
       (data: any) => {
-        this.apiClima = data;
-        this.climaApi = this.apiClima.main.temp;
+        this.climaApi = data.main.temp;
       }
-    );*/
+    );
 
     this.prendaService.getPrendasInferiores(localStorage.getItem('User')).subscribe(
       results => {
@@ -93,28 +100,41 @@ export class GenerarAtuendoComponent implements OnInit {
   }
 
   generarAtuendos() {
-    let atuendos: Atuendo[] = [];
 
-    for (let i = 0; i < 3; i++) {
-      const rand = Math.round((Math.random() * this.superiores.length));
-      const supActual = this.superiores[rand];
-      console.log(rand);
-      console.log(supActual);
-      if (supActual.formalidad >= this.formalidad - 1 && supActual.formalidad <= this.formalidad - 1) {
-        if (this.clima === -1) {
-          this.clima = this.calcularAbrigoAPI(this.climaApi);
+    this.message = '';
+
+    if (this.generar === false) {
+      if (this.selectCli !== '' && this.selectForm !== '') {
+
+        this.formalidad = +this.selectForm;
+        this.generar = true;
+        this.clima = +this.selectCli;
+
+        while (this.atuendos.length < 3 && this.MAX_IT < 30) {
+          const rand = Math.round((Math.random() * this.superiores.length));
+          const supActual = this.superiores[rand];
+          if (supActual.formalidad >= this.formalidad - 1 && supActual.formalidad <= this.formalidad + 1) {
+            if (this.clima === -1) {
+              this.clima = this.calcularAbrigoAPI(+this.climaApi);
+            }
+            if (supActual.abrigo >= this.clima - 1 && supActual.abrigo <= this.clima + 1) {
+              this.atuendos.push(this.generarInd(supActual));
+            }
+          }
+          this.MAX_IT += 1;
         }
-        if (supActual.abrigo === this.clima) {
-          atuendos.push(this.generarInd(supActual));
-        }
+
+        console.log(this.atuendos);
+      } else {
+        this.message = 'Selecciona un nivel de formalidad y abrigo';
       }
+    } else {
+      this.message = 'Escoge tu atuendo generado';
     }
-
-    console.log(atuendos);
 
   }
 
-  calcularAbrigoAPI(temp: number ): number {
+  calcularAbrigoAPI(temp: number): number {
     if (temp < 5) {
       return 5;
     } else if (temp < 12) {
@@ -131,7 +151,9 @@ export class GenerarAtuendoComponent implements OnInit {
   generarInd(superior: Superior): Atuendo {
 
     const color = superior.color;
-    let atuendo: Atuendo = new Atuendo(undefined, undefined, []);
+    const atuendo: Atuendo = new Atuendo(undefined, undefined, []);
+    atuendo.numAcc = 0;
+    atuendo.numSup = 1;
     let colorSuperior;
     let colorInferior;
     atuendo.prendas.push(superior);
@@ -145,6 +167,7 @@ export class GenerarAtuendoComponent implements OnInit {
                 if (sup.formalidad >= this.formalidad - 1 && sup.formalidad <= this.formalidad + 1) {
                   const colores = this.coloresClima(this.clima);
                   if (colores.includes(sup.color)) {
+                    atuendo.numSup += 1;
                     atuendo.prendas.push(sup);
                     sup.disponible = false;
                     colorSuperior = sup.color;
@@ -196,6 +219,7 @@ export class GenerarAtuendoComponent implements OnInit {
             if (acc.formalidad >= this.formalidad - 1 && acc.formalidad <= this.formalidad + 1) {
               const colores = this.coloresClima(this.clima);
               if (acc.color === colorSuperior || acc.color === colorInferior) {
+                atuendo.numAcc += 1;
                 atuendo.prendas.push(acc);
                 acc.disponible = false;
                 break;
@@ -211,7 +235,7 @@ export class GenerarAtuendoComponent implements OnInit {
 
   coloresClima(abrigo: number): string[] {
 
-    let colores: string[] = [];
+    const colores: string[] = [];
     if (abrigo === 1) {
       colores.push('Negro');
       colores.push('Blanco');
@@ -262,6 +286,24 @@ export class GenerarAtuendoComponent implements OnInit {
     return colores;
   }
 
+  poner(atuendo: Atuendo) {
 
+    let atuendoNuevo: Atuendo;
+
+    atuendo.favorito = false;
+    this.atuendoService.createAtuendo(localStorage.getItem('User'), atuendo).subscribe(
+      results => {
+        atuendoNuevo = results as Atuendo;
+        for (const prenda of atuendo.prendas) {
+          this.atuendoService.agregarPrendaAtuendo(localStorage.getItem('User'), atuendoNuevo.id, prenda.id, prenda).subscribe(
+            data => console.log(data)
+          );
+        }
+        this.router.navigate(['/menu-atuendos']);
+      });
+
+
+
+  }
 
 }

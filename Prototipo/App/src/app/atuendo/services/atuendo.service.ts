@@ -88,4 +88,11 @@ export class AtuendoService {
     });
   }
 
+  ponerAtuendo(nickname: string, id: number, poner: string) {
+    const url = `http://localhost:8080/crearFecha/${nickname}/${id}`;
+    return this.put(url, {
+      fecha: poner
+    });
+  }
+
 }

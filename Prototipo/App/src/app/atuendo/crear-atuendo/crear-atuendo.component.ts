@@ -188,7 +188,6 @@ export class CrearAtuendoComponent implements OnInit {
             }
             this.router.navigate(['/menu-atuendos']);
           });
-
       } else {
         this.message = 'Debe haber un Zapato para crear el atuendo';
       }

@@ -25,6 +25,10 @@ public class Atuendo {
     @JsonIgnore
     private Armario armario;
 
+    @OneToMany(mappedBy = "atuendo")
+    @JsonIgnore
+    private List<Calendario> fechas;
+
     @OneToMany(mappedBy = "id_atuendo", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, orphanRemoval = true)
     @JsonIgnore
     private List<AtuendoXPrenda> prendas = new ArrayList<AtuendoXPrenda>();
@@ -64,5 +68,13 @@ public class Atuendo {
 
     public void addPrenda(AtuendoXPrenda prenda){
         this.prendas.add(prenda);
+    }
+
+    public void addFecha(Calendario fecha){
+        this.fechas.add(fecha);
+    }
+
+    public List<Calendario> getFecha(){
+        return fechas;
     }
 }

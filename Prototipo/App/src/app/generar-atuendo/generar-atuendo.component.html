@@ -39,7 +39,73 @@
     </div>
   </div>
   <div class="content">
-    <button (click)="generarAtuendos()">Click</button>
-
+    <div class="title">
+      <img src="../../assets/images/GenerarAtuendo.png" alt="Atuendos...">
+      <h2>Generar Atuendos</h2>
+    </div>
+    <div class="selection-box">
+      <div class="desc-box">
+        <div class="form-box">
+          <a><i class="fab fa-black-tie"></i></a>
+          <select [(ngModel)]="selectForm" class="input-formalidad">
+            <option selected disabled>Nivel de formalidad...</option>
+            <option value="1">Muy informal</option>
+            <option value="2">Informal</option>
+            <option value="3">Casual</option>
+            <option value="4">Formal</option>
+            <option value="5">Muy formal</option>
+          </select>
+        </div>
+        <div class="abrigo-box">
+          <a><i class="fas fa-snowflake"></i></a>
+          <select [(ngModel)]="selectCli" class="input-abrigo">
+            <option selected disabled>Nivel de abrigo...</option>
+            <option value="1">Muy desabrigado</option>
+            <option value="2">Desabrigado</option>
+            <option value="3">Neutral</option>
+            <option value="4">Abrigado</option>
+            <option value="5">Muy abrigado</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="msg-error">
+      {{message}}
+    </div>
+    <div class="display-box">
+      <div class="box" *ngFor="let atuendo of atuendos">
+        <div class="panel-sup">
+          <div [ngClass]="{'superior':atuendo.numSup > 1,'image-superior':atuendo.numSup <= 1}">
+            <div *ngFor="let prenda of atuendo.prendas">
+              <img *ngIf="prenda.seccion == 'Superior'" src="{{prenda.url}}" alt="Atuendos...">
+            </div>
+          </div>
+          <div [ngClass]="{'accesorio':atuendo.numAcc > 1, 'image-accesorio': atuendo.numAcc <= 1}">
+            <div *ngFor="let prenda of atuendo.prendas">
+              <img *ngIf="prenda.seccion == 'Accesorio'" src="{{prenda.url}}" alt="Atuendos...">
+            </div>
+            <div *ngIf="atuendo.numAcc == 0" class="noAcc">
+              <img src="../../../assets/images/NoAcc.png" alt="Atuendos...">
+            </div>
+          </div>
+        </div>
+        <div class="panel-inf">
+          <div class="image-inferior" *ngFor="let prenda of atuendo.prendas">
+            <img *ngIf="prenda.seccion == 'Inferior'" src="{{prenda.url}}" alt="Atuendos...">
+          </div>
+          <div class="image-zapato" *ngFor="let prenda of atuendo.prendas">
+            <img *ngIf="prenda.seccion == 'Zapato'" src="{{prenda.url}}" alt="Atuendos...">
+          </div>
+        </div>
+        <div class="btn-box">
+          <div class="btn">
+            <button (click)="poner(atuendo)" class="btn-choose"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-generar">
+      <button (click)="generarAtuendos()">Generar Atuendos</button>
+    </div>
   </div>
 </div>
