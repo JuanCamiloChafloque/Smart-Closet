@@ -127,7 +127,7 @@ a {
   width: 950px;
   position: absolute;
   left: 22%;
-  top: 25%;
+  top: 30%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -278,5 +278,14 @@ select {
 .filter-box p {
   color: #C40A92;
   font-weight: bold;
+}
+
+.msg-box {
+  color: #C40A92;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 

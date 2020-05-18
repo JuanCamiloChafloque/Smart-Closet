@@ -287,3 +287,12 @@ button {
   outline: none;
 }
 
+.msg-box {
+  color: #C40A92;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+

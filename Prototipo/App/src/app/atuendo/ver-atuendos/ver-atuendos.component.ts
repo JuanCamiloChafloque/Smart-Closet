@@ -16,6 +16,7 @@ export class VerAtuendosComponent implements OnInit {
   llegoUsuario = false;
   llegoAtuendos = false;
   llegoPrendas = false;
+  message = '';
   vacioMessage = '';
   idEliminar;
   vacio = false;
@@ -78,34 +79,60 @@ export class VerAtuendosComponent implements OnInit {
   }
 
   poner(id: number) {
-    const date: Date = new Date();
-    let mesM = '';
-    let diaM = '';
 
-    const anio = date.getFullYear();
-    const mes = date.getMonth() + 1;
-    const dia = date.getDate();
+    if (this.verifyDisponibilidad(id)) {
+      this.message = '';
+      const date: Date = new Date();
+      let mesM = '';
+      let diaM = '';
 
-    if (mes < 10) {
-      mesM = '0' + mes;
+      const anio = date.getFullYear();
+      const mes = date.getMonth() + 1;
+      const dia = date.getDate();
+
+      if (mes < 10) {
+        mesM = '0' + mes;
+      } else {
+        mesM = '' + mes;
+      }
+
+      if (dia < 10) {
+        diaM = '0' + dia;
+      } else {
+        diaM = '' + dia;
+      }
+
+      const fecha = anio + '-' + mesM + '-' + diaM;
+      console.log(fecha);
+
+      this.atuendoService.ponerAtuendo(localStorage.getItem('User'), id, fecha).subscribe(
+        results => {
+          console.log(results);
+          this.router.navigate(['/menu-atuendos']);
+        });
+
     } else {
-      mesM = '' + mes;
+      this.message = 'El atuendo no esta disponible en el momento. Alguna de las prendas estan deshabilitadas.';
     }
 
-    if (dia < 10) {
-      diaM = '0' + dia;
-    } else {
-      diaM = '' + dia;
+
+  }
+
+  verifyDisponibilidad(id: number): boolean {
+
+    let atuendoEncontrado: Atuendo;
+
+    for (const atuendo of this.atuendos) {
+      if (atuendo.id === id) {
+        atuendoEncontrado = atuendo;
+      }
     }
-
-    const fecha = anio + '-' + mesM + '-' + diaM;
-    console.log(fecha);
-
-    this.atuendoService.ponerAtuendo(localStorage.getItem('User'), id, fecha).subscribe(
-      results => {
-        console.log(results);
-        this.router.navigate(['/menu-atuendos']);
-      });
+    for (const prenda of atuendoEncontrado.prendas) {
+      if (prenda.disponible === false) {
+        return false;
+      }
+    }
+    return true;
   }
 
   eliminar(id: number) {

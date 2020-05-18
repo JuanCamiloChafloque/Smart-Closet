@@ -83,7 +83,7 @@
       </div>
     </div>
     <div class="display-box">
-      <div [ngClass]="{'box':prenda.selected == false, 'assigned': prenda.selected == true}" *ngFor="let prenda of filter">
+      <div [ngClass]="{'box':prenda.selected == false, 'favorite': prenda.selected == false && prenda.favorito == true, 'assigned': prenda.selected == true}" *ngFor="let prenda of filter">
         <div class="image">
           <img (click)="agregarPrenda(prenda)" src="{{prenda.url}}" alt="Prenda...">
         </div>

@@ -64,6 +64,15 @@ export class CrearAtuendoComponent implements OnInit {
     for (const prenda of this.prendas) {
       prenda.selected = false;
     }
+
+    for (const prenda of this.prendas) {
+      if (prenda.disponible === false) {
+        this.prendas = this.prendas.filter(obj => obj !== prenda);
+        this.filter = this.filter.filter(obj => obj !== prenda);
+      }
+    }
+
+
   }
 
   displayPrendas() {

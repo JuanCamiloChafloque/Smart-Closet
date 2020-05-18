@@ -68,11 +68,14 @@ export class GenerarAtuendoComponent implements OnInit {
       }
     );
 
-    this.climaService.getClimaByName(this.user.ciudad).subscribe(
-      (data: any) => {
-        this.climaApi = data.main.temp;
-      }
-    );
+    if ('geolocation' in navigator) {
+      navigator.geolocation.watchPosition((success) => {
+
+        this.climaService.getClimaByCoord(success.coords.latitude, success.coords.longitude).subscribe((data: any) => {
+          this.climaApi = data.main.temp;
+        });
+      });
+    }
 
     this.prendaService.getPrendasInferiores(localStorage.getItem('User')).subscribe(
       results => {
@@ -101,6 +104,32 @@ export class GenerarAtuendoComponent implements OnInit {
 
   generarAtuendos() {
 
+    for (const sup of this.superiores) {
+      if (sup.disponible === false) {
+        this.superiores = this.superiores.filter(obj => obj !== sup);
+      }
+    }
+    for (const inf of this.inferiores) {
+      if (inf.disponible === false) {
+        this.inferiores = this.inferiores.filter(obj => obj !== inf);
+      }
+    }
+    for (const acc of this.accesorios) {
+      if (acc.disponible === false) {
+        this.accesorios = this.accesorios.filter(obj => obj !== acc);
+      }
+    }
+    for (const zap of this.zapatos) {
+      if (zap.disponible === false) {
+        this.zapatos = this.zapatos.filter(obj => obj !== zap);
+      }
+    }
+    for (const ves of this.vestidos) {
+      if (ves.disponible === false) {
+        this.vestidos = this.vestidos.filter(obj => obj !== ves);
+      }
+    }
+
     this.message = '';
 
     if (this.generar === false) {
@@ -115,6 +144,7 @@ export class GenerarAtuendoComponent implements OnInit {
           const supActual = this.superiores[rand];
           if (supActual.formalidad >= this.formalidad - 1 && supActual.formalidad <= this.formalidad + 1) {
             if (this.clima === -1) {
+              console.log(+this.climaApi);
               this.clima = this.calcularAbrigoAPI(+this.climaApi);
             }
             if (supActual.abrigo >= this.clima - 1 && supActual.abrigo <= this.clima + 1) {
