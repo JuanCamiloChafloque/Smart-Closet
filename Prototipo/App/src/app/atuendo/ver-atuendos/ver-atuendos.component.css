@@ -138,7 +138,7 @@ a {
 .display-box .box {
   position: relative;
   width: 400px;
-  border: 2px solid black;
+  border: 2px solid #DAA520;
   border-radius: 10px;
   margin: 10px;
   display: inline-block;
@@ -163,11 +163,13 @@ a {
 
 .accesorio {
   display: inline-flex;
+  transition: transform 1s;
 }
 
 .superior {
   align-items: center;
   display: inline-flex;
+  transition: transform 1s;
 }
 
 .panel-sup {
@@ -193,6 +195,14 @@ a {
 }
 
 .box:hover .image-accesorio img {
+  transform: scale(1.05);
+}
+
+.box:hover .superior img {
+  transform: scale(1.05);
+}
+
+.box:hover .accesorio img {
   transform: scale(1.05);
 }
 
@@ -229,11 +239,6 @@ button {
 
 .btn-choose {
   background: url(../../../assets/images/Choose.png);
-  background-size: cover;
-}
-
-.btn-favorito {
-  background: url(../../../assets/images/Favorito.png);
   background-size: cover;
 }
 

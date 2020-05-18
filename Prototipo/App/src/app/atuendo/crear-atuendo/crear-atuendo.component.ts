@@ -23,6 +23,7 @@ export class CrearAtuendoComponent implements OnInit {
   filter: Prenda[];
   escogidas: Prenda[] = [];
   vSuperior = false;
+  vChaqueta = false;
   vInferior = false;
   vZapato = false;
   vVestido = false;
@@ -94,7 +95,11 @@ export class CrearAtuendoComponent implements OnInit {
     this.escogidas = this.escogidas.filter(obj => obj !== prendaEliminar);
     prendaEliminar.selected = false;
     if (prendaEliminar.seccion === 'Superior') {
-      this.vSuperior = false;
+      if (prendaEliminar.tipo === 'Camisa' || prendaEliminar.tipo === 'Camiseta' || prendaEliminar.tipo === 'Top') {
+        this.vSuperior = false;
+      } else {
+        this.vChaqueta = false;
+      }
     } else if (prendaEliminar.seccion === 'Inferior') {
       this.vInferior = false;
     } else if (prendaEliminar.seccion === 'Zapato') {
@@ -109,15 +114,25 @@ export class CrearAtuendoComponent implements OnInit {
 
   verify(prenda: Prenda): boolean {
 
-    /*if (prenda.seccion === 'Superior') {
-      if (this.vSuperior === false) {
-        this.vSuperior = true;
-        return true;
+    if (prenda.seccion === 'Superior') {
+      if (prenda.tipo === 'Camisa' || prenda.tipo === 'Camiseta' || prenda.tipo === 'Top') {
+        if (this.vSuperior === false) {
+          this.vSuperior = true;
+          return true;
+        } else {
+          this.message = 'Ya tienes una prenda superior del mismo tipo en tu atuendo';
+          return false;
+        }
       } else {
-        this.message = 'Ya tienes una prenda superior en tu atuendo';
-        return false;
+        if (this.vChaqueta === false) {
+          this.vChaqueta = true;
+          return true;
+        } else {
+          this.message = 'Ya tienes una prenda superior del mismo tipo en tu atuendo';
+          return false;
+        }
       }
-    }*/
+    }
     if (prenda.seccion === 'Inferior') {
       if (this.vInferior === false) {
         this.vInferior = true;
