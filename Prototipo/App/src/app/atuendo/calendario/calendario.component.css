@@ -126,28 +126,24 @@ a {
 }
 
 .day-box {
-  width: 235px;
-  height: 235px;
+  width: 134px;
+  height: 134px;
   border: 0.8px solid black;
   border-radius: 4px;
   text-align: center;
 }
 
-.prenda {
-  margin-top: 12px;
-}
-
 .dia-title{
   width: 100%;
   margin-top: 2px;
-  margin-bottom: 2px;
+  margin-bottom: 0px;
   text-align: center;
   font-weight: bold;
 }
 
 .prev {
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   overflow: hidden;
   border: none;
   cursor: pointer;
@@ -157,8 +153,8 @@ a {
 }
 
 .next {
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   overflow: hidden;
   border: none;
   cursor: pointer;
@@ -180,21 +176,22 @@ a {
 .month-box p {
   margin-left: 15px;
   margin-right: 15px;
-  font-size: 23px;
+  font-size: 20px;
 }
 
 .image-superior, .image-inferior, .image-zapato, .image-accesorio {
-  margin-top: 5px;
+  margin-top: 2px;
   text-align: center;
   overflow: hidden;
   display: inline-block;
+  cursor: pointer;
 }
 
 .image-superior img, .image-inferior img, .image-zapato img, .image-accesorio img {
-  width: 75px;
-  height: 75px;
-  margin-left: 5px;
-  margin-right: 5px;
+  width: 50px;
+  height: 50px;
+  margin-left: 2px;
+  margin-right: 2px;
   transition: transform 1s;
 }
 
@@ -234,8 +231,8 @@ a {
 }
 
 .accesorio img, .superior img{
-  width: 55px;
-  height: 55px;
+  width: 39px;
+  height: 39px;
 }
 
 .noAcc {
@@ -243,9 +240,17 @@ a {
 }
 
 .noAcc img {
-  width: 75px;
-  height: 75px;
+  width: 50px;
+  height: 50px;
 }
+
+.week-box {
+  width: 100%;
+  margin-top: 30px;
+  display: inline-flex;
+  justify-content: space-evenly;
+}
+
 
 
 

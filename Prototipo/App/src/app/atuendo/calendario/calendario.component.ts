@@ -42,6 +42,12 @@ export class CalendarioComponent implements OnInit {
     this.mesInicial = fecha.getMonth() + 1;
     this.anioInicial = fecha.getFullYear();
     const diaActual = new Date(this.anioInicial, this.mesInicial, 0).getDate();
+    const semana = new Date(this.anioInicial, this.mesInicial - 1, 1);
+
+    for (let i = 0; i < semana.getDay(); i++) {
+      const cal: Calendario = new Calendario(-1, -1, -1, null);
+      this.calendario.push(cal);
+    }
 
     for (let i = 0; i < diaActual; i++) {
       const cal: Calendario = new Calendario(i + 1, this.mesInicial, this.anioInicial, undefined);
@@ -69,6 +75,14 @@ export class CalendarioComponent implements OnInit {
         });
       this.calendario.push(cal);
     }
+
+    const ultimoDia = new Date(this.anioInicial, this.mesInicial - 1, diaActual);
+
+    for (let i = 0; i < 6 - ultimoDia.getDay(); i++) {
+      const cal: Calendario = new Calendario(-1, -1, -1, null);
+      this.calendario.push(cal);
+    }
+
   }
 
   meses() {
@@ -99,6 +113,13 @@ export class CalendarioComponent implements OnInit {
     }
 
     const diaActual = new Date(this.anioInicial, this.mesInicial, 0).getDate();
+    const semana = new Date(this.anioInicial, this.mesInicial - 1, 1);
+
+    for (let i = 0; i < semana.getDay(); i++) {
+      const cal: Calendario = new Calendario(-1, -1, -1, null);
+      this.calendario.push(cal);
+    }
+
 
     for (let i = 0; i < diaActual; i++) {
       const cal: Calendario = new Calendario(i + 1, this.mesInicial, this.anioInicial, undefined);
@@ -127,6 +148,14 @@ export class CalendarioComponent implements OnInit {
       );
       this.calendario.push(cal);
     }
+
+    const ultimoDia = new Date(this.anioInicial, this.mesInicial - 1, diaActual);
+
+    for (let i = 0; i < 6 - ultimoDia.getDay(); i++) {
+      const cal: Calendario = new Calendario(-1, -1, -1, null);
+      this.calendario.push(cal);
+    }
+
   }
 
   actualizarDisplayRight() {
@@ -141,6 +170,13 @@ export class CalendarioComponent implements OnInit {
     }
 
     const diaActual = new Date(this.anioInicial, this.mesInicial, 0).getDate();
+    const semana = new Date(this.anioInicial, this.mesInicial - 1, 1);
+
+    for (let i = 0; i < semana.getDay(); i++) {
+      const cal: Calendario = new Calendario(-1, -1, -1, null);
+      this.calendario.push(cal);
+    }
+
 
     for (let i = 0; i < diaActual; i++) {
       const cal: Calendario = new Calendario(i + 1, this.mesInicial, this.anioInicial, undefined);
@@ -167,6 +203,13 @@ export class CalendarioComponent implements OnInit {
           }
         }
       );
+      this.calendario.push(cal);
+    }
+
+    const ultimoDia = new Date(this.anioInicial, this.mesInicial - 1, diaActual);
+
+    for (let i = 0; i < 6 - ultimoDia.getDay(); i++) {
+      const cal: Calendario = new Calendario(-1, -1, -1, null);
       this.calendario.push(cal);
     }
 

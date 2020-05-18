@@ -48,16 +48,39 @@
           <button (click)="actualizarDisplayLeft()" class="prev"></button>
         </div>
         <div>
-          <p>{{nombreMeses.get(mesInicial)}} - {{anioInicial}}</p>
+          <p>{{nombreMeses.get(mesInicial)}}, {{anioInicial}}</p>
         </div>
         <div>
           <button (click)="actualizarDisplayRight()" class="next"></button>
         </div>
     </div>
+    <div class="week-box">
+      <div>
+        <h3>Dom</h3>
+      </div>
+      <div>
+        <h3>Lun</h3>
+      </div>
+      <div>
+        <h3>Mar</h3>
+      </div>
+      <div>
+        <h3>Mie</h3>
+      </div>
+      <div>
+        <h3>Jue</h3>
+      </div>
+      <div>
+        <h3>Vie</h3>
+      </div>
+      <div>
+        <h3>Sab</h3>
+      </div>
+    </div>
     <div class="calendar-box">
       <div class="day-box" *ngFor="let dia of calendario">
         <div class="dia-title">
-          <p>{{dia.dia}}</p>
+          <p *ngIf="dia.dia != -1">{{dia.dia}}</p>
         </div>
         <div class="prenda" *ngIf="dia.atuendo != null">
           <div class="panel-sup">
