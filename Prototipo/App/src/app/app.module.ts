@@ -34,6 +34,7 @@ import { HistorialComponent } from './atuendo/historial/historial.component';
 import { VerAtuendosComponent } from './atuendo/ver-atuendos/ver-atuendos.component';
 import { AtuendoService } from './atuendo/services/atuendo.service';
 import { MenuAtuendoComponent } from './atuendo/menu-atuendo/menu-atuendo.component';
+import { CalendarioComponent } from './atuendo/calendario/calendario.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { MenuAtuendoComponent } from './atuendo/menu-atuendo/menu-atuendo.compon
     HistorialComponent,
     VerAtuendosComponent,
     MenuAtuendoComponent,
+    CalendarioComponent,
   ],
   imports: [
     BrowserModule,

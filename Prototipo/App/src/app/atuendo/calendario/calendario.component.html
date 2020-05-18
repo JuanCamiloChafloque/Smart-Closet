@@ -1,0 +1,90 @@
+<div *ngIf="llegoUsuario == true" class="wrapper">
+  <div class="side-bar">
+    <div class="img-box">
+      <img src="../../assets/images/SmartCloset.png" alt="SC...">
+    </div>
+    <div class="user-box">
+      <div class="user-image">
+        <a><i class="fas fa-wifi"></i></a>
+      </div>
+      <div class="user-name">
+        <p>{{user.nickname}}</p>
+      </div>
+    </div>
+    <div class="options-box">
+      <div class="config-box">
+        <a [routerLink]="['/perfil']"><i class="fas fa-user"></i></a>
+      </div>
+      <div class="clima-box">
+        <a [routerLink]="['/ver-clima']"><i class="fas fa-cloud"></i></a>
+      </div>
+    </div>
+    <div class="cont-box">
+      <div class="generate-box">
+        <a [routerLink]="['/generar-atuendo']"><img src="../../assets/images/GenerarAtuendo.png" alt=""></a><br>
+        <a [routerLink]="['/generar-atuendo']">Generar atuendo</a>
+      </div>
+      <div class="closet-box">
+        <a [routerLink]="['/mi-armario']"><img src="../../assets/images/MiArmario.png" alt=""></a>
+        <a [routerLink]="['/mi-armario']">Mi armario</a>
+      </div>
+      <div class="favorite-box">
+        <a [routerLink]="['/favoritos']"><img src="../../assets/images/Favorito.png" alt=""></a>
+        <a [routerLink]="['/favoritos']">Favoritos</a>
+      </div>
+      <div class="history-box">
+        <a [routerLink]="['/menu-atuendos']"><img src="../../assets/images/GestionarAtuendo.png" alt=""></a>
+        <a [routerLink]="['/menu-atuendos']">Gestionar atuendos</a>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="title">
+      <img src="../../../assets/images/Calendario.png" alt="Atuendos...">
+      <h2>Mi Calendario</h2>
+    </div>
+    <div class="month-box">
+        <div>
+          <button (click)="actualizarDisplayLeft()" class="prev"></button>
+        </div>
+        <div>
+          <p>{{nombreMeses.get(mesInicial)}} - {{anioInicial}}</p>
+        </div>
+        <div>
+          <button (click)="actualizarDisplayRight()" class="next"></button>
+        </div>
+    </div>
+    <div class="calendar-box">
+      <div class="day-box" *ngFor="let dia of calendario">
+        <div class="dia-title">
+          <p>{{dia.dia}}</p>
+        </div>
+        <div class="prenda" *ngIf="dia.atuendo != null">
+          <div class="panel-sup">
+            <div [ngClass]="{'superior':dia.atuendo.numSup > 1,'image-superior':dia.atuendo.numSup <= 1}">
+              <div *ngFor="let prenda of dia.atuendo.prendas">
+                <img *ngIf="prenda.seccion == 'Superior'" src="{{prenda.url}}" alt="Atuendos...">
+              </div>
+            </div>
+            <div [ngClass]="{'accesorio':dia.atuendo.numAcc > 1, 'image-accesorio': dia.atuendo.numAcc <= 1}">
+              <div *ngFor="let prenda of dia.atuendo.prendas">
+                <img *ngIf="prenda.seccion == 'Accesorio'" src="{{prenda.url}}" alt="Atuendos...">
+              </div>
+              <div *ngIf="dia.atuendo.numAcc == 0" class="noAcc">
+                <img src="../../../assets/images/NoAcc.png" alt="Atuendos...">
+              </div>
+            </div>
+          </div>
+          <div class="panel-inf">
+            <div class="image-inferior" *ngFor="let prenda of dia.atuendo.prendas">
+              <img *ngIf="prenda.seccion == 'Inferior'" src="{{prenda.url}}" alt="Atuendos...">
+            </div>
+            <div class="image-zapato" *ngFor="let prenda of dia.atuendo.prendas">
+              <img *ngIf="prenda.seccion == 'Zapato'" src="{{prenda.url}}" alt="Atuendos...">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

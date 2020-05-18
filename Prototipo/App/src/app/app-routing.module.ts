@@ -20,6 +20,7 @@ import { VerAtuendosComponent } from './atuendo/ver-atuendos/ver-atuendos.compon
 import { HistorialComponent } from './atuendo/historial/historial.component';
 import { CrearAtuendoComponent } from './atuendo/crear-atuendo/crear-atuendo.component';
 import { MenuAtuendoComponent } from './atuendo/menu-atuendo/menu-atuendo.component';
+import { CalendarioComponent } from './atuendo/calendario/calendario.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'menu-atuendos', component: MenuAtuendoComponent },
   { path: 'mis-atuendos', component: VerAtuendosComponent },
   { path: 'historial', component: HistorialComponent },
+  { path: 'mi-calendario', component: CalendarioComponent },
   { path: 'crear-atuendo', component: CrearAtuendoComponent },
   { path: '', pathMatch: 'full', redirectTo: '/main-page' }
 ];

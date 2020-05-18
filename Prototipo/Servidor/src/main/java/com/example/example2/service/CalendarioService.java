@@ -2,9 +2,10 @@ package com.example.example2.service;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
+import com.example.example2.model.Atuendo;
 import com.example.example2.model.Calendario;
 import com.example.example2.model.CalendarioRepository;
 
@@ -38,6 +39,18 @@ public class CalendarioService {
         }
         reciente = Collections.max(misFechas);
         return reciente;
+    }
+
+    @GetMapping("/atuendoFecha/{fecha}")
+    public Atuendo atuendoFecha(@PathVariable("fecha") String fecha){
+        Date fechaActual = Date.valueOf(fecha);
+        Iterable<Calendario> fechas = repository.findAll();
+        for(Calendario actual: fechas){
+            if(actual.getFecha().equals(fechaActual)){
+                return actual.getAtuendo();
+            }
+        }
+        return null;
     }
 
     @GetMapping("/cantidadVeces/{id}")

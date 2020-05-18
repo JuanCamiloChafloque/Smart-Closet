@@ -11,7 +11,7 @@ GET http://localhost:8080/armario/Chafo/prendas/inferior
 GET http://localhost:8080/armario/Chafo/-1/prendas
 
 ###
-GET http://localhost:8080/ultimaVez/-7
+GET http://localhost:8080/atuendoFecha/2020-05-07
 
 ###
 PUT http://localhost:8080/agregarSuperior/Chafo
