@@ -34,6 +34,7 @@ export class AgregarPrendaComponent implements OnInit {
   inf = false;
   zap = false;
   ves = false;
+  acc = false;
   abrigo = '';
   formalidad = '';
 
@@ -243,26 +244,31 @@ export class AgregarPrendaComponent implements OnInit {
       this.zap = false;
       this.inf = false;
       this.ves = false;
+      this.acc = false;
     } else if (this.prenda.seccion === 'Inferior') {
       this.sup = false;
       this.zap = false;
       this.ves = false;
       this.inf = true;
+      this.acc = false;
     } else if (this.prenda.seccion === 'Zapato') {
       this.sup = false;
       this.zap = true;
       this.inf = false;
       this.ves = false;
+      this.acc = false;
     } else if (this.prenda.seccion === 'Vestido') {
       this.ves = true;
       this.sup = false;
       this.zap = false;
       this.inf = false;
-    } else {
+      this.acc = false;
+    } else if (this.prenda.seccion === 'Accesorio') {
       this.sup = false;
       this.zap = false;
       this.inf = false;
       this.ves = false;
+      this.acc = true;
     }
   }
 

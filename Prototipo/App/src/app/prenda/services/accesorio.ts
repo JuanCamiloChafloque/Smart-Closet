@@ -9,6 +9,7 @@ export class Accesorio {
     public favorito: boolean,
     public disponible: boolean,
     public descripcion: string,
-    public url: string
+    public url: string,
+    public lugar: string
   ) {}
 }

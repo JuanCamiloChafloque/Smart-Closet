@@ -285,6 +285,7 @@ class ArmarioService {
         newPrenda.setDisponible(prenda.isDisponible());
         newPrenda.setFavorito(prenda.isFavorito());
         newPrenda.setDescripcion(prenda.getDescripcion());
+        newPrenda.setLugar(prenda.getLugar());
         newPrenda.setColor(prenda.getColor());
         newPrenda.setUrl(prenda.getUrl());
         newPrenda.setArmario(armarioEncontrado);

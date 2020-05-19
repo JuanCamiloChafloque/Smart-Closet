@@ -116,6 +116,7 @@ export class PrendaService {
       favorito: prenda.favorito,
       disponible: prenda.disponible,
       descripcion: prenda.descripcion,
+      lugar: prenda.lugar,
       url: prenda.url
     });
   }

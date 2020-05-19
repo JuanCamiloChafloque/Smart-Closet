@@ -33,6 +33,20 @@ Content-Type: application/json
 
 ###
 PUT http://localhost:8080/modificarFavorito/-5
+Content-Type: application/json
+
+{
+    "seccion": "Superior",
+    "tipo": "Sueter",
+    "formalidad": 3,
+    "abrigo": 5,
+    "color": "azul",
+    "favorito": false,
+    "disponible": true,
+    "descripcion": "Sueter Azul",
+    "url": "Chafo-1.png"
+}
+
 
 ###
 PUT http://localhost:8080/modificarDisponible/-2

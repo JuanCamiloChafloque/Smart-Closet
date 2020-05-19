@@ -67,6 +67,9 @@
           <div *ngIf="ves == true" class="lbl">
             <label class="lbl-largo">Largo del vestido</label>
           </div>
+          <div *ngIf="acc == true" class="lbl">
+            <label class="lbl-lugar">Lugar del accesorio</label>
+          </div>
           <div class="lbl">
             <label class="lbl-formalidad">Nivel de formalidad</label>
           </div>
@@ -131,6 +134,14 @@
               <option selected disabled>Largo del vestido...</option>
               <option value="Corto">Corto</option>
               <option value="Largo">Largo</option>
+            </select>
+          </div>
+          <div *ngIf="acc == true" class="inp">
+            <select [(ngModel)]="prenda.lugar" class="input-lugar">
+              <option selected disabled>Lugar del accesorio...</option>
+              <option value="Cabeza">Cabeza</option>
+              <option value="Manos">Manos</option>
+              <option value="Cuello">Cuello</option>
             </select>
           </div>
           <div class="inp">

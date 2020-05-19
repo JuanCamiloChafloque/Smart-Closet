@@ -15,6 +15,7 @@ export class Prenda {
     public bota?: string,
     public forma?: string,
     public largo?: string,
+    public lugar?: string,
     public selected?: boolean
   ) {}
 }
