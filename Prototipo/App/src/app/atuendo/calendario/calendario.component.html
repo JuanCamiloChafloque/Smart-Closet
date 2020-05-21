@@ -84,9 +84,14 @@
         </div>
         <div class="prenda" *ngIf="dia.atuendo != null">
           <div class="panel-sup">
-            <div [ngClass]="{'superior':dia.atuendo.numSup > 1,'image-superior':dia.atuendo.numSup <= 1}">
+            <div *ngIf="dia.atuendo.numVes == 0" [ngClass]="{'superior':dia.atuendo.numSup > 1,'image-superior':dia.atuendo.numSup <= 1}">
               <div *ngFor="let prenda of dia.atuendo.prendas">
                 <img *ngIf="prenda.seccion == 'Superior'" src="{{prenda.url}}" alt="Atuendos...">
+              </div>
+            </div>
+            <div *ngIf="dia.atuendo.numVes > 0" class="image-vestido">
+              <div *ngFor="let prenda of dia.atuendo.prendas">
+                <img *ngIf="prenda.seccion == 'Vestido'" src="{{prenda.url}}" alt="Atuendos...">
               </div>
             </div>
             <div [ngClass]="{'accesorio':dia.atuendo.numAcc > 1, 'image-accesorio': dia.atuendo.numAcc <= 1}">
@@ -99,8 +104,18 @@
             </div>
           </div>
           <div class="panel-inf">
-            <div class="image-inferior" *ngFor="let prenda of dia.atuendo.prendas">
-              <img *ngIf="prenda.seccion == 'Inferior'" src="{{prenda.url}}" alt="Atuendos...">
+            <div *ngIf="dia.atuendo.numVes == 0" class="image-inferior">
+              <div *ngFor="let prenda of dia.atuendo.prendas">
+                <img *ngIf="prenda.seccion == 'Inferior'" src="{{prenda.url}}" alt="Atuendos...">
+              </div>
+            </div>
+            <div *ngIf="dia.atuendo.numVes > 0 && dia.atuendo.numSup > 0" class="image-superior">
+              <div *ngFor="let prenda of dia.atuendo.prendas">
+                <img *ngIf="prenda.seccion == 'Superior'" src="{{prenda.url}}" alt="Atuendos...">
+              </div>
+            </div>
+            <div *ngIf="dia.atuendo.numSup == 0" class="noAcc">
+              <img src="../../../assets/images/NoAcc.png" alt="Atuendos...">
             </div>
             <div class="image-zapato" *ngFor="let prenda of dia.atuendo.prendas">
               <img *ngIf="prenda.seccion == 'Zapato'" src="{{prenda.url}}" alt="Atuendos...">

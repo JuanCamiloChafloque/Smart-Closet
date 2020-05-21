@@ -161,13 +161,19 @@ export class CrearAtuendoComponent implements OnInit {
       }
     }
     if (prenda.seccion === 'Vestido') {
-      if (this.vVestido === false) {
-        this.vVestido = true;
-        return true;
+      if (this.vSuperior === false) {
+        if (this.vVestido === false) {
+          this.vVestido = true;
+          return true;
+        } else {
+          this.message = 'Ya tienes un vestido en tu atuendo';
+          return false;
+        }
       } else {
-        this.message = 'Ya tienes un vestido en tu atuendo';
+        this.message = 'Ya tienes una prenda superior en tu atuendo';
         return false;
       }
+
     }
     if (prenda.seccion === 'Accesorio' || prenda.seccion === 'Superior') {
       return true;

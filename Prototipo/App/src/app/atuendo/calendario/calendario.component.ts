@@ -58,6 +58,7 @@ export class CalendarioComponent implements OnInit {
           if (cal.atuendo !== null) {
             cal.atuendo.numSup = 0;
             cal.atuendo.numAcc = 0;
+            cal.atuendo.numVes = 0;
             this.atuendoService.getPrendasAtuendo(localStorage.getItem('User'), cal.atuendo.id).subscribe(
               data => {
                 cal.atuendo.prendas = data;
@@ -67,6 +68,9 @@ export class CalendarioComponent implements OnInit {
                   }
                   if (actual.seccion === 'Accesorio') {
                     cal.atuendo.numAcc += 1;
+                  }
+                  if (actual.seccion === 'Vestido') {
+                    cal.atuendo.numVes += 1;
                   }
                 }
               }
@@ -130,6 +134,7 @@ export class CalendarioComponent implements OnInit {
           if (cal.atuendo !== null) {
             cal.atuendo.numSup = 0;
             cal.atuendo.numAcc = 0;
+            cal.atuendo.numVes = 0;
             this.atuendoService.getPrendasAtuendo(localStorage.getItem('User'), cal.atuendo.id).subscribe(
               data => {
                 cal.atuendo.prendas = data;
@@ -139,6 +144,9 @@ export class CalendarioComponent implements OnInit {
                   }
                   if (actual.seccion === 'Accesorio') {
                     cal.atuendo.numAcc += 1;
+                  }
+                  if (actual.seccion === 'Vestido') {
+                    cal.atuendo.numVes += 1;
                   }
                 }
               }
@@ -187,6 +195,7 @@ export class CalendarioComponent implements OnInit {
           if (cal.atuendo !== null) {
             cal.atuendo.numSup = 0;
             cal.atuendo.numAcc = 0;
+            cal.atuendo.numVes = 0;
             this.atuendoService.getPrendasAtuendo(localStorage.getItem('User'), cal.atuendo.id).subscribe(
               data => {
                 cal.atuendo.prendas = data;
@@ -196,6 +205,9 @@ export class CalendarioComponent implements OnInit {
                   }
                   if (actual.seccion === 'Accesorio') {
                     cal.atuendo.numAcc += 1;
+                  }
+                  if (actual.seccion === 'Vestido') {
+                    cal.atuendo.numVes += 1;
                   }
                 }
               }

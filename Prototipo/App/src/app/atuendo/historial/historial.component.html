@@ -62,9 +62,14 @@
     <div class="display-box">
       <div class="box" *ngFor="let atuendo of filter">
         <div class="panel-sup">
-          <div [ngClass]="{'superior':atuendo.numSup > 1,'image-superior':atuendo.numSup <= 1}">
+          <div *ngIf="atuendo.numVes == 0" [ngClass]="{'superior':atuendo.numSup > 1,'image-superior':atuendo.numSup <= 1}">
             <div *ngFor="let prenda of atuendo.prendas">
               <img *ngIf="prenda.seccion == 'Superior'" src="{{prenda.url}}" alt="Atuendos...">
+            </div>
+          </div>
+          <div *ngIf="atuendo.numVes > 0" class="image-vestido">
+            <div *ngFor="let prenda of atuendo.prendas">
+              <img *ngIf="prenda.seccion == 'Vestido'" src="{{prenda.url}}" alt="Atuendos...">
             </div>
           </div>
           <div [ngClass]="{'accesorio':atuendo.numAcc > 1, 'image-accesorio': atuendo.numAcc <= 1}">
@@ -77,8 +82,18 @@
           </div>
         </div>
         <div class="panel-inf">
-          <div class="image-inferior" *ngFor="let prenda of atuendo.prendas">
-            <img *ngIf="prenda.seccion == 'Inferior'" src="{{prenda.url}}" alt="Atuendos...">
+          <div *ngIf="atuendo.numVes == 0" class="image-inferior">
+            <div *ngFor="let prenda of atuendo.prendas">
+              <img *ngIf="prenda.seccion == 'Inferior'" src="{{prenda.url}}" alt="Atuendos...">
+            </div>
+          </div>
+          <div *ngIf="atuendo.numVes > 0 && atuendo.numSup > 0" class="image-superior">
+            <div *ngFor="let prenda of atuendo.prendas">
+              <img *ngIf="prenda.seccion == 'Superior'" src="{{prenda.url}}" alt="Atuendos...">
+            </div>
+          </div>
+          <div *ngIf="atuendo.numSup == 0" class="noAcc">
+            <img src="../../../assets/images/NoAcc.png" alt="Atuendos...">
           </div>
           <div class="image-zapato" *ngFor="let prenda of atuendo.prendas">
             <img *ngIf="prenda.seccion == 'Zapato'" src="{{prenda.url}}" alt="Atuendos...">
@@ -96,8 +111,15 @@
           </div>
         </div>
         <div class="info-box">
-          <p>Usado por última vez</p>{{atuendo.ultimo}}<br>
-          <p>Cantidad de veces usado</p>{{atuendo.cantidad}}<br>
+          <div *ngIf="atuendo.ultimo != null">
+            <p>Usado por última vez</p>{{atuendo.ultimo}}
+          </div>
+          <div *ngIf="atuendo.ultimo == null">
+            <p>Usado por última vez</p>-
+          </div>
+          <div>
+            <p>Cantidad de veces usado</p>{{atuendo.cantidad}}<br>
+          </div>
         </div>
       </div>
     </div>

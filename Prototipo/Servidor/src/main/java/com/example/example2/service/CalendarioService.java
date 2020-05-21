@@ -31,13 +31,17 @@ public class CalendarioService {
     public Date puestoUltimaVez(@PathVariable("id") Long id){
         Iterable<Calendario> fechas = repository.findAll();
         List<Date> misFechas = new ArrayList<Date>();
-        Date reciente;
+        Date reciente = null;
         for(Calendario actual: fechas){
             if(actual.getAtuendo().getId() == id){
-                misFechas.add(actual.getFecha());
+                if(actual.getFecha() != null) {
+                    misFechas.add(actual.getFecha());
+                }
             }
         }
-        reciente = Collections.max(misFechas);
+        if (misFechas.size() > 0){
+            reciente = Collections.max(misFechas);
+        }
         return reciente;
     }
 

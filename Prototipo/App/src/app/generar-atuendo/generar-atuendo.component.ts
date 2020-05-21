@@ -140,15 +140,17 @@ export class GenerarAtuendoComponent implements OnInit {
         this.clima = +this.selectCli;
 
         while (this.atuendos.length < 3 && this.MAX_IT < 30) {
-          const rand = Math.round((Math.random() * this.superiores.length));
-          const supActual = this.superiores[rand];
-          if (supActual.formalidad >= this.formalidad - 1 && supActual.formalidad <= this.formalidad + 1) {
-            if (this.clima === -1) {
-              console.log(+this.climaApi);
-              this.clima = this.calcularAbrigoAPI(+this.climaApi);
-            }
-            if (supActual.abrigo >= this.clima - 1 && supActual.abrigo <= this.clima + 1) {
-              this.atuendos.push(this.generarInd(supActual));
+          const rand = Math.round((Math.random() * this.superiores.length - 1));
+          if (rand >= 0 && rand < this.superiores.length) {
+            const supActual = this.superiores[rand];
+            if (supActual.formalidad >= this.formalidad - 1 && supActual.formalidad <= this.formalidad + 1) {
+              if (this.clima === -1) {
+                console.log(+this.climaApi);
+                this.clima = this.calcularAbrigoAPI(+this.climaApi);
+              }
+              if (supActual.abrigo >= this.clima - 1 && supActual.abrigo <= this.clima + 1) {
+                this.atuendos.push(this.generarInd(supActual));
+              }
             }
           }
           this.MAX_IT += 1;

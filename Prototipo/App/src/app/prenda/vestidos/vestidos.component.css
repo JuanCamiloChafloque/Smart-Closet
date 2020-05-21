@@ -141,7 +141,6 @@ a {
   flex-wrap: wrap;
   margin-bottom: 15px;
   justify-content: center;
-  background-color: white;
 }
 
 .display-box .box {
@@ -151,6 +150,7 @@ a {
   border-radius: 10px;
   margin: 10px;
   display: inline-block;
+  background-color: white;
 }
 
 .desc-box {

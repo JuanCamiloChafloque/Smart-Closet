@@ -6,6 +6,7 @@ export class Atuendo {
     public prendas: Prenda[],
     public numSup?: number,
     public numAcc?: number,
+    public numVes?: number,
     public ultimo?: Date,
     public cantidad?: number
   ) {}

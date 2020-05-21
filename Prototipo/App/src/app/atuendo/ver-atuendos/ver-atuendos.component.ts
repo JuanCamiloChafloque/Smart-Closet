@@ -60,6 +60,7 @@ export class VerAtuendosComponent implements OnInit {
     for (const atuendo of this.atuendos) {
       atuendo.numSup = 0;
       atuendo.numAcc = 0;
+      atuendo.numVes = 0;
       this.atuendoService.getPrendasAtuendo(localStorage.getItem('User'), atuendo.id).subscribe(
         results => {
           atuendo.prendas = results;
@@ -69,6 +70,9 @@ export class VerAtuendosComponent implements OnInit {
             }
             if (actual.seccion === 'Accesorio') {
               atuendo.numAcc += 1;
+            }
+            if (actual.seccion === 'Vestido') {
+              atuendo.numVes += 1;
             }
           }
         }
