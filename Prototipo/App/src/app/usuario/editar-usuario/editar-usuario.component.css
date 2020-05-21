@@ -83,12 +83,12 @@ a {
 }
 
 .generate-box:hover, .closet-box:hover, .favorite-box:hover, .history-box:hover, .options-box:hover {
-  background-color: #2F3C7E;
+  background-color: rgb(110, 121, 179);
   font-size: 17px;
 }
 
 .generate-box:hover a, .closet-box:hover a, .favorite-box:hover a, .history-box:hover a, .options-box:hover a {
-  background-color: #2F3C7E;
+  background-color: rgb(110, 121, 179);
   font-size: 17px;
   color: #FBEAEB;
 }
@@ -153,7 +153,7 @@ button {
   width: 115px;
   border-radius: 10px;
   background-color: #FBEAEB;
-  color: black;
+  color: #2F3C7E;
   font-weight: bold;
   border: 1.5px solid black;
   cursor: pointer;
@@ -187,7 +187,7 @@ input {
   height: 25px;
   width: 175px;
   border-radius: 5px;
-  border: 1.5px solid #2F3C7E;
+  border: 1.5px solid black;
   overflow: hidden;
   outline: none;
   padding-left: 5px;
@@ -199,7 +199,7 @@ select {
   margin-bottom: 5px;
   margin-left: 10px;
   border-radius: 5px;
-  border: 1.5px solid #2F3C7E;
+  border: 1.5px solid black;
   overflow: hidden;
   outline: none;
   padding-left: 5px;
@@ -209,8 +209,7 @@ select {
   margin-top: 5px;
   width: 100%;
   text-align: center;
-  font-style: italic;
   font-size: 15px;
-  color: red;
+  color: lightcoral;
   font-weight: bold;
 }

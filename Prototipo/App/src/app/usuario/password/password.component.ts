@@ -41,6 +41,7 @@ export class PasswordComponent implements OnInit {
     if (this.respuesta !== '') {
       if (this.respuesta === this.user.respuesta) {
         this.correct = true;
+        this.message = '';
       } else {
         this.message = 'Respuesta incorrecta!';
       }

@@ -83,12 +83,12 @@ a {
 }
 
 .generate-box:hover, .closet-box:hover, .favorite-box:hover, .history-box:hover, .options-box:hover {
-  background-color: #2F3C7E;
+  background-color: rgb(110, 121, 179);
   font-size: 17px;
 }
 
 .generate-box:hover a, .closet-box:hover a, .favorite-box:hover a, .history-box:hover a, .options-box:hover a {
-  background-color: #2F3C7E;
+  background-color: rgb(110, 121, 179);
   font-size: 17px;
   color: #FBEAEB;
 }
@@ -269,7 +269,7 @@ select {
   margin-bottom: 5px;
   margin-left: 10px;
   border-radius: 5px;
-  border: 1.5px solid #FBEAEB;
+  border: 1.5px solid black;
   overflow: hidden;
   outline: none;
   padding-left: 5px;

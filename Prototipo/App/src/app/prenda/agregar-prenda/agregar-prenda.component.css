@@ -83,12 +83,12 @@ a {
 }
 
 .generate-box:hover, .closet-box:hover, .favorite-box:hover, .history-box:hover, .options-box:hover {
-  background-color: #2F3C7E;
+  background-color: rgb(110, 121, 179);
   font-size: 17px;
 }
 
 .generate-box:hover a, .closet-box:hover a, .favorite-box:hover a, .history-box:hover a, .options-box:hover a {
-  background-color: #2F3C7E;
+  background-color: rgb(110, 121, 179);
   font-size: 17px;
   color: #FBEAEB;
 }
@@ -131,9 +131,10 @@ a {
   transform: translate(-50%, -50%);
   display: inline-flex;
   justify-content: space-evenly;
-  background-color: #FBEAEB;
+  background-color: white;
   border: 1.5px solid black;
   border-radius: 10px;
+  opacity: 0.77;
 }
 
 .api-box{
@@ -147,6 +148,7 @@ a {
   border-radius: 10px;
   margin-bottom: 20px;
   background-color: white;
+  opacity: 0.77;
 }
 
 .api-box a {
@@ -258,9 +260,9 @@ select {
   background-color: #2F3C7E;
   color: white;
   font-weight: bold;
-
   border: 1.5px solid black;
   cursor: pointer;
+  outline: none;
 }
 
 input[type="file"] {
@@ -276,6 +278,10 @@ input[type="file"] {
   width: 200px;
 }
 
+.btn-subir {
+  cursor: pointer;
+}
+
 .btn-agregar {
   margin-top: 5px;
   font-size: 14px;
@@ -287,6 +293,7 @@ input[type="file"] {
   font-weight: bold;
   border: 1.5px solid black;
   cursor: pointer;
+  outline: none;
 }
 
 .subir-box h2 {

@@ -179,7 +179,7 @@
       <div class="subir-box">
         <h2>¿No encontraste lo que buscabas? Sube tu propia foto</h2><br>
         <input type="file" id="file" (change)="subirFoto($event)">
-        <label for="file">Subir Foto</label><br>
+        <label class="btn-subir" for="file">Subir Foto</label><br>
         <img *ngIf="selectedImage == true"  src="../../../assets/images/{{imageUser.name}}"><br>
         <button (click)="crearPrendaSubida()" *ngIf="selectedImage == true" class="btn-agregar">Crear prenda</button>
       </div>

@@ -85,8 +85,8 @@ button {
 
 a {
   font-style: italic;
-  color: blue;
-  border-bottom: 0.5px solid blue;
+  color: #2F3C7E;
+  border-bottom: 0.5px solid #2F3C7E;
   cursor: pointer;
   text-decoration: none;
   font-size: 13px;
@@ -101,6 +101,5 @@ a {
   margin-bottom: 15px;
   font-weight: bold;
   text-align: center;
-  font-style: italic;
   color: red;
 }
