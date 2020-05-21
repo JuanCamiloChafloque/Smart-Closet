@@ -7,7 +7,7 @@
   position: fixed;
   width: 235px;
   height: 100vh;
-  background-color: #C40A92;
+  background-color: #FBEAEB;
   border-right: 4.5px solid black;
 }
 
@@ -83,8 +83,14 @@ a {
 }
 
 .generate-box:hover, .closet-box:hover, .favorite-box:hover, .history-box:hover, .options-box:hover {
-  background-color: rgb(153, 7, 114);
+  background-color: #2F3C7E;
   font-size: 17px;
+}
+
+.generate-box:hover a, .closet-box:hover a, .favorite-box:hover a, .history-box:hover a, .options-box:hover a {
+  background-color: #2F3C7E;
+  font-size: 17px;
+  color: #FBEAEB;
 }
 
 .wrapper .content {
@@ -100,13 +106,18 @@ a {
   width: 450px;
   border: 1.5px solid black;
   border-radius: 10px;
-  background-color: #4DC4EB;
+  background-color: #2F3C7E;
   text-align: center;
   position: absolute;
   left: 60%;
   top: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0.90;
+  color: white;
+  opacity: 0.95;
+}
+
+.perfil-box a {
+  color: white;
 }
 
 .logout {
@@ -123,6 +134,7 @@ a {
 .perfil-box img {
   width: 140px;
   margin-bottom: 15px;
+  color: white;
 }
 
 .title {
@@ -143,7 +155,7 @@ label {
 
 .final {
   padding-bottom: 20px;
-  border-bottom: 1.5px solid black;
+  border-bottom: 1.5px solid #FBEAEB;
   margin: 0 25px 25px 25px;
 }
 
@@ -154,8 +166,9 @@ button {
   height: 45px;
   width: 115px;
   border-radius: 10px;
-  background-color: #C40A92;
-  color: white;
+  background-color: #FBEAEB;
+  color: black;
+  font-weight: bold;
   border: 1.5px solid black;
   cursor: pointer;
   margin-top: 15px;

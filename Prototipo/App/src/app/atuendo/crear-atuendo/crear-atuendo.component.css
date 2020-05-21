@@ -7,7 +7,7 @@
   position: fixed;
   width: 235px;
   height: 100vh;
-  background-color: #C40A92;
+  background-color: #FBEAEB;
   border-right: 4.5px solid black;
 }
 
@@ -83,8 +83,14 @@ a {
 }
 
 .generate-box:hover, .closet-box:hover, .favorite-box:hover, .history-box:hover, .options-box:hover {
-  background-color: rgb(153, 7, 114);
+  background-color: #2F3C7E;
   font-size: 17px;
+}
+
+.generate-box:hover a, .closet-box:hover a, .favorite-box:hover a, .history-box:hover a, .options-box:hover a {
+  background-color: #2F3C7E;
+  font-size: 17px;
+  color: #FBEAEB;
 }
 
 .wrapper .content {
@@ -111,6 +117,7 @@ a {
 .title h2 {
   margin-left: 15px;
   font-size: 30px;
+  color: white;
 }
 
 .panel-box {
@@ -122,13 +129,14 @@ a {
   justify-content: center;
   align-items: center;
   font-size: 9px;
+  color: white;
 }
 
 .panel-box select {
   width: 175px;
   height: 25px;
   border-radius: 5px;
-  border: 1.5px solid #C40A92;
+  border: 1.5px solid #FBEAEB;
   overflow: hidden;
   outline: none;
   cursor: pointer;
@@ -143,7 +151,7 @@ option {
   width: 950px;
   position: absolute;
   left: 22%;
-  top: 55%;
+  top: 60%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -158,6 +166,7 @@ option {
   border-radius: 10px;
   margin: 10px;
   display: inline-block;
+  background-color: white;
 }
 
 .display-box .assigned {
@@ -167,6 +176,7 @@ option {
   border-radius: 10px;
   margin: 10px;
   display: inline-block;
+  background-color: white;
 }
 
 .display-box .favorite {
@@ -176,6 +186,7 @@ option {
   border-radius: 10px;
   margin: 10px;
   display: inline-block;
+  background-color: white;
 }
 
 .desc-box {
@@ -216,6 +227,9 @@ option {
   text-align: center;
   margin-left: 30px;
   width: 950px;
+  background-color: white;
+  border: 1.5px solid black;
+  border-radius: 10px;
 }
 
 .prendas-box {
@@ -240,8 +254,9 @@ option {
   height: 35px;
   width: 105px;
   border-radius: 10px;
-  background-color: #C40A92;
-  color: white;
+  background-color: #FBEAEB;
+  color: black;
+  font-weight: bold;
   border: 1.5px solid black;
   cursor: pointer;
   outline: none;
@@ -265,14 +280,14 @@ option {
   width: 100%;
   margin-top: 80px;
   text-align: center;
-  color: #C40A92;
+  color: #FBEAEB;
   font-weight: bold;
 }
 
 .msg-error {
   width: 100%;
   text-align: center;
-  color: #C40A92;
+  color: #2F3C7E;
   font-weight: bold;
 }
 

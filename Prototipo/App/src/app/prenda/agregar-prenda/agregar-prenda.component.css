@@ -7,7 +7,7 @@
   position: fixed;
   width: 235px;
   height: 100vh;
-  background-color: #C40A92;
+  background-color: #FBEAEB;
   border-right: 4.5px solid black;
 }
 
@@ -83,8 +83,14 @@ a {
 }
 
 .generate-box:hover, .closet-box:hover, .favorite-box:hover, .history-box:hover, .options-box:hover {
-  background-color: rgb(153, 7, 114);
+  background-color: #2F3C7E;
   font-size: 17px;
+}
+
+.generate-box:hover a, .closet-box:hover a, .favorite-box:hover a, .history-box:hover a, .options-box:hover a {
+  background-color: #2F3C7E;
+  font-size: 17px;
+  color: #FBEAEB;
 }
 
 .wrapper .content {
@@ -111,7 +117,7 @@ a {
 
 .title-box h2 {
   margin-left: 15px;
-  color: black;
+  color: white;
 }
 
 .add-box {
@@ -125,7 +131,7 @@ a {
   transform: translate(-50%, -50%);
   display: inline-flex;
   justify-content: space-evenly;
-  background-color: #4DC4EB;
+  background-color: #FBEAEB;
   border: 1.5px solid black;
   border-radius: 10px;
 }
@@ -140,6 +146,7 @@ a {
   border: 1.5px solid black;
   border-radius: 10px;
   margin-bottom: 20px;
+  background-color: white;
 }
 
 .api-box a {
@@ -179,7 +186,7 @@ a {
 .form {
   display: inline-flex;
   padding-right: 50px;
-  border-right: 2.2px solid #C40A92;
+  border-right: 2.2px solid #2F3C7E;
 }
 
 .lbl-box {
@@ -205,7 +212,7 @@ input[type="text"], input[type="color"] {
   margin-bottom: 5px;
   margin-left: 10px;
   border-radius: 5px;
-  border: 1.5px solid #C40A92;
+  border: 1.5px solid #2F3C7E;
   overflow: hidden;
   outline: none;
   padding-left: 5px;
@@ -220,7 +227,7 @@ input[type="color"] {
 datalist {
   width: 100%;
   border-radius: 10px;
-  border: 1.5px solid #C40A92;
+  border: 1.5px solid #2F3C7E;
 }
 
 select {
@@ -229,7 +236,7 @@ select {
   margin-bottom: 5px;
   margin-left: 10px;
   border-radius: 5px;
-  border: 1.5px solid #C40A92;
+  border: 1.5px solid #2F3C7E;
   overflow: hidden;
   outline: none;
   padding-left: 5px;
@@ -248,8 +255,10 @@ select {
   height: 27px;
   width: 87px;
   border-radius: 10px;
-  background-color: #C40A92;
+  background-color: #2F3C7E;
   color: white;
+  font-weight: bold;
+
   border: 1.5px solid black;
   cursor: pointer;
 }
@@ -261,7 +270,7 @@ input[type="file"] {
 .subir-box label {
   padding: 3px 15px 3px 15px;
   border: 1.5px solid black;
-  background-color: #C40A92;
+  background-color: #2F3C7E;
   border-radius: 10px;
   color: white;
   width: 200px;
@@ -273,8 +282,9 @@ input[type="file"] {
   height: 27px;
   width: 100px;
   border-radius: 10px;
-  background-color: #C40A92;
+  background-color: #2F3C7E;
   color: white;
+  font-weight: bold;
   border: 1.5px solid black;
   cursor: pointer;
 }
@@ -295,7 +305,7 @@ input[type="file"] {
 .msg-box {
   font-style: italic;
   font-size: 13px;
-  color: #C40A92;
+  color: #2F3C7E;
 }
 
 .agregar-box {

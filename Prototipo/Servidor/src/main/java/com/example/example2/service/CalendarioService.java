@@ -41,12 +41,12 @@ public class CalendarioService {
         return reciente;
     }
 
-    @GetMapping("/atuendoFecha/{fecha}")
-    public Atuendo atuendoFecha(@PathVariable("fecha") String fecha){
+    @GetMapping("/atuendoFecha/{nickname}/{fecha}")
+    public Atuendo atuendoFecha(@PathVariable("fecha") String fecha, @PathVariable("nickname") String nickname){
         Date fechaActual = Date.valueOf(fecha);
         Iterable<Calendario> fechas = repository.findAll();
         for(Calendario actual: fechas){
-            if(actual.getFecha().equals(fechaActual)){
+            if(actual.getFecha().equals(fechaActual) && actual.getArmario().getUsuario().getNickname().equals(nickname)){
                 return actual.getAtuendo();
             }
         }

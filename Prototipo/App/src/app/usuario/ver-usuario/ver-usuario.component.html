@@ -44,7 +44,8 @@
         <a (click)="logout()"><i class="fas fa-sign-out-alt"></i></a>
       </div>
       <div class="info">
-        <img src="../../../assets/images/User.png" alt="User">
+        <img *ngIf="user.genero == 'Masculino'" src="../../../assets/images/User.png" alt="User">
+        <img *ngIf="user.genero == 'Femenino'" src="../../../assets/images/UserF.png" alt="User">
         <div class="title">
           <h2>{{user.nombre}} {{user.apellido}}</h2>
         </div>

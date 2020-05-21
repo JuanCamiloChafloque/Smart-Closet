@@ -7,7 +7,7 @@
   position: fixed;
   width: 235px;
   height: 100vh;
-  background-color: #C40A92;
+  background-color: #FBEAEB;
   border-right: 4.5px solid black;
 }
 
@@ -83,8 +83,14 @@ a {
 }
 
 .generate-box:hover, .closet-box:hover, .favorite-box:hover, .history-box:hover, .options-box:hover {
-  background-color: rgb(153, 7, 114);
+  background-color: #2F3C7E;
   font-size: 17px;
+}
+
+.generate-box:hover a, .closet-box:hover a, .favorite-box:hover a, .history-box:hover a, .options-box:hover a {
+  background-color: #2F3C7E;
+  font-size: 17px;
+  color: #FBEAEB;
 }
 
 .wrapper .content {
@@ -111,6 +117,7 @@ a {
 .title h2 {
   margin-left: 15px;
   font-size: 30px;
+  color: white;
 }
 
 .vacio {
@@ -119,7 +126,7 @@ a {
   font-size: 25px;
   font-style: italic;
   margin-top: 80px;
-  color: #C40A92;
+  color: #FBEAEB;
   font-weight: bold;
 }
 
@@ -144,6 +151,7 @@ a {
   display: inline-block;
   text-align: center;
   vertical-align: middle;
+  background-color: white;
 }
 
 .image-superior, .image-inferior, .image-zapato, .image-accesorio {
@@ -252,7 +260,7 @@ button {
 }
 
 .info-box p {
-  color: #C40A92;
+  color: #2F3C7E;
 }
 
 select {
@@ -261,7 +269,7 @@ select {
   margin-bottom: 5px;
   margin-left: 10px;
   border-radius: 5px;
-  border: 1.5px solid #C40A92;
+  border: 1.5px solid #FBEAEB;
   overflow: hidden;
   outline: none;
   padding-left: 5px;
@@ -276,12 +284,12 @@ select {
 }
 
 .filter-box p {
-  color: #C40A92;
+  color: white;
   font-weight: bold;
 }
 
 .msg-box {
-  color: #C40A92;
+  color: #FBEAEB;
   font-weight: bold;
   text-align: center;
   width: 100%;

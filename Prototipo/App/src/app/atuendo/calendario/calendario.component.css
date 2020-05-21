@@ -7,7 +7,7 @@
   position: fixed;
   width: 235px;
   height: 100vh;
-  background-color: #C40A92;
+  background-color: #FBEAEB;
   border-right: 4.5px solid black;
 }
 
@@ -83,8 +83,14 @@ a {
 }
 
 .generate-box:hover, .closet-box:hover, .favorite-box:hover, .history-box:hover, .options-box:hover {
-  background-color: rgb(153, 7, 114);
+  background-color: #2F3C7E;
   font-size: 17px;
+}
+
+.generate-box:hover a, .closet-box:hover a, .favorite-box:hover a, .history-box:hover a, .options-box:hover a {
+  background-color: #2F3C7E;
+  font-size: 17px;
+  color: #FBEAEB;
 }
 
 .wrapper .content {
@@ -111,6 +117,7 @@ a {
 .title h2 {
   margin-left: 15px;
   font-size: 30px;
+  color: white;
 }
 
 .calendar-box {
@@ -131,6 +138,7 @@ a {
   border: 0.8px solid black;
   border-radius: 4px;
   text-align: center;
+  background-color: white;
 }
 
 .dia-title{
@@ -171,6 +179,7 @@ a {
   align-items: center;
   justify-content: center;
   display: inline-flex;
+  color: white;
 }
 
 .month-box p {
@@ -249,6 +258,7 @@ a {
   margin-top: 30px;
   display: inline-flex;
   justify-content: space-evenly;
+  color: white;
 }
 
 

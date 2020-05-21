@@ -17,7 +17,7 @@ p {
   transform: translate(-50%, -50%);
   border: 1.5px solid black;
   border-radius: 20px;
-  background-color: #4DC4EB;
+  background-color: #FBEAEB;
   opacity: 0.90;
 }
 
@@ -51,7 +51,7 @@ button {
   margin-left: 70px;
   margin-right: 70px;
   border-radius: 10px;
-  background-color: #C40A92;
+  background-color: #2F3C7E;
   color: white;
   border: 1px solid black;
   cursor: pointer;

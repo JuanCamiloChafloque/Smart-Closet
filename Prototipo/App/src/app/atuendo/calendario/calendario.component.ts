@@ -52,7 +52,7 @@ export class CalendarioComponent implements OnInit {
     for (let i = 0; i < diaActual; i++) {
       const cal: Calendario = new Calendario(i + 1, this.mesInicial, this.anioInicial, undefined);
       const date = this.calcularFecha(i + 1, this.mesInicial, this.anioInicial);
-      this.atuendoService.atuendoFecha(date).subscribe(
+      this.atuendoService.atuendoFecha(date, localStorage.getItem('User')).subscribe(
         results => {
           cal.atuendo = results;
           if (cal.atuendo !== null) {
@@ -124,7 +124,7 @@ export class CalendarioComponent implements OnInit {
     for (let i = 0; i < diaActual; i++) {
       const cal: Calendario = new Calendario(i + 1, this.mesInicial, this.anioInicial, undefined);
       const date = this.calcularFecha(i + 1, this.mesInicial, this.anioInicial);
-      this.atuendoService.atuendoFecha(date).subscribe(
+      this.atuendoService.atuendoFecha(date, localStorage.getItem('User')).subscribe(
         results => {
           cal.atuendo = results;
           if (cal.atuendo !== null) {
@@ -181,7 +181,7 @@ export class CalendarioComponent implements OnInit {
     for (let i = 0; i < diaActual; i++) {
       const cal: Calendario = new Calendario(i + 1, this.mesInicial, this.anioInicial, undefined);
       const date = this.calcularFecha(i + 1, this.mesInicial, this.anioInicial);
-      this.atuendoService.atuendoFecha(date).subscribe(
+      this.atuendoService.atuendoFecha(date, localStorage.getItem('User')).subscribe(
         results => {
           cal.atuendo = results;
           if (cal.atuendo !== null) {

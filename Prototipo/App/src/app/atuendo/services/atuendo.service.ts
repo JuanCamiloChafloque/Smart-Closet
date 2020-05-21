@@ -103,8 +103,8 @@ export class AtuendoService {
     return this.get<number>(url);
   }
 
-  atuendoFecha(fecha: string) {
-    const url = `http://localhost:8080/atuendoFecha/${fecha}`;
+  atuendoFecha(fecha: string, nickname: string) {
+    const url = `http://localhost:8080/atuendoFecha/${nickname}/${fecha}`;
     return this.get<Atuendo>(url);
   }
 
