@@ -144,14 +144,14 @@ a {
   background-color: white;
 }
 
-.image-superior, .image-inferior, .image-zapato, .image-accesorio {
+.image-superior, .image-inferior, .image-zapato, .image-accesorio, .image-vestido {
   margin-top: 5px;
   text-align: center;
   overflow: hidden;
   display: inline-block;
 }
 
-.image-superior img, .image-inferior img, .image-zapato img, .image-accesorio img {
+.image-superior img, .image-inferior img, .image-zapato img, .image-accesorio img, .image-vestido img {
   width: 100px;
   height: 100px;
   margin-left: 10px;

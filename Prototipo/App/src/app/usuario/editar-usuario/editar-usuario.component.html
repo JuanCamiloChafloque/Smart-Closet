@@ -41,7 +41,8 @@
   <div class="content">
     <div class="perfil-box">
       <div class="info">
-        <img src="../../../assets/images/User.png" alt="User">
+        <img *ngIf="user.genero == 'Masculino'" src="../../../assets/images/User.png" alt="User">
+        <img *ngIf="user.genero == 'Femenino'" src="../../../assets/images/UserF.png" alt="User">
         <div class="info-box">
           <div class="form">
             <div class="lbl-box">

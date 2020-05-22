@@ -27,7 +27,7 @@ export class GenerarAtuendoComponent implements OnInit {
   selectCli = '';
   formalidad = -1;
   clima = -1;
-  climaApi = -1;
+  climaApi = 19;
   favoritos;
   checkVestido = false;
   message = '';
@@ -59,18 +59,18 @@ export class GenerarAtuendoComponent implements OnInit {
         this.inicializar();
       }
     );
-  }
 
-  inicializar() {
-    this.llegoUsuario = true;
-
-    if ('geolocation' in navigator) {
+    /*if ('geolocation' in navigator) {
       navigator.geolocation.watchPosition((success) => {
         this.climaService.getClimaByCoord(success.coords.latitude, success.coords.longitude).subscribe((data: any) => {
           this.climaApi = data.main.temp;
         });
       });
-    }
+    }*/
+  }
+
+  inicializar() {
+    this.llegoUsuario = true;
 
     this.prendaService.getPrendasSuperiores(localStorage.getItem('User')).subscribe(
       results => {
@@ -209,6 +209,7 @@ export class GenerarAtuendoComponent implements OnInit {
       atuendo.numVes = 1;
     } else {
       atuendo.numSup = 1;
+      atuendo.numVes = 0;
     }
     let colorSuperior;
     let colorInferior;
@@ -262,7 +263,7 @@ export class GenerarAtuendoComponent implements OnInit {
       for (const inf of this.inferiores) {
         if (inf.disponible === true) {
           if (inf.abrigo >= this.clima - 1 && inf.abrigo <= this.clima + 1) {
-            if (inf.formalidad >= this.formalidad - 2 && inf.formalidad <= this.formalidad + 2) {
+            if (inf.formalidad >= this.formalidad - 1 && inf.formalidad <= this.formalidad + 1) {
               const colores = this.coloresClima(this.clima);
               if (colores.includes(inf.color)) {
                 atuendo.prendas.push(inf);
@@ -278,7 +279,7 @@ export class GenerarAtuendoComponent implements OnInit {
 
     for (const zap of this.zapatos) {
       if (zap.disponible === true) {
-        if (zap.formalidad >= this.formalidad - 2 && zap.formalidad <= this.formalidad + 2) {
+        if (zap.formalidad >= this.formalidad - 1 && zap.formalidad <= this.formalidad + 1) {
           const colores = this.coloresClima(this.clima);
           if (colores.includes(zap.color)) {
             atuendo.prendas.push(zap);
@@ -292,7 +293,7 @@ export class GenerarAtuendoComponent implements OnInit {
     if (this.clima >= 4) {
       for (const acc of this.accesorios) {
         if (acc.disponible === true) {
-          if (acc.formalidad >= this.formalidad - 2 && acc.formalidad <= this.formalidad + 2) {
+          if (acc.formalidad >= this.formalidad - 1 && acc.formalidad <= this.formalidad + 1) {
             const colores = this.coloresClima(this.clima);
             if (acc.color === colorSuperior || acc.color === colorInferior) {
               atuendo.numAcc += 1;
