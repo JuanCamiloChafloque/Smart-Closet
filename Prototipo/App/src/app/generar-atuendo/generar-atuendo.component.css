@@ -284,3 +284,19 @@ select {
   color: #FBEAEB;
   font-weight: bold;
 }
+
+.vestido-box {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.vestido-box img {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+
+.vestido-image {
+  display: inline-flex;
+}

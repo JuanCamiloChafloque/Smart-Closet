@@ -7,6 +7,7 @@ import com.example.example2.model.PrendaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -21,6 +22,11 @@ class PrendaService {
     @PostMapping("/crearPrenda")
     public Prenda crearPrenda(@RequestBody Prenda prenda) {
         return repository.save(prenda);
+    }
+
+    @GetMapping("/findPrenda/{id}")
+    public Prenda findById(@PathVariable("id") Long id) {
+        return repository.findById(id).get();
     }
 
     @PutMapping("/modificarFavorito/{id}")

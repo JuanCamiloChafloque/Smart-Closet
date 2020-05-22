@@ -27,12 +27,13 @@ export class GenerarAtuendoComponent implements OnInit {
   selectCli = '';
   formalidad = -1;
   clima = -1;
-  climaApi;
+  climaApi = -1;
   favoritos;
   checkVestido = false;
   message = '';
   MAX_IT = 0;
   generar = false;
+  vest = false;
 
   superiores: Superior[];
   inferiores: Inferior[];
@@ -62,20 +63,20 @@ export class GenerarAtuendoComponent implements OnInit {
 
   inicializar() {
     this.llegoUsuario = true;
-    this.prendaService.getPrendasSuperiores(localStorage.getItem('User')).subscribe(
-      results => {
-        this.superiores = results;
-      }
-    );
 
     if ('geolocation' in navigator) {
       navigator.geolocation.watchPosition((success) => {
-
         this.climaService.getClimaByCoord(success.coords.latitude, success.coords.longitude).subscribe((data: any) => {
           this.climaApi = data.main.temp;
         });
       });
     }
+
+    this.prendaService.getPrendasSuperiores(localStorage.getItem('User')).subscribe(
+      results => {
+        this.superiores = results;
+      }
+    );
 
     this.prendaService.getPrendasInferiores(localStorage.getItem('User')).subscribe(
       results => {
@@ -138,24 +139,43 @@ export class GenerarAtuendoComponent implements OnInit {
         this.formalidad = +this.selectForm;
         this.generar = true;
         this.clima = +this.selectCli;
+        console.log(this.clima);
 
-        while (this.atuendos.length < 3 && this.MAX_IT < 30) {
-          const rand = Math.round((Math.random() * this.superiores.length - 1));
-          if (rand >= 0 && rand < this.superiores.length) {
-            const supActual = this.superiores[rand];
-            if (supActual.formalidad >= this.formalidad - 1 && supActual.formalidad <= this.formalidad + 1) {
-              if (this.clima === -1) {
-                console.log(+this.climaApi);
-                this.clima = this.calcularAbrigoAPI(+this.climaApi);
-              }
-              if (supActual.abrigo >= this.clima - 1 && supActual.abrigo <= this.clima + 1) {
-                this.atuendos.push(this.generarInd(supActual));
+        if (this.vest === false) {
+          while (this.atuendos.length < 3 && this.MAX_IT < 30) {
+            const rand = Math.round((Math.random() * this.superiores.length - 1));
+            if (rand >= 0 && rand < this.superiores.length) {
+              const supActual = this.superiores[rand];
+              if (supActual.formalidad >= this.formalidad - 1 && supActual.formalidad <= this.formalidad + 1) {
+                if (this.clima === -1) {
+                  console.log(+this.climaApi);
+                  this.clima = this.calcularAbrigoAPI(+this.climaApi);
+                }
+                if (supActual.abrigo >= this.clima - 1 && supActual.abrigo <= this.clima + 1) {
+                  this.atuendos.push(this.generarInd(supActual));
+                }
               }
             }
+            this.MAX_IT += 1;
           }
-          this.MAX_IT += 1;
+        } else {
+          while (this.atuendos.length < 3 && this.MAX_IT < 30) {
+            const rand = Math.round((Math.random() * this.vestidos.length - 1));
+            if (rand >= 0 && rand < this.vestidos.length) {
+              const vesActual = this.vestidos[rand];
+              if (vesActual.formalidad >= this.formalidad - 1 && vesActual.formalidad <= this.formalidad + 1) {
+                if (this.clima === -1) {
+                  console.log(+this.climaApi);
+                  this.clima = this.calcularAbrigoAPI(+this.climaApi);
+                }
+                if (vesActual.abrigo >= this.clima - 1 && vesActual.abrigo <= this.clima + 1) {
+                  this.atuendos.push(this.generarInd(vesActual));
+                }
+              }
+            }
+            this.MAX_IT += 1;
+          }
         }
-
         console.log(this.atuendos);
       } else {
         this.message = 'Selecciona un nivel de formalidad y abrigo';
@@ -180,22 +200,47 @@ export class GenerarAtuendoComponent implements OnInit {
     }
   }
 
-  generarInd(superior: Superior): Atuendo {
+  generarInd(prenda: Prenda): Atuendo {
 
-    const color = superior.color;
+    const color = prenda.color;
     const atuendo: Atuendo = new Atuendo(undefined, undefined, []);
     atuendo.numAcc = 0;
-    atuendo.numSup = 1;
+    if (this.vest === true) {
+      atuendo.numVes = 1;
+    } else {
+      atuendo.numSup = 1;
+    }
     let colorSuperior;
     let colorInferior;
-    atuendo.prendas.push(superior);
+    atuendo.prendas.push(prenda);
 
-    if (superior.tipo === 'Chaqueta' || superior.tipo === 'Saco' || superior.tipo === 'Abrigo' || superior.tipo === 'Hoodie') {
+    if (prenda.tipo === 'Chaqueta' || prenda.tipo === 'Saco' || prenda.tipo === 'Abrigo' || prenda.tipo === 'Hoodie') {
       for (const sup of this.superiores) {
         if (sup.disponible === true) {
-          if (sup.id !== superior.id) {
+          if (sup.id !== prenda.id) {
             if (sup.tipo === 'Camiseta' || sup.tipo === 'Blusa' || sup.tipo === 'Top' || sup.tipo === 'Camisa') {
-              if (sup.abrigo > 2) {
+              if (sup.formalidad >= this.formalidad - 1 && sup.formalidad <= this.formalidad + 1) {
+                const colores = this.coloresClima(this.clima);
+                if (colores.includes(sup.color)) {
+                  atuendo.numSup += 1;
+                  atuendo.prendas.push(sup);
+                  sup.disponible = false;
+                  colorSuperior = sup.color;
+                  break;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    if (this.vest === true) {
+      if (this.clima >= 4) {
+        for (const sup of this.superiores) {
+          if (sup.disponible === true) {
+            if (sup.id !== prenda.id) {
+              if (sup.tipo === 'Chaqueta' || sup.tipo === 'Saco' || sup.tipo === 'Abrigo') {
                 if (sup.formalidad >= this.formalidad - 1 && sup.formalidad <= this.formalidad + 1) {
                   const colores = this.coloresClima(this.clima);
                   if (colores.includes(sup.color)) {
@@ -213,16 +258,18 @@ export class GenerarAtuendoComponent implements OnInit {
       }
     }
 
-    for (const inf of this.inferiores) {
-      if (inf.disponible === true) {
-        if (inf.abrigo >= this.clima - 1 && inf.abrigo <= this.clima + 1) {
-          if (inf.formalidad >= this.formalidad - 1 && inf.formalidad <= this.formalidad + 1) {
-            const colores = this.coloresClima(this.clima);
-            if (colores.includes(inf.color)) {
-              atuendo.prendas.push(inf);
-              colorInferior = inf.color;
-              inf.disponible = false;
-              break;
+    if (this.vest === false) {
+      for (const inf of this.inferiores) {
+        if (inf.disponible === true) {
+          if (inf.abrigo >= this.clima - 1 && inf.abrigo <= this.clima + 1) {
+            if (inf.formalidad >= this.formalidad - 2 && inf.formalidad <= this.formalidad + 2) {
+              const colores = this.coloresClima(this.clima);
+              if (colores.includes(inf.color)) {
+                atuendo.prendas.push(inf);
+                colorInferior = inf.color;
+                inf.disponible = false;
+                break;
+              }
             }
           }
         }
@@ -231,7 +278,7 @@ export class GenerarAtuendoComponent implements OnInit {
 
     for (const zap of this.zapatos) {
       if (zap.disponible === true) {
-        if (zap.formalidad >= this.formalidad - 1 && zap.formalidad <= this.formalidad + 1) {
+        if (zap.formalidad >= this.formalidad - 2 && zap.formalidad <= this.formalidad + 2) {
           const colores = this.coloresClima(this.clima);
           if (colores.includes(zap.color)) {
             atuendo.prendas.push(zap);
@@ -245,7 +292,7 @@ export class GenerarAtuendoComponent implements OnInit {
     if (this.clima >= 4) {
       for (const acc of this.accesorios) {
         if (acc.disponible === true) {
-          if (acc.formalidad >= this.formalidad - 1 && acc.formalidad <= this.formalidad + 1) {
+          if (acc.formalidad >= this.formalidad - 2 && acc.formalidad <= this.formalidad + 2) {
             const colores = this.coloresClima(this.clima);
             if (acc.color === colorSuperior || acc.color === colorInferior) {
               atuendo.numAcc += 1;
@@ -257,7 +304,6 @@ export class GenerarAtuendoComponent implements OnInit {
         }
       }
     }
-
     return atuendo;
   }
 

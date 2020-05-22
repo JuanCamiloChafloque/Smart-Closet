@@ -56,6 +56,15 @@
             <option value="5">Muy formal</option>
           </select>
         </div>
+        <div *ngIf="user.genero == 'Femenino'" class="vestido-box">
+          <div class="vestido-image">
+            <img src="../../assets/images/vestidos.png" alt="">
+            <p>Generar vestidos</p>
+          </div>
+          <div class="check-box">
+            <input type="checkbox" [(ngModel)]="vest">
+          </div>
+        </div>
         <div class="abrigo-box">
           <a><i class="fas fa-snowflake"></i></a>
           <select [(ngModel)]="selectCli" class="input-abrigo">
